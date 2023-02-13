@@ -156,7 +156,6 @@ public class MapBehaviour : MonoBehaviour
                     {
                         GameObject TempTile = Instantiate(TilePrefab, Pos, Quaternion.identity);
                         TempTile.GetComponent<MeshRenderer>().material = Tileset[BaseLayer[y, x]].TileTexture;
-                        Debug.Log(Tileset[BaseLayer[y, x]]);
                         TempTile.transform.SetParent(this.transform);
                     }
                 }
