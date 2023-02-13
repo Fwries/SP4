@@ -6,7 +6,7 @@ public class MapBehaviour : MonoBehaviour
 {
     public GameObject TilePrefab;
     public GameObject WallPrefab;
-    public Tile[] Tileset;
+    public ScTile[] Tileset;
 
     public int SpawnX, SpawnY;
 
