@@ -144,7 +144,7 @@ public class MapBehaviour : MonoBehaviour
 
                     if (SolidTileMap[y, x])
                     {
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < 2; i++)
                         {
                             GameObject TempWall;
                             TempWall = Instantiate(WallPrefab, new Vector3(x, 0.5f + i, y), Quaternion.identity);
