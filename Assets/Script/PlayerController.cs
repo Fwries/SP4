@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         float translateZ = SPEED * keyAD * Time.deltaTime;
 
         // Move the player
-        transform.Translate(translateZ, -translateX, 0.0f);
+        transform.Translate(translateZ, 0.0f, translateX);
 
         // Move the camera and adjust its look/forward vector
         mainCamera.transform.position = transform.position + new Vector3(cameraSettings.xOffsetFromPlayer, 
