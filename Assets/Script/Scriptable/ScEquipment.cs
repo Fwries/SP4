@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Tile", menuName = "Dungeon Hurler/Equipment")]
+[CreateAssetMenu(fileName = "New Equipment", menuName = "Dungeon Hurler/Equipment")]
 public class ScEquipment : ScriptableObject
 {
     public Sprite EquipmentIcon;
