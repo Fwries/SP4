@@ -7,7 +7,9 @@ public class ScWeapon : ScriptableObject
 {
     public Sprite WeaponIcon;
     public string Description;
-    public int Damage;
+    public int RedDmg;
+    public int OrangeDmg;
+    public int YellowDmg;
     public float AtkSpeed;
     public int AtkReach;
     public int Weight;

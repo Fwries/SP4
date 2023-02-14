@@ -2,21 +2,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    
     private const float SPEED = 5.0f;
 
     private Camera          mainCamera;
     private CameraSettings  cameraSettings;
 
+    public Animator animator;
+
+    Vector2 movement;
+
     void Start()
     {
         mainCamera = Camera.main;
         cameraSettings = mainCamera.GetComponent<CameraSettings>();
+
+        animator = this.GetComponentInChildren<Animator>();
     }
 
     void MovePlayerOnWASDPressed()
     {
         float keyWS = Input.GetAxis("Vertical");
         float keyAD = Input.GetAxis("Horizontal");
+
+        movement.x = keyWS;
+        movement.y = keyAD;
+
+        animator.SetFloat("MoveX", movement.x);
+        animator.SetFloat("MoveY", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
 
         // The translations are relative to the x-z plane
         float translateX = SPEED * keyWS * Time.deltaTime;
