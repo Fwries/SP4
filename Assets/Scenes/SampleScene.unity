@@ -317,58 +317,6 @@ MonoBehaviour:
   xOffsetFromPlayer: 0
   yOffsetFromPlayer: 7
   zOffsetFromPlayer: -5
---- !u!1 &1428989475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1428989477}
-  - component: {fileID: 1428989476}
-  m_Layer: 0
-  m_Name: Map
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1428989476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428989475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 836eb85538f1bc542accf10723c0fd33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TilePrefab: {fileID: 7283612149563147163, guid: 17289189500899d418f3401b22e2a216, type: 3}
-  WallPrefab: {fileID: 7975742011146773547, guid: 336e550a00aa1a94c8f149649e8c245f, type: 3}
-  Tileset:
-  - {fileID: 0}
-  - {fileID: 11400000, guid: 45fbee83f3482e643b315e4e0d9abf0a, type: 2}
-  - {fileID: 11400000, guid: b305381104a894c41af7aa5f26791ead, type: 2}
-  SpawnX: 0
-  SpawnY: 0
---- !u!4 &1428989477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1428989475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498030887
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +350,7 @@ Transform:
   m_Children:
   - {fileID: 2133736066}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1498030890
 BoxCollider:
@@ -527,7 +475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &1883671484
 BoxCollider:
@@ -604,7 +552,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133736065
 GameObject:
@@ -746,7 +694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7406355376709210043, guid: d19901db1e0a1c84e9b75911f75a4048, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7406355376709210043, guid: d19901db1e0a1c84e9b75911f75a4048, type: 3}
       propertyPath: m_LocalPosition.x
