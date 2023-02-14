@@ -1,43 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class targetBehaviour : StateMachineBehaviour
+public class attackBehaviour : StateMachineBehaviour
 {
-    NavMeshAgent agent;
-    Transform player;
-    Transform myTransform;
-    float timer;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer = 0;
-        agent = animator.GetComponentInParent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        myTransform = animator.GetComponent<Transform>();
-        agent.speed = 2.0f;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer += Time.deltaTime;
-        agent.SetDestination(player.position);
-        if (timer > Random.Range(3f, 6f))
-        {
-            animator.SetBool("isTargetting", false);
-        }
 
-        //Update the animation vars
-        animator.SetFloat("MoveX", (player.position - myTransform.position).normalized.x);
-        animator.SetFloat("distance", Mathf.Sqrt((player.position.x * myTransform.position.x) + (player.position.y * myTransform.position.y) + (player.position.z * myTransform.position.z)));
-
-        //Check if should attack
-        if (Mathf.Sqrt((player.position.x * myTransform.position.x) + (player.position.y * myTransform.position.y) + (player.position.z * myTransform.position.z)) < animator.GetFloat("Range"))
-        {
-            animator.SetBool("attack", true);
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
