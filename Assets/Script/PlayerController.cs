@@ -4,11 +4,13 @@ public class PlayerController : MonoBehaviour
 {
     private const float SPEED = 5.0f;
 
-    private Camera mainCamera;
+    private Camera          mainCamera;
+    private CameraSettings  cameraSettings;
 
     void Start()
     {
         mainCamera = Camera.main;
+        cameraSettings = mainCamera.GetComponent<CameraSettings>();
     }
 
     void MovePlayerOnWASDPressed()
@@ -20,9 +22,14 @@ public class PlayerController : MonoBehaviour
         float translateX = SPEED * keyWS * Time.deltaTime;
         float translateZ = SPEED * keyAD * Time.deltaTime;
 
-        // Move the player and the main camera
+        // Move the player
         transform.Translate(translateZ, -translateX, 0.0f);
-        mainCamera.transform.Translate(translateZ, 0.0f, translateX);
+
+        // Move the camera and adjust its look/forward vector
+        mainCamera.transform.position = transform.position + new Vector3(cameraSettings.xOffsetFromPlayer, 
+                                                                         cameraSettings.yOffsetFromPlayer,
+                                                                         cameraSettings.zOffsetFromPlayer);
+        mainCamera.transform.LookAt(transform);
     }
 
     void Update()
