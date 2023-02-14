@@ -32,16 +32,162 @@ public class MapBehaviour : MonoBehaviour
 
     public void ChangeMap()
     {
-        int[,] NewMap = {
-            { 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
-            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
-            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
-            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
-            { 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2},
-            { 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2}
+        int[,] NewMap = new int[35,35];
+        int[,] StartingRoom = {
+            { 0, 2, 2, 1, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 1, 1, 1, 1, 1, 1, 1},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 1, 2, 2, 0}
         };
+        int[,] B = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 1, 2, 2, 0}
+        };
+        int[,] T = {
+            { 0, 2, 2, 1, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] L = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 1, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] R = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 1},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] TB = {
+            { 0, 2, 2, 1, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 1, 2, 2, 0}
+        };
+        int[,] LR = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 1, 1, 1, 1, 1, 1, 1},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] TL = {
+            { 0, 2, 2, 1, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 1, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] TR= {
+            { 0, 2, 2, 1, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 1},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 2, 2, 2, 0}
+        };
+        int[,] BL = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 1, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 1, 2, 2, 0}
+        };
+        int[,] BR = {
+            { 0, 2, 2, 2, 2, 2, 0},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 1},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 2, 1, 1, 1, 1, 1, 2},
+            { 0, 2, 2, 1, 2, 2, 0}
+        };
+        //NewMap = StartingRoom;
+        //=========================================
+        // Define the positions of each room on the map
+        List<int[,]> roomConfigs = new List<int[,]> { StartingRoom, B, T, L, R, TB, LR };
+        List<int[]> roomPositions = new List<int[]> { };
 
+        for (int i = 0; i < (NewMap.GetLength(0) / StartingRoom.GetLength(0)); i++)
+        {
+            for (int j = 0; j < (NewMap.GetLength(0) / StartingRoom.GetLength(0)); j++)
+            {
+                roomPositions.Add(new int[] { i * StartingRoom.GetLength(0), j * StartingRoom.GetLength(0) });
+            }
+        }
+
+        // Iterate over the rooms and place them on the map
+        for (int i = 0; i < roomPositions.Count; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, roomConfigs.Count);
+            int[,] roomConfig = roomConfigs[rand];
+            int[] roomPosition = roomPositions[i];
+
+            // Check if the room overlaps with any other room
+            bool overlaps = false;
+            for (int x = 0; x < roomConfig.GetLength(0); x++)
+            {
+                for (int y = 0; y < roomConfig.GetLength(1); y++)
+                {
+                    int mapX = roomPosition[0] + x;
+                    int mapY = roomPosition[1] + y;
+                    if (mapX >= NewMap.GetLength(0) || mapY >= NewMap.GetLength(1) || NewMap[mapX, mapY] != 0)
+                    {
+                        overlaps = true;
+                        break;
+                    }
+                }
+                if (overlaps)
+                {
+                    break;
+                }
+            }
+
+            // If the room does not overlap, place it on the map
+            if (!overlaps)
+            {
+                for (int x = 0; x < roomConfig.GetLength(0); x++)
+                {
+                    for (int y = 0; y < roomConfig.GetLength(1); y++)
+                    {
+                        int mapX = roomPosition[0] + x;
+                        int mapY = roomPosition[1] + y;
+                        NewMap[mapX, mapY] = roomConfig[x, y];
+                    }
+                }
+            }
+        }
+        //=========================================
         BaseLayer = new int[NewMap.GetLength(0), NewMap.GetLength(1)];
         SecondLayer = new int[NewMap.GetLength(0), NewMap.GetLength(1)];
 
