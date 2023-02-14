@@ -37,14 +37,20 @@ public class PlayerController : MonoBehaviour
         MovePlayerOnWASDPressed();
     }
 
-    void ConstraintAxisMovement(Collision collision)
+    void ConstraintAxisMovement(Collision other)
     {
-        Transform playerTransform = collision.collider.transform;
+        Transform otherObjTransform = other.collider.transform;
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        ConstraintAxisMovement(collision);
+        Debug.Log("ColEnter");
+        ConstraintAxisMovement(other);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("TriEnter");
     }
 }
