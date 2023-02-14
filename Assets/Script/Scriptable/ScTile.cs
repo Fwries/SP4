@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tile", menuName = "Dungeon Hurler/Tile")]
-public class Tile : ScriptableObject
+public class ScTile : ScriptableObject
 {
     public Material TileTexture;
     public bool Solid;
