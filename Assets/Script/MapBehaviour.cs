@@ -32,8 +32,8 @@ public class MapBehaviour : MonoBehaviour
 
     public void ChangeMap()
     {
-        int[,] NewMap = new int[35,35];
-        int[,] StartingRoom = {
+        int[,] NewMap = new int[70,70];
+        int[,] TLRB = {
             { 0, 2, 2, 1, 2, 2, 0},
             { 2, 1, 1, 1, 1, 1, 2},
             { 2, 1, 1, 1, 1, 1, 2},
@@ -135,19 +135,55 @@ public class MapBehaviour : MonoBehaviour
         //NewMap = StartingRoom;
         //=========================================
         // Define the positions of each room on the map
-        List<int[,]> roomConfigs = new List<int[,]> { StartingRoom, B, T, L, R, TB, LR };
+        List<int[,]> roomT = new List<int[,]> { TLRB, T, TB, TR, TL};
+        List<int[,]> roomB = new List<int[,]> { TLRB, B, TB, BR, BL};
+        List<int[,]> roomL = new List<int[,]> { TLRB, L, LR, TL, TB};
+        List<int[,]> roomR = new List<int[,]> { TLRB, R, LR, TR, BR};
         List<int[]> roomPositions = new List<int[]> { };
 
-        for (int i = 0; i < (NewMap.GetLength(0) / StartingRoom.GetLength(0)); i++)
+        for (int i = 0; i < (NewMap.GetLength(0) / TLRB.GetLength(0)); i++)
         {
-            for (int j = 0; j < (NewMap.GetLength(0) / StartingRoom.GetLength(0)); j++)
+            for (int j = 0; j < (NewMap.GetLength(0) / TLRB.GetLength(0)); j++)
             {
-                roomPositions.Add(new int[] { i * StartingRoom.GetLength(0), j * StartingRoom.GetLength(0) });
+                roomPositions.Add(new int[] { i * TLRB.GetLength(0), j * TLRB.GetLength(0) });
+            }
+        }
+        int rand = UnityEngine.Random.Range(0, NewMap.GetLength(0));
+        int[] StartingPos = roomPositions[rand];
+        int[,] StartingRoom = new int [TLRB.GetLength(0), TLRB.GetLength(0)];
+        rand = UnityEngine.Random.Range(1, roomB.Count);
+        if (StartingPos[0] != 0 || StartingPos[0] != NewMap.GetLength(0)-TLRB.GetLength(0))
+        {
+            StartingRoom = roomB[rand];
+        }
+        else if (StartingPos[0] == 0)
+        {
+            while(rand==3)
+            {
+                rand = UnityEngine.Random.Range(1, roomB.Count);
+            }
+            StartingRoom = roomB[rand];
+        }
+        else if (StartingPos[0] == NewMap.GetLength(0) - TLRB.GetLength(0))
+        {
+            while (rand == 4)
+            {
+                rand = UnityEngine.Random.Range(1, roomB.Count);
+            }
+            StartingRoom = roomB[rand];
+        }
+        for (int x = 0; x < StartingRoom.GetLength(0); x++)
+        {
+            for (int y = 0; y < StartingRoom.GetLength(1); y++)
+            {
+                int mapX = StartingPos[0] + x;
+                int mapY = StartingPos[1] + y;
+                NewMap[mapX, mapY] = StartingRoom[x, y];
             }
         }
 
         // Iterate over the rooms and place them on the map
-        for (int i = 0; i < roomPositions.Count; i++)
+        /*for (int i = 0; i < roomPositions.Count; i++)
         {
             int rand = UnityEngine.Random.Range(0, roomConfigs.Count);
             int[,] roomConfig = roomConfigs[rand];
@@ -186,7 +222,7 @@ public class MapBehaviour : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
         //=========================================
         BaseLayer = new int[NewMap.GetLength(0), NewMap.GetLength(1)];
         SecondLayer = new int[NewMap.GetLength(0), NewMap.GetLength(1)];
