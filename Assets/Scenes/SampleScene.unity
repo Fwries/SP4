@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xOffsetFromPlayer: 0
-  yOffsetFromPlayer: 3
+  yOffsetFromPlayer: 7
   zOffsetFromPlayer: -5
 --- !u!1 &1428989475
 GameObject:
