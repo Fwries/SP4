@@ -14,7 +14,7 @@ public class MagicBallBehaviour : MonoBehaviour
 
     private void Update()
     {
-        float moveSpeed = 1.2f;
+        float moveSpeed = 2f;
         transform.position += shootDir * moveSpeed * Time.deltaTime;
         if (transform.position.y < -0.1)
         {

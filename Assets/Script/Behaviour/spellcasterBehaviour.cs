@@ -31,9 +31,11 @@ public class spellcasterBehaviour : StateMachineBehaviour
 
         if (timer > animator.GetFloat("AttackSpeed"))
         {
-            Vector3 offset = new Vector3(0f, -0.5f, -0.5f);
+            Vector3 offset = new Vector3(0f, -0.1f, -0.5f);
             Transform ballTransform = Instantiate(magicBall, myTransform.position - offset, Quaternion.identity);
-            Vector3 shootdir = player.position - (myTransform.position - offset);
+            Vector3 shootdir = (player.position - (myTransform.position - offset));
+            shootdir.y = 0f;
+            shootdir.Normalize();
             ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"));
             timer = 0;
         }
