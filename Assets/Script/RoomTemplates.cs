@@ -10,6 +10,8 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] RightRooms;
     public GameObject[] RoomDecor;
 
+    public List<GameObject> EnemySetsEasy;
+
     public GameObject SecretRoom;
 
     public List<GameObject> Rooms;

@@ -14,7 +14,6 @@ public class RoomSpawner : MonoBehaviour
     =======================*/
 
     private RoomTemplates Templates;
-    private List<GameObject> EnemySetsEasy = new();
     private int rand;
     private bool spawned = false;
     public float waitTime = 4.0f;
@@ -23,18 +22,8 @@ public class RoomSpawner : MonoBehaviour
 
     private void Awake()
     {
-        GameObject[] easyEnemySets = Resources.LoadAll<GameObject>("");
         //Destroy(gameObject, waitTime);
         Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        foreach (GameObject enemyToAdd in easyEnemySets)
-        {
-            if (enemyToAdd.tag == "enemySetEasy")
-            {
-                Debug.Log("Enemy set added");
-                enemyToAdd.SetActive(true);
-                EnemySetsEasy.Add(enemyToAdd);
-            }
-        }
         Invoke("Spawn",0.1f);
     }
 
@@ -59,11 +48,12 @@ public class RoomSpawner : MonoBehaviour
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
-                GameObject enemies = Instantiate(EnemySetsEasy[0], origin, Quaternion.identity);
-
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
-                enemies.transform.SetParent(this.transform);
+
+                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], NewRoom.transform.position, Quaternion.identity);
+                enemies.transform.SetParent(NewRoom.transform);
+
             }
             else if (DoorDirection == 3)
             {
@@ -79,6 +69,7 @@ public class RoomSpawner : MonoBehaviour
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
             }
+
             spawned = true;
         }
     }
