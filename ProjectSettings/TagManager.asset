@@ -9,6 +9,7 @@ TagManager:
   - EnemyGolem
   - MeleeWraith
   - SatyrGrunt
+  - adultGolem
   layers:
   - Default
   - TransparentFX
