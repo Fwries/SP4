@@ -8,8 +8,7 @@ TagManager:
   - Rooms
   - Destroyer
   - enemySetEasy
-  - EnemyGolem
-  - MeleeWraith
+  - enemy
   layers:
   - Default
   - TransparentFX
