@@ -27,6 +27,12 @@ public class attackBehaviour : StateMachineBehaviour
         timer += Time.deltaTime;
         animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
 
+        if (timer > animator.GetFloat("AttackSpeed"))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health -= animator.GetInteger("Damage");
+            timer = 0;
+        }
+
         if (animator.GetFloat("distance") > animator.GetFloat("Range"))
         {
             animator.SetBool("attack", false);

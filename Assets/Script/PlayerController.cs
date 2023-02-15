@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     // Variables affecting the player character m_Movement
     private const float m_SPEED = 5.0f;
+    public int health = 17;
 
     // Variables affecting the player character animation
     private Animator m_Animator;
