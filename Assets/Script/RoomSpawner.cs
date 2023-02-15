@@ -29,7 +29,8 @@ public class RoomSpawner : MonoBehaviour
             if (DoorDirection == 1)
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
-                GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation,this.transform);
+                GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 2)
             {
@@ -55,8 +56,13 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("SpawnPoint")&&other.GetComponent<RoomSpawner>().spawned==true)
+        if (other.CompareTag("SpawnPoint") && other.GetComponent<RoomSpawner>().spawned == true)
         {
+            if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            {
+                GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Templates.RightRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(this.transform);
+            }
             Destroy(gameObject);
         }
     }
