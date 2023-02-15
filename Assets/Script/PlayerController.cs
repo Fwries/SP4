@@ -59,11 +59,11 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision Enter");
+        //Debug.Log("Collision Enter");
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Trigger Enter");
+        //Debug.Log("Trigger Enter");
     }
 }
