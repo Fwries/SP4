@@ -29,22 +29,25 @@ public class RoomSpawner : MonoBehaviour
             if (DoorDirection == 1)
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
-                Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
+                GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation,this.transform);
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
-                Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
+                GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
-                Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
+                GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
-                Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
+                GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(this.transform);
             }
             spawned = true;
         }
