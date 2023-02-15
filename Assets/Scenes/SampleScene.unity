@@ -1644,6 +1644,9 @@ MonoBehaviour:
   - {fileID: 8684358420233070730, guid: d0f121079bf2c8345a374798c544b1df, type: 3}
   - {fileID: 3487151939594275342, guid: 60c0f983f29d531458c4acb43b2fdf69, type: 3}
   SecretRoom: {fileID: 231897167727135564, guid: d69bb5364a8200c4ab733efaadb7db60, type: 3}
+  Rooms: []
+  waitTime: 0
+  boss: {fileID: 0}
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0
