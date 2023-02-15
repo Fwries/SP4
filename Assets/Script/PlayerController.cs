@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Player stats
+    private PlayerStats m_PlayerStats;
+
     // Variables affecting the player character m_Movement
     private const float m_SPEED = 5.0f;
-    public int health = 17;
+
+    // Character's m_RigidBody
+    private Rigidbody m_RigidBody;
 
     // Variables affecting the player character animation
     private Animator m_Animator;
-    private Vector2 m_Movement;
+    private Vector3 m_Movement;
 
     // Main camera and its components
     private Camera          m_MainCamera;
@@ -16,55 +21,62 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        m_MainCamera = Camera.main;
-        m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
+        m_PlayerStats = gameObject.GetComponent<PlayerStats>();
+
+        m_RigidBody = gameObject.GetComponent<Rigidbody>();
 
         m_Animator = gameObject.GetComponentInChildren<Animator>();
+
+        m_MainCamera = Camera.main;
+        m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
     }
 
-    void MovePlayerOnWASDPressed()
+    void UpdateMovementOnWASDPressed()
     {
+        // The Horizontal and Vertical ranges change from 0 to +1 or -1 with increase/decrease in 0.05f steps - Unity
+        // GetAxisRaw has changes from 0 to 1 or -1 immediately, so with no steps - Unity
+        // Use GetAxisRaw if we dont want the player character to "slide" around for a while after updating
         float keyWS = Input.GetAxis("Vertical");
         float keyAD = Input.GetAxis("Horizontal");
 
-        m_Movement.x = keyWS;
-        m_Movement.y = keyAD;
+        // Assign the inputs to m_Movement
+        m_Movement.x = keyAD;
+        m_Movement.z = keyWS;
 
-        if (m_Movement.x != 0)
-            m_Animator.SetFloat("MoveX", m_Movement.x);
-        if (m_Movement.y != 0)
-            m_Animator.SetFloat("MoveY", m_Movement.y);
-        m_Animator.SetFloat("Speed", m_Movement.sqrMagnitude);
-
-        // The translations are relative to the x-z plane
-        float translateX = m_SPEED * keyWS * Time.deltaTime;
-        float translateZ = m_SPEED * keyAD * Time.deltaTime;
-
-        // Move the player
-        transform.Translate(translateZ, 0.0f, translateX);
-
-        // Move the camera and adjust its look/forward vector
-        m_MainCamera.transform.position = transform.position + new Vector3(m_CameraSettings.xOffsetFromPlayer, 
-                                                                         m_CameraSettings.yOffsetFromPlayer,
-                                                                         m_CameraSettings.zOffsetFromPlayer);
-        m_MainCamera.transform.LookAt(transform);
-
-        // Fixed issue of character sill moving
-        this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        // Update the character's sprite animation
+        m_Animator?.SetFloat("MoveX", m_Movement.z);
+        m_Animator?.SetFloat("MoveY", m_Movement.x);
+        m_Animator?.SetFloat("Speed", m_Movement.sqrMagnitude);
     }
 
     void Update()
     {
-        MovePlayerOnWASDPressed();
+        UpdateMovementOnWASDPressed();
+    }
+    void UpdateCharacterOnMovementUpdated()
+    {
+        // Move the character
+        m_RigidBody?.MovePosition(m_RigidBody.position + m_SPEED * m_Movement * Time.fixedDeltaTime);
+
+        // Move the camera and adjust its look/forward vector
+        m_MainCamera.transform.position = m_RigidBody.position + new Vector3(m_CameraSettings.xOffsetFromPlayer,
+                                                                             m_CameraSettings.yOffsetFromPlayer,
+                                                                             m_CameraSettings.zOffsetFromPlayer);
+        m_MainCamera.transform.LookAt(m_RigidBody.position);
+    }
+
+    void FixedUpdate()
+    {
+        UpdateCharacterOnMovementUpdated();
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("Collision Enter");
+        //Debug.Log("PlayerController: Collision Enter");
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        //Debug.Log("Trigger Enter");
+        //Debug.Log("PlayerController: Trigger Enter");
     }
 }
