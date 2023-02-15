@@ -36,7 +36,7 @@ public class spellcasterBehaviour : StateMachineBehaviour
             Vector3 shootdir = (player.position - (myTransform.position - offset));
             shootdir.y = 0f;
             shootdir.Normalize();
-            ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"));
+            ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
             timer = 0;
         }
 

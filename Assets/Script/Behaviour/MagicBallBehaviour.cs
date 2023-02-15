@@ -6,7 +6,8 @@ public class MagicBallBehaviour : MonoBehaviour
 {
     private Vector3 shootDir;
     private int damage;
-    public void SetUp(Vector3 shootDirection, int Damage)
+    float projSpeed;
+    public void SetUp(Vector3 shootDirection, int Damage, float ProjSpeed)
     {
         shootDir = shootDirection;
         damage = Damage;
@@ -14,8 +15,7 @@ public class MagicBallBehaviour : MonoBehaviour
 
     private void Update()
     {
-        float moveSpeed = 3.5f;
-        transform.position += shootDir * moveSpeed * Time.deltaTime;
+        transform.position += shootDir * projSpeed * Time.deltaTime;
         if (transform.position.y < -0.1)
         {
             Destroy(gameObject);
