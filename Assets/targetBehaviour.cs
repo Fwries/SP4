@@ -16,7 +16,8 @@ public class targetBehaviour : StateMachineBehaviour
         agent = animator.GetComponentInParent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
-        agent.speed = 2.0f;
+        agent.speed = 1.0f;
+        agent.isStopped = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
