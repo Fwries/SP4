@@ -16,7 +16,7 @@ public class RoomSpawner : MonoBehaviour
     private int rand;
     private bool spawned = false;
 
-    private void Start()
+    private void Awake()
     {
         Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn",0.1f);
@@ -58,10 +58,6 @@ public class RoomSpawner : MonoBehaviour
     {
         if (other.CompareTag("SpawnPoint"))
         {
-            //if(other.GetComponent<RoomSpawner>().spawned == true)
-            //{
-            //    Destroy(other.gameObject);
-            //}
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Quaternion.identity);
