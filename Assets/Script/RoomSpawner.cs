@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI.Navigation;
 
 public class RoomSpawner : MonoBehaviour
 {
@@ -32,24 +33,28 @@ public class RoomSpawner : MonoBehaviour
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
             }
             spawned = true;
@@ -63,6 +68,7 @@ public class RoomSpawner : MonoBehaviour
             if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
                 GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Quaternion.identity);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
                 Destroy(other.gameObject);
                 Debug.Log("Secret room spawned");

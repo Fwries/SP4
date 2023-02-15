@@ -3,46 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class spellcasterBehaviour : StateMachineBehaviour
+public class dieBehaviour : StateMachineBehaviour
 {
-    NavMeshAgent agent;
     float timer;
-    Transform player;
-    Transform myTransform;
+    NavMeshAgent agent;
 
-    [SerializeField] private Transform magicBall;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        timer = 0;
         agent = animator.GetComponentInParent<NavMeshAgent>();
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
-
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        myTransform = animator.GetComponent<Transform>();
-        timer = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
-
-        if (timer > animator.GetFloat("AttackSpeed"))
+        if (timer > 1f)
         {
-            Vector3 offset = new Vector3(0f, -0.1f, -0.5f);
-            Transform ballTransform = Instantiate(magicBall, myTransform.position - offset, Quaternion.identity);
-            Vector3 shootdir = (player.position - (myTransform.position - offset));
-            shootdir.y = 0f;
-            shootdir.Normalize();
-            ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
-            timer = 0;
-        }
-
-        if (animator.GetFloat("distance") > animator.GetFloat("Range"))
-        {
-            animator.SetBool("attack", false);
+            Destroy(animator.gameObject);
         }
     }
 

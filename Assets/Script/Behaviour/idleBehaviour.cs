@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class idleBehaviour : StateMachineBehaviour
 {
     float timer;
-    Transform myTransform;
     NavMeshAgent agent;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -14,7 +13,6 @@ public class idleBehaviour : StateMachineBehaviour
         agent = animator.GetComponentInParent<NavMeshAgent>();
         agent.isStopped = true;
         timer = 0;
-        myTransform = animator.GetComponent<Transform>();
         
     }
 
