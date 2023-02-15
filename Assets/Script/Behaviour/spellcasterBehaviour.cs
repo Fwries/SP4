@@ -9,6 +9,8 @@ public class spellcasterBehaviour : StateMachineBehaviour
     float timer;
     Transform player;
     Transform myTransform;
+
+    [SerializeField] private Transform magicBall;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -29,7 +31,10 @@ public class spellcasterBehaviour : StateMachineBehaviour
 
         if (timer > animator.GetFloat("AttackSpeed"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health -= animator.GetInteger("Damage");
+            Vector3 offset = new Vector3(0f, -0.5f, -0.5f);
+            Transform ballTransform = Instantiate(magicBall, myTransform.position - offset, Quaternion.identity);
+            Vector3 shootdir = player.position - (myTransform.position - offset);
+            ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir);
             timer = 0;
         }
 
