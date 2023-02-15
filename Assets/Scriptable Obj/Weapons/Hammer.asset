@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  WeaponIcon: {fileID: 1919310833, guid: 7d112608f1f7d7a4eaae39bdb491f68b, type: 3}
+  WeaponIcon: {fileID: 0}
   Weapon: Hammer
   Description: 
   RedDmg: 6
