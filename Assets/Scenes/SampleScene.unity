@@ -175,6 +175,68 @@ MonoBehaviour:
   weapon: {fileID: 11400000, guid: f87aaaa4b67533e42ac0dead3f0587ac, type: 2}
   hitBoxes:
   - {fileID: 2045320696}
+--- !u!1001 &300197693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 326579897}
+    m_Modifications:
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575690318912516073, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5116777644631270464, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+      propertyPath: m_Name
+      value: EasySet01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
+--- !u!4 &326579897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7406355376709210043, guid: d19901db1e0a1c84e9b75911f75a4048, type: 3}
+  m_PrefabInstance: {fileID: 7406355376199305719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +942,8 @@ MonoBehaviour:
   RoomDecor:
   - {fileID: 8587008000224565855, guid: 56c67f382b6658a4cb99bf5bee1405ad, type: 3}
   - {fileID: 8587008000224565855, guid: 3beca9e23ba26524ebef463543eb4523, type: 3}
+  EnemySetsEasy:
+  - {fileID: 5116777644631270464, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
   SecretRoom: {fileID: 231897167727135564, guid: d69bb5364a8200c4ab733efaadb7db60, type: 3}
   Rooms: []
   waitTime: 0
