@@ -23,7 +23,7 @@ public class dieBehaviour : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > 1f)
         {
-            Destroy(animator.gameObject);
+            Destroy(animator.GetComponent<Transform>().parent.gameObject);
         }
     }
 

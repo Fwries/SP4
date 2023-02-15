@@ -171,7 +171,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 1447646479}
+  weapon: {fileID: 11400000, guid: f87aaaa4b67533e42ac0dead3f0587ac, type: 2}
   hitBoxes:
   - {fileID: 2045320696}
 --- !u!1 &705507993
@@ -492,6 +493,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1447646479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d65d7fa71b6567645a58af27de81c774, type: 3}
+  m_PrefabInstance: {fileID: 1514780657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498030887
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 100
-  Swing: 0
+  active: 0
 --- !u!136 &2045320697
 CapsuleCollider:
   m_ObjectHideFlags: 0
