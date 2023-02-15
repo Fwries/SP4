@@ -56,14 +56,20 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SpawnPoint") && other.GetComponent<RoomSpawner>().spawned == true)
+        if (other.CompareTag("SpawnPoint"))
         {
-            if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            //if(other.GetComponent<RoomSpawner>().spawned == true)
+            //{
+            //    Destroy(other.gameObject);
+            //}
+            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
             {
-                GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Templates.RightRooms[rand].transform.rotation);
+                GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Quaternion.identity);
                 NewRoom.transform.SetParent(this.transform);
+                Destroy(other.gameObject);
+                Debug.Log("Secret room spawned");
             }
-            Destroy(gameObject);
+            spawned = true;
         }
     }
 }
