@@ -11,6 +11,7 @@ public class idleBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponentInParent<NavMeshAgent>();
+        agent.enabled = true;
         agent.isStopped = true;
         timer = 0;
         

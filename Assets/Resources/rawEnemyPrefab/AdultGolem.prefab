@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 217105323522789176}
   m_Layer: 6
   m_Name: AdultGolem
-  m_TagString: adultGolem
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
