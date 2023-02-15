@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Dungeon Hurler/Weapon")]
 public class ScWeapon : ScriptableObject
 {
-    public Sprite WeaponIcon;
-    public string Weapon;
+    public GameObject Model;
+    public string Name;
     public string Description;
     public int RedDmg;
     public int OrangeDmg;

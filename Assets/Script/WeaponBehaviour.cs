@@ -11,6 +11,14 @@ public class WeaponBehaviour : MonoBehaviour
     private bool IsAttack;
     private float AtkSwing = -45f;
 
+    public ScWeapon weapon;
+    public Hitbox[] hitBoxes;
+
+    void Start()
+    {
+        WeaponSwitch(weapon);
+    }
+
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,18 +38,32 @@ public class WeaponBehaviour : MonoBehaviour
         {
             AtkSwing = -90;
             IsAttack = true;
+            for (int i = 0; i < hitBoxes.Length; i++)
+            {
+                hitBoxes[i].active = true;
+            }
         }
 
         if (IsAttack)
         {
-            AtkSwing += 720 * Time.deltaTime;
+            AtkSwing += 720 * Time.deltaTime / weapon.AtkSpeed;
             if (AtkSwing > 90)
             {
                 AtkSwing = 0;
                 IsAttack = false;
+
+                for (int i = 0; i < hitBoxes.Length; i++)
+                {
+                    hitBoxes[i].active = false;
+                }
             }
         }
         Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
         transform.rotation = rotation;
+    }
+
+    public void WeaponSwitch(ScWeapon _weapon)
+    {
+
     }
 }
