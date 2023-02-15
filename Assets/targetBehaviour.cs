@@ -32,10 +32,10 @@ public class targetBehaviour : StateMachineBehaviour
 
         //Update the animation vars
         animator.SetFloat("MoveX", (player.position - myTransform.position).normalized.x);
-        animator.SetFloat("distance", Mathf.Sqrt((player.position.x * myTransform.position.x) + (player.position.y * myTransform.position.y) + (player.position.z * myTransform.position.z)));
+        animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
 
         //Check if should attack
-        if (Mathf.Sqrt((player.position.x * myTransform.position.x) + (player.position.y * myTransform.position.y) + (player.position.z * myTransform.position.z)) < animator.GetFloat("Range"))
+        if ((player.position - myTransform.position).magnitude * 2 < animator.GetFloat("Range"))
         {
             animator.SetBool("attack", true);
         }
