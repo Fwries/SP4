@@ -24,6 +24,7 @@ public class MagicBallBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Col");
         Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
