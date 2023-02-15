@@ -7,23 +7,24 @@ public class attackBehaviour : StateMachineBehaviour
 {
     NavMeshAgent agent;
     float timer;
-
+    Transform player;
+    Transform myTransform;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponentInParent<NavMeshAgent>();
-        timer = 0;
         agent.isStopped = true;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        myTransform = animator.GetComponent<Transform>();
+        timer = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer > 1)
-        {
-
-        }
+        animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
 
         if (animator.GetFloat("distance") > animator.GetFloat("Range"))
         {
