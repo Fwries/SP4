@@ -14,8 +14,12 @@ public class MagicBallBehaviour : MonoBehaviour
 
     private void Update()
     {
-        float moveSpeed = 0.4f;
+        float moveSpeed = 1.2f;
         transform.position += shootDir * moveSpeed * Time.deltaTime;
+        if (transform.position.y < -0.1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
