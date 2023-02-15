@@ -16,7 +16,7 @@ public class targetBehaviour : StateMachineBehaviour
         agent = animator.GetComponentInParent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
-        agent.speed = 1.0f;
+        agent.speed = animator.GetFloat("Speed");
         agent.isStopped = false;
     }
 
