@@ -13,6 +13,7 @@ public class attackBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponentInParent<NavMeshAgent>();
+        agent.velocity = Vector3.zero;
         agent.isStopped = true;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
