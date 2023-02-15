@@ -19,7 +19,7 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, new Vector3(1, 0, 0));
+        Quaternion rotation = Quaternion.AngleAxis(angle, new Vector3(0, 1, 0));
         transform.rotation = rotation;
     }
 }
