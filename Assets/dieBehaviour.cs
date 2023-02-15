@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class idleBehaviour : StateMachineBehaviour
+public class dieBehaviour : StateMachineBehaviour
 {
     float timer;
     NavMeshAgent agent;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent = animator.GetComponentInParent<NavMeshAgent>();
-        agent.isStopped = true;
         timer = 0;
-        
+        agent = animator.GetComponentInParent<NavMeshAgent>();
+        agent.velocity = Vector3.zero;
+        agent.isStopped = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer > Random.Range(1f, 5f))
+        if (timer > 1f)
         {
-            animator.SetBool("isTargetting", true);
+            Destroy(animator.gameObject);
         }
     }
 
