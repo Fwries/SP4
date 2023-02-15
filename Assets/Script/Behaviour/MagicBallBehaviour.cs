@@ -11,6 +11,7 @@ public class MagicBallBehaviour : MonoBehaviour
     {
         shootDir = shootDirection;
         damage = Damage;
+        projSpeed = ProjSpeed;
     }
 
     private void Update()
