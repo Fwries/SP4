@@ -31,10 +31,10 @@ public class RoomSpawner : MonoBehaviour
         {
             if (DoorDirection == 1)
             {
-                rand = Random.Range(0, Templates.BottomRooms.Length);
-                GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                rand = Random.Range(0, Templates.RoomDecor.Length);
+                GameObject NewRoom = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
                 NewRoom.transform.SetParent(this.transform);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
             }
             else if (DoorDirection == 2)
             {
