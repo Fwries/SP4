@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Resources/TilePrefab.prefab.meta
 guid: 17289189500899d418f3401b22e2a216
+=======
+guid: 84bfcda24179d9647a41e07f5ff9c4e4
+>>>>>>> Stashed changes:Assets/Resources/WeaponPrefab/Sword.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
