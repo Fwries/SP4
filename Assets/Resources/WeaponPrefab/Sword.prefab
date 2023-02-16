@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 732446310414687004}
   - component: {fileID: 3482693372746380784}
   - component: {fileID: 8878441605365490456}
+  - component: {fileID: 6116696195569926976}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -152,3 +153,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6116696195569926976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697989199229766275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b15ed90bc536f3428389b839a865392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxes:
+  - {fileID: 811191877437077826}

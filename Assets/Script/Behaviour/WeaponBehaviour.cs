@@ -36,15 +36,15 @@ public class WeaponBehaviour : MonoBehaviour
             angle *= -1;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && IsAttack == false)
         {
             Weapon.transform.Rotate( -90, 0, 0);
             AtkSwing = -135;
             IsAttack = true;
-            //for (int i = 0; i < hitBoxes.Length; i++)
-            //{
-            //    hitBoxes[i].active = true;
-            //}
+            for (int i = 0; i < hitBoxes.Length; i++)
+            {
+                hitBoxes[i].active = true;
+            }
         }
 
         if (IsAttack)
@@ -55,10 +55,10 @@ public class WeaponBehaviour : MonoBehaviour
                 Weapon.transform.Rotate(90, 0, 0);
                 AtkSwing = 0;
                 IsAttack = false;
-                //for (int i = 0; i < hitBoxes.Length; i++)
-                //{
-                //    hitBoxes[i].active = false;
-                //}
+                for (int i = 0; i < hitBoxes.Length; i++)
+                {
+                    hitBoxes[i].active = false;
+                }
             }
         }
         Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
@@ -72,6 +72,7 @@ public class WeaponBehaviour : MonoBehaviour
             Destroy(Weapon);
         }
 
-        Weapon = Instantiate(_scWeapon.Prefab, new Vector3(_scWeapon.OffsetX, _scWeapon.OffsetY, 0), Quaternion.identity, transform);
+        Weapon = Instantiate(_scWeapon.Prefab, new Vector3(transform.position.x + _scWeapon.OffsetX, transform.position.y + _scWeapon.OffsetY, transform.position.z), Quaternion.identity, transform);
+        hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
     }
 }
