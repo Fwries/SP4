@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  damageText: {fileID: 4940502261691123190, guid: 2723a67c80be6da4483ce07c64520849, type: 3}
 --- !u!1 &5537713381491549050
 GameObject:
   m_ObjectHideFlags: 0
