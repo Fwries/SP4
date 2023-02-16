@@ -15,10 +15,10 @@ public class hitBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
-        if (timer > 1)
+        if (timer > 0.1)
         {
             animator.SetBool("IsHit", false);
-            animator.SetInteger("Health", animator.GetInteger("PrevHealth"));
+            animator.SetInteger("PrevHealth", animator.GetInteger("Health"));
         }
     }
 
