@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5537713380075544690}
   - component: {fileID: 5537713380075544691}
   - component: {fileID: 2319002067822971429}
+  - component: {fileID: 7370565444044588718}
   m_Layer: 6
   m_Name: BabyGolem
   m_TagString: enemy
@@ -87,6 +88,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7370565444044588718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537713380075544688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a23f68e112e2214aa41ea259bc525d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
 --- !u!1 &5537713381491549050
 GameObject:
   m_ObjectHideFlags: 0
