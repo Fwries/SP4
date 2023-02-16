@@ -714,6 +714,10 @@ MonoBehaviour:
   - {fileID: 7599654304156137540, guid: bbbf4a445bc0df4459a13f553dc5565f, type: 3}
   - {fileID: 352947844072825737, guid: dfba233a13d82724296a7b32527633cd, type: 3}
   - {fileID: 2073402088083569455, guid: b07c201bead278548aaae4ca322c3719, type: 3}
+  - {fileID: 6897218756297945189, guid: 99b9577a0ab258a4fa092e3ad3eab54b, type: 3}
+  - {fileID: 1252318209329059255, guid: 13945bc70e8085b499e51f7516c7b63e, type: 3}
+  - {fileID: 7203705813533930256, guid: 132f918bab645454fb26ac154c1c297d, type: 3}
+  - {fileID: 7203705813533930256, guid: 132f918bab645454fb26ac154c1c297d, type: 3}
   SecretRoom: {fileID: 231897167727135564, guid: d69bb5364a8200c4ab733efaadb7db60, type: 3}
   Rooms: []
   waitTime: 4
