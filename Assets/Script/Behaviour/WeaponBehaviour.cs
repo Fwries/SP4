@@ -10,6 +10,8 @@ public class WeaponBehaviour : MonoBehaviour
     private Vector3 dir;
     private bool IsAttack;
     private float AtkSwing;
+    private bool InCooldown;
+    private float Cooldown;
 
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
@@ -36,9 +38,9 @@ public class WeaponBehaviour : MonoBehaviour
             angle *= -1;
         }
 
-        if (Input.GetButtonDown("Fire1") && IsAttack == false)
+        if (Input.GetButtonDown("Fire1") && IsAttack == false && InCooldown == false)
         {
-            Weapon.transform.Rotate( -90, 0, 0);
+            Weapon.transform.Rotate(90, 0, 0);
             AtkSwing = -135;
             IsAttack = true;
             for (int i = 0; i < hitBoxes.Length; i++)
@@ -52,15 +54,30 @@ public class WeaponBehaviour : MonoBehaviour
             AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
             if (AtkSwing > 45)
             {
-                Weapon.transform.Rotate(90, 0, 0);
+                Weapon.transform.Rotate(-90, 0, 0);
                 AtkSwing = 0;
                 IsAttack = false;
+                InCooldown = true;
                 for (int i = 0; i < hitBoxes.Length; i++)
                 {
                     hitBoxes[i].active = false;
                 }
             }
         }
+
+        if (InCooldown)
+        {
+            if (Cooldown > scWeapon.AtkCooldown)
+            {
+                Cooldown = 0;
+                InCooldown = false;
+            }
+            else
+            {
+                Cooldown += Time.deltaTime;
+            }
+        }
+
         Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
         transform.rotation = rotation;
     }
