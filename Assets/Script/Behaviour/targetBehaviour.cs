@@ -23,6 +23,7 @@ public class targetBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        agent.isStopped = !myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer;
         timer += Time.deltaTime;
         agent.SetDestination(player.position);
         if (timer > Random.Range(3f, 6f))

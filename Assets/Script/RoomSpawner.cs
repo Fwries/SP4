@@ -42,7 +42,7 @@ public class RoomSpawner : MonoBehaviour
 
 
                 rand = Random.Range(0, Templates.RoomDecor.Length);
-                enemyRand = Random.Range(0, 2);
+                enemyRand = Random.Range(0, 4);
                 GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
                 NewDecor.transform.SetParent(this.transform);
 
@@ -52,7 +52,7 @@ public class RoomSpawner : MonoBehaviour
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
-                enemyRand = Random.Range(0, 2);
+                enemyRand = Random.Range(0, 4);
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
@@ -64,7 +64,7 @@ public class RoomSpawner : MonoBehaviour
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
-                enemyRand = Random.Range(0, 2);
+                enemyRand = Random.Range(0, 4);
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
@@ -75,7 +75,7 @@ public class RoomSpawner : MonoBehaviour
             else if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
-                enemyRand = Random.Range(0, 2);
+                enemyRand = Random.Range(0, 4);
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
