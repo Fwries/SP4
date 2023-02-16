@@ -9,8 +9,9 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] LeftRooms;
     public GameObject[] RightRooms;
     public GameObject[] RoomDecor;
+    public GameObject[] boss;
 
-    public List<GameObject> EnemySetsEasy;
+    public GameObject[] EnemySetsEasy;
 
     public GameObject SecretRoom;
 
@@ -18,13 +19,14 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     private bool spawnedBoss;
-    public GameObject boss;
 
+    int rand;
     private void Update()
     {
         if (waitTime <= 0 && spawnedBoss == false)
         {
-            //Instantiate(boss, Rooms[Rooms.Count - 1].transform.position, Quaternion.identity);
+            rand = Random.Range(0, boss.Length);
+            Instantiate(boss[rand], Rooms[Rooms.Count - 1].transform.position, Quaternion.identity);
             spawnedBoss = true;
         }
         else

@@ -703,16 +703,18 @@ MonoBehaviour:
   RoomDecor:
   - {fileID: 8587008000224565855, guid: 56c67f382b6658a4cb99bf5bee1405ad, type: 3}
   - {fileID: 8587008000224565855, guid: 3beca9e23ba26524ebef463543eb4523, type: 3}
+  - {fileID: 8587008000224565855, guid: 01b734ef4a7d31748b0c7f0959cd8c2f, type: 3}
+  - {fileID: 8587008000224565855, guid: 77b1c5fb8320f8d44991f94bd6226aa2, type: 3}
+  boss:
+  - {fileID: 320741047753619556, guid: 2f9e00f50edb1e345970e257c34f418d, type: 3}
   EnemySetsEasy:
   - {fileID: 5116777644631270464, guid: ad5d355fc6268f041baef47ab3e15cf4, type: 3}
   - {fileID: 3613699998533889128, guid: 4d970b47de6e6834688e95940b6614f7, type: 3}
   - {fileID: 8618041245016914740, guid: 989de458d74fc304fa14c8cd1d9a3ffc, type: 3}
   - {fileID: 7599654304156137540, guid: bbbf4a445bc0df4459a13f553dc5565f, type: 3}
-  - {fileID: 320741047753619556, guid: 2f9e00f50edb1e345970e257c34f418d, type: 3}
   SecretRoom: {fileID: 231897167727135564, guid: d69bb5364a8200c4ab733efaadb7db60, type: 3}
   Rooms: []
-  waitTime: 0
-  boss: {fileID: 0}
+  waitTime: 4
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0
