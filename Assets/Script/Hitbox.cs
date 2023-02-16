@@ -27,6 +27,7 @@ public class Hitbox : MonoBehaviour
         {
             Animator otherAnim = other.gameObject.GetComponentInChildren<Animator>();
             int Health = otherAnim.GetInteger("Health");
+            otherAnim.SetInteger("PrevHealth", otherAnim.GetInteger("Health"));
             otherAnim.SetInteger("Health", Health - Damage);
         }
     }

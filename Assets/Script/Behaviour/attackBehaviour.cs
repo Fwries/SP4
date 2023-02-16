@@ -25,6 +25,11 @@ public class attackBehaviour : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
+        if (animator.GetInteger("Health") < animator.GetInteger("PrevHealth"))
+        {
+            animator.SetBool("IsHit", true);
+        }
+
         animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
 
         if (timer > animator.GetFloat("AttackSpeed"))

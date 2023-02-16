@@ -23,6 +23,10 @@ public class targetBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animator.GetInteger("Health") < animator.GetInteger("PrevHealth"))
+        {
+            animator.SetBool("IsHit", true);
+        }
         agent.isStopped = !myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer;
         timer += Time.deltaTime;
         agent.SetDestination(player.position);
