@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5343221081490487962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.809, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: -1.221}
   m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5343221082640646759}
   - component: {fileID: 5343221082640646758}
   - component: {fileID: 5809754813849506880}
+  - component: {fileID: 155048118771757145}
   m_Layer: 0
   m_Name: HellspawnWraith
   m_TagString: Untagged
@@ -206,3 +207,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 4940502261691123190, guid: 2723a67c80be6da4483ce07c64520849, type: 3}
+--- !u!136 &155048118771757145
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343221082640646761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.33, z: 0}

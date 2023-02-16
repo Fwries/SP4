@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6712169352709666107}
   - component: {fileID: 6712169352709666106}
   - component: {fileID: 6712169352709666105}
-  - component: {fileID: 4466974109842671576}
   m_Layer: 6
   m_Name: GFX_saytrGrunt
   m_TagString: Untagged
@@ -28,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6712169352709666111}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.35, z: -0.215}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0, z: -0.808}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6712169353140059079}
@@ -120,20 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeXZAxis: 1
---- !u!136 &4466974109842671576
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6712169352709666111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 16.25
-  m_Height: 26.25
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.00000023841858}
 --- !u!1 &6712169353140059076
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +131,7 @@ GameObject:
   - component: {fileID: 6712169353140059078}
   - component: {fileID: 6712169353140059077}
   - component: {fileID: 7558714829019675898}
+  - component: {fileID: 4960773819125744944}
   m_Layer: 6
   m_Name: satyrGrunt
   m_TagString: enemy
@@ -221,3 +207,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 4940502261691123190, guid: 2723a67c80be6da4483ce07c64520849, type: 3}
+--- !u!136 &4960773819125744944
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712169353140059076}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
