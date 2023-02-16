@@ -36,7 +36,7 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //Weapon.transform.Rotate(Weapon.transform.angle.x - 90, Weapon.transform.angle.y, Weapon.transform.angle.z);
+            Weapon.transform.Rotate( - 90, 0, 0);
             AtkSwing = -90;
             IsAttack = true;
             for (int i = 0; i < hitBoxes.Length; i++)
@@ -50,7 +50,7 @@ public class WeaponBehaviour : MonoBehaviour
             AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
             if (AtkSwing > 90)
             {
-                //Weapon.transform.Rotate(Weapon.transform.x + 90, Weapon.transform.y, Weapon.transform.z);
+                Weapon.transform.Rotate(90, 0, 0);
                 AtkSwing = 0;
                 IsAttack = false;
                 for (int i = 0; i < hitBoxes.Length; i++)

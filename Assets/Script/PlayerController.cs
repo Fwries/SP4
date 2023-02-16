@@ -63,6 +63,9 @@ public class PlayerController : MonoBehaviour
                                                                              m_CameraSettings.yOffsetFromPlayer,
                                                                              m_CameraSettings.zOffsetFromPlayer);
         m_MainCamera.transform.LookAt(m_RigidBody.position);
+
+        // Fixed issue of character sill moving
+        this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
     }
 
     void FixedUpdate()
