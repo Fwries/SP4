@@ -9,18 +9,20 @@ public class WeaponBehaviour : MonoBehaviour
 
     private Vector3 dir;
     private bool IsAttack;
-    private float AtkSwing = -45f;
+    private float AtkSwing;
 
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
 
     void Start()
     {
-        //WeaponSwitch(scWeapon);
+        WeaponSwitch(scWeapon);
     }
 
     private void Update()
     {
+        if (Weapon == null) { return; }
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && IsAttack == false)
         {
@@ -36,13 +38,13 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Weapon.transform.Rotate( - 90, 0, 0);
+            Weapon.transform.Rotate( -90, 0, 0);
             AtkSwing = -135;
             IsAttack = true;
-            for (int i = 0; i < hitBoxes.Length; i++)
-            {
-                hitBoxes[i].active = true;
-            }
+            //for (int i = 0; i < hitBoxes.Length; i++)
+            //{
+            //    hitBoxes[i].active = true;
+            //}
         }
 
         if (IsAttack)
@@ -53,10 +55,10 @@ public class WeaponBehaviour : MonoBehaviour
                 Weapon.transform.Rotate(90, 0, 0);
                 AtkSwing = 0;
                 IsAttack = false;
-                for (int i = 0; i < hitBoxes.Length; i++)
-                {
-                    hitBoxes[i].active = false;
-                }
+                //for (int i = 0; i < hitBoxes.Length; i++)
+                //{
+                //    hitBoxes[i].active = false;
+                //}
             }
         }
         Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
@@ -65,6 +67,11 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void WeaponSwitch(ScWeapon _scWeapon)
     {
+        if (Weapon != null) 
+        {
+            Destroy(Weapon);
+        }
 
+        Weapon = Instantiate(_scWeapon.Prefab, new Vector3(_scWeapon.OffsetX, _scWeapon.OffsetY, 0), Quaternion.identity, transform);
     }
 }

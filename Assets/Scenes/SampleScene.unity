@@ -171,7 +171,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
-  Weapon: {fileID: 1447646479}
+  Weapon: {fileID: 0}
   scWeapon: {fileID: 11400000, guid: 897c28bd92f87eb49970e74dd96c6250, type: 2}
   hitBoxes:
   - {fileID: 2045320696}
@@ -493,11 +493,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1447646479 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d65d7fa71b6567645a58af27de81c774, type: 3}
-  m_PrefabInstance: {fileID: 1514780657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498030887
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Destroyer
   - enemySetEasy
   - enemy
+  - HitBox
   layers:
   - Default
   - TransparentFX

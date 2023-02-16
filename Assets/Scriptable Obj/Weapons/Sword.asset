@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Prefab: {fileID: 4697989199229766275, guid: 675ce9ab75e5cb842bba3eeba1778767, type: 3}
   Name: 
   Description: 
-  RedDmg: 4
-  OrangeDmg: 0
-  YellowDmg: 0
   AtkSpeed: 0.5
   AtkReach: 11
   Area1: 1
   Area2: 1
   Weight: 0
+  OffsetX: 0.753
+  OffsetY: 0.732
