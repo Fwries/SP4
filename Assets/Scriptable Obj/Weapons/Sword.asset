@@ -16,7 +16,8 @@ MonoBehaviour:
   Name: 
   Description: 
   AtkSpeed: 1
-  AtkReach: 11
+  AtkCooldown: 0.5
+  AtkReach: 1
   Area1: 1
   Area2: 1
   Weight: 0
