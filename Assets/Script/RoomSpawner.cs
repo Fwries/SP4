@@ -43,6 +43,9 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.RoomDecor.Length);
                 GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
                 NewDecor.transform.SetParent(this.transform);
+
+                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], transform.position, Quaternion.identity);
+                enemies.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 2)
             {
@@ -51,8 +54,8 @@ public class RoomSpawner : MonoBehaviour
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
 
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], NewRoom.transform.position, Quaternion.identity);
-                enemies.transform.SetParent(NewRoom.transform);
+                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], transform.position, Quaternion.identity);
+                enemies.transform.SetParent(this.transform);
 
             }
             else if (DoorDirection == 3)
@@ -61,6 +64,9 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
+
+                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], transform.position, Quaternion.identity);
+                enemies.transform.SetParent(this.transform);
             }
             else if (DoorDirection == 4)
             {
@@ -68,6 +74,9 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
+
+                GameObject enemies = Instantiate(Templates.EnemySetsEasy[0], transform.position, Quaternion.identity);
+                enemies.transform.SetParent(this.transform);
             }
 
             spawned = true;

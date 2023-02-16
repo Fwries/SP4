@@ -11,12 +11,12 @@ public class WeaponBehaviour : MonoBehaviour
     private bool IsAttack;
     private float AtkSwing = -45f;
 
-    public ScWeapon weapon;
+    public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
 
     void Start()
     {
-        WeaponSwitch(weapon);
+        //WeaponSwitch(scWeapon);
     }
 
     private void Update()
@@ -36,6 +36,7 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            //Weapon.transform.Rotate(Weapon.transform.angle.x - 90, Weapon.transform.angle.y, Weapon.transform.angle.z);
             AtkSwing = -90;
             IsAttack = true;
             for (int i = 0; i < hitBoxes.Length; i++)
@@ -46,12 +47,12 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (IsAttack)
         {
-            AtkSwing += 720 * Time.deltaTime / weapon.AtkSpeed;
+            AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
             if (AtkSwing > 90)
             {
+                //Weapon.transform.Rotate(Weapon.transform.x + 90, Weapon.transform.y, Weapon.transform.z);
                 AtkSwing = 0;
                 IsAttack = false;
-
                 for (int i = 0; i < hitBoxes.Length; i++)
                 {
                     hitBoxes[i].active = false;
@@ -62,7 +63,7 @@ public class WeaponBehaviour : MonoBehaviour
         transform.rotation = rotation;
     }
 
-    public void WeaponSwitch(ScWeapon _weapon)
+    public void WeaponSwitch(ScWeapon _scWeapon)
     {
 
     }

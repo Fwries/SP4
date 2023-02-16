@@ -172,7 +172,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   Weapon: {fileID: 1447646479}
-  weapon: {fileID: 11400000, guid: f87aaaa4b67533e42ac0dead3f0587ac, type: 2}
+  scWeapon: {fileID: 11400000, guid: 897c28bd92f87eb49970e74dd96c6250, type: 2}
   hitBoxes:
   - {fileID: 2045320696}
 --- !u!1001 &300197693
