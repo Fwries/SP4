@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 6712169353140059079}
   - component: {fileID: 6712169353140059078}
   - component: {fileID: 6712169353140059077}
+  - component: {fileID: 7558714829019675898}
   m_Layer: 6
   m_Name: satyrGrunt
   m_TagString: enemy
@@ -206,3 +207,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7558714829019675898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712169353140059076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a23f68e112e2214aa41ea259bc525d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  damageText: {fileID: 4940502261691123190, guid: 2723a67c80be6da4483ce07c64520849, type: 3}

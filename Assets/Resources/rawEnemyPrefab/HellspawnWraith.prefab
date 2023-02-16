@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 5343221082640646756}
   - component: {fileID: 5343221082640646759}
   - component: {fileID: 5343221082640646758}
+  - component: {fileID: 5809754813849506880}
   m_Layer: 0
   m_Name: HellspawnWraith
   m_TagString: Untagged
@@ -191,3 +192,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5809754813849506880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343221082640646761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a23f68e112e2214aa41ea259bc525d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  damageText: {fileID: 4940502261691123190, guid: 2723a67c80be6da4483ce07c64520849, type: 3}

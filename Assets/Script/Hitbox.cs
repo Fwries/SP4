@@ -11,7 +11,6 @@ public class Hitbox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -25,8 +24,10 @@ public class Hitbox : MonoBehaviour
         if (!active) { return; }
         if (other.gameObject.tag == "enemy")
         {
+            other.gameObject.GetComponentInChildren<Animator>().SetBool("IsHit", true);
             Animator otherAnim = other.gameObject.GetComponentInChildren<Animator>();
             int Health = otherAnim.GetInteger("Health");
+            
             otherAnim.SetInteger("PrevHealth", otherAnim.GetInteger("Health"));
             otherAnim.SetInteger("Health", Health - Damage);
         }
