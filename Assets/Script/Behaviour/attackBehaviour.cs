@@ -34,7 +34,7 @@ public class attackBehaviour : StateMachineBehaviour
 
         if (timer > animator.GetFloat("AttackSpeed"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().health -= animator.GetInteger("Damage");
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(animator.GetInteger("Damage"));
             timer = 0;
         }
 
