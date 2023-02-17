@@ -9,7 +9,8 @@ public class ScWeapon : ScriptableObject
     {
         Swing,
         Stab,
-        Crush
+        Crush,
+        None
     };
 
     public GameObject Prefab;
