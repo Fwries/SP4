@@ -11,14 +11,12 @@ public class ThrowWeapon : MonoBehaviour
     private bool IsThrown;
 
     // Weapon move and rotate variables
-    public Vector3 m_WeaponDir;
+    private Vector3 m_WeaponDir;
     private int m_RotateSpeed;
     private float m_WeaponRotate;
     private float m_WeaponTravelDist;
     private float m_DistTravelled;
     private float angle;
-
-    public void SetWeaponDir(Vector3 newWeaponDir) { m_WeaponDir = newWeaponDir; }
 
     public void Throw(Vector3 NEWm_WeaponDir, float NEWangle, ScWeapon NEWscWeapon, Hitbox[] NEWhitBoxes)
     {
@@ -33,6 +31,9 @@ public class ThrowWeapon : MonoBehaviour
         m_RotateSpeed = 3600 - (180 * scWeapon.Mass);
         // We want take the weapon reach into account
         m_WeaponTravelDist = 2.0f * scWeapon.AtkReach;
+
+        // Unparent the weapon, turn it into a top-level object in the hierarchy
+        transform.SetParent(null);
     }
 
     void Update()
@@ -43,11 +44,9 @@ public class ThrowWeapon : MonoBehaviour
             {
                 m_WeaponRotate = 0.0f;
                 IsThrown = false;
+                this.gameObject.GetComponent<MeshCollider>().enabled = true;
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = false;
-
-                // Unparent the weapon, turn it into a top-level object in the hierarchy
-                transform.SetParent(null);
             }
             else
             {

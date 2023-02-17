@@ -3,6 +3,7 @@ using UnityEngine;
 public class HitboxContainer : MonoBehaviour
 {
     public Hitbox[] hitboxes;
+    public ScWeapon scWeapon;
 
     // Update is called once per frame
     public void OnHit()
@@ -13,19 +14,16 @@ public class HitboxContainer : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         // Check whether the gameObject name has "Player.." in it
-        if (collision.gameObject.name.Contains("Player"))
+        if (other.gameObject.tag == "Player")
         {
-            GameObject player = collision.gameObject;
+            GameObject player = other.gameObject;
             Transform playerHand = player.transform.Find("Hand");
 
-            // If so, set the weapon's parent to the player's hand
-            transform.SetParent(playerHand);
-            // The weapon's parent is now the player's hand
-            // Update the weaponDir
-            playerHand?.GetComponent<ThrowWeapon>().SetWeaponDir(player.GetComponent<PlayerController>().GetCharacterDir());
+            playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
+            Destroy(this.gameObject);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private GameObject Weapon;
+    public GameObject Weapon;
 
     private Vector3 dir;
     private bool IsAttack;
@@ -78,9 +78,10 @@ public class WeaponBehaviour : MonoBehaviour
         if (Weapon != null)
         {
             Destroy(Weapon);
-            scWeapon = null;
         }
-        Weapon = Instantiate(_scWeapon.Prefab, new Vector3(transform.position.x + _scWeapon.OffsetX, transform.position.y + _scWeapon.OffsetY, transform.position.z), Quaternion.identity, transform);
+
+        scWeapon = _scWeapon;
+        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), Quaternion.identity, transform);
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
     }
 }

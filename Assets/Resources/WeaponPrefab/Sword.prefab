@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 732446310414687004}
   - component: {fileID: 3482693372746380784}
   - component: {fileID: 8878441605365490456}
+  - component: {fileID: 4469764113740491099}
   - component: {fileID: 6116696195569926976}
   - component: {fileID: 4560257600545661217}
   m_Layer: 0
@@ -275,6 +276,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4469764113740491099
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697989199229766275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4611116909664260666, guid: d65d7fa71b6567645a58af27de81c774, type: 3}
 --- !u!114 &6116696195569926976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +306,7 @@ MonoBehaviour:
   - {fileID: 811191877437077826}
   - {fileID: 8503815714070622765}
   - {fileID: 1055568787987315816}
+  scWeapon: {fileID: 11400000, guid: 897c28bd92f87eb49970e74dd96c6250, type: 2}
 --- !u!114 &4560257600545661217
 MonoBehaviour:
   m_ObjectHideFlags: 0
