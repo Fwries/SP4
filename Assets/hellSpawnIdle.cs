@@ -14,7 +14,7 @@ public class hellSpawnIdle : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponentInParent<NavMeshAgent>();
-        agent.velocity = Vector3.zero;
+        agent.speed = animator.GetFloat("Speed");
         agent.isStopped = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -35,7 +35,7 @@ public class hellSpawnIdle : StateMachineBehaviour
         }
 
         //Attacks for hellspawn boss
-        if (timer > 3.0f)
+        if (timer > 3.0f && myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer)
         {
             int attackToDo = Random.Range(0, 2);
             if (attackToDo == 0)
@@ -44,7 +44,7 @@ public class hellSpawnIdle : StateMachineBehaviour
             }
             else
             {
-                animator.SetInteger("AttackDecider", 1);
+                animator.SetInteger("AttackDecider", 2);
             }
         }
     }
