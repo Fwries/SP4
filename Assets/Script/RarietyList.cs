@@ -9,6 +9,14 @@ public class RarietyList : MonoBehaviour
     public GameObject[] Epic;
     public GameObject[] Legendary;
 
+    public void SetList(ScRarietyList scRarietyList)
+    {
+        Common = scRarietyList.Common;
+        Rare = scRarietyList.Rare;
+        Epic = scRarietyList.Epic;
+        Legendary = scRarietyList.Legendary;
+    }
+
     public GameObject GetRandomGameObject()
     {
         int RandRariety = Random.Range(0, 101);
