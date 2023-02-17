@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,15 @@ public class hellSpawnAttack : StateMachineBehaviour
     float timer;
     float bulletReset;
     Transform player;
-    Transform myTransform;
+    public Transform myTransform;
 
 
     public float spacing = 1.0f;
+
+    public int numProjectiles2;
+    public float fireRate = 0.2f;
+    private float nextFireTime;
+
     [SerializeField] private Transform fireBall;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,6 +31,9 @@ public class hellSpawnAttack : StateMachineBehaviour
         myTransform = animator.GetComponent<Transform>();
         timer = 0;
         bulletReset = 0;
+
+        nextFireTime = Time.time;
+        numProjectiles2 = 10;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -59,29 +68,31 @@ public class hellSpawnAttack : StateMachineBehaviour
                     Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
                     projectileRb.velocity = animator.GetFloat("ProjSpeed") * offset.normalized;
                 }
-                Debug.Log("ATTACK1");
                 animator.SetInteger("AttackDecider", 0);
             }
             else
             {
-                if (bulletReset > 0.1f)
+                if (Time.time >= nextFireTime && numProjectiles2 > 0)
                 {
-                    Vector3 offset = new Vector3(0f, -0.1f, -0.5f);
-                    Transform ballTransform = Instantiate(fireBall, myTransform.position - offset, Quaternion.identity);
+                    var offset = new Vector3(0f, -0.1f, -0.5f);
+                    var proj = GameObject.Instantiate(fireBall, myTransform.position - offset, myTransform.rotation);
                     Vector3 shootdir = (player.position - (myTransform.position - offset));
                     shootdir.y = 0f;
                     shootdir.Normalize();
-                    ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
+                    proj.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
+                    numProjectiles2--;
+                    nextFireTime = Time.time + fireRate;
                 }
-                bulletReset = 0;
-                Debug.Log("ATTACK2");
+                if (numProjectiles2 <= 0)
+                {
+                    Debug.Log("ATTACK2");
+                    animator.SetInteger("AttackDecider", 0);
+                }
             }
         }
-        if (timer > 6f)
-        {
-            animator.SetInteger("AttackDecider", 0);
-        }
     }
+
+
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
