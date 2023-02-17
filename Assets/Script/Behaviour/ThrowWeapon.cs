@@ -18,7 +18,7 @@ public class ThrowWeapon : MonoBehaviour
     private float m_DistTravelled;
     private float angle;
 
-    // Weapon cooldown variables
+    public void SetWeaponDir(Vector3 newWeaponDir) { m_WeaponDir = newWeaponDir; }
 
     public void Throw(Vector3 NEWm_WeaponDir, float NEWangle, ScWeapon NEWscWeapon, Hitbox[] NEWhitBoxes)
     {

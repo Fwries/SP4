@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     // Variables affecting the player character m_Movement
     private const float m_SPEED = 5.0f;
+    private Vector3 m_CharacterDir;
 
     // Character's m_RigidBody
     private Rigidbody m_RigidBody;
@@ -19,9 +20,13 @@ public class PlayerController : MonoBehaviour
     private Camera          m_MainCamera;
     private CameraSettings  m_CameraSettings;
 
+    public Vector3 GetCharacterDir() { return m_CharacterDir; }
+
     void Start()
     {
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
+
+        m_CharacterDir.Set(0.0f, 0.0f, 0.0f);
 
         m_RigidBody = gameObject.GetComponent<Rigidbody>();
 
@@ -40,6 +45,7 @@ public class PlayerController : MonoBehaviour
         float keyAD = Input.GetAxis("Horizontal");
 
         // Assign the inputs to m_Movement
+        // We do not need to normalize m_Movement as it is already normalized
         m_Movement.x = keyAD;
         m_Movement.z = keyWS;
 
@@ -55,8 +61,11 @@ public class PlayerController : MonoBehaviour
     }
     void UpdateCharacterOnMovementUpdated()
     {
+        // Update the character direction
+        m_CharacterDir = m_SPEED * m_Movement;
+
         // Move the character
-        m_RigidBody?.MovePosition(m_RigidBody.position + m_SPEED * m_Movement * Time.fixedDeltaTime);
+        m_RigidBody?.MovePosition(m_RigidBody.position + m_CharacterDir * Time.fixedDeltaTime);
 
         // Move the camera and adjust its look/forward vector
         m_MainCamera.transform.position = m_RigidBody.position + new Vector3(m_CameraSettings.xOffsetFromPlayer,
