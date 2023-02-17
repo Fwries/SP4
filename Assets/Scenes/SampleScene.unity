@@ -373,10 +373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c257f912b6b9345a63cd51e7dc9986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  m_LayerMask:
     serializedVersion: 2
-    m_Bits: 2048
-  Weapon: {fileID: 0}
+    m_Bits: 1
+  m_Weapon: {fileID: 0}
   scWeapon: {fileID: 11400000, guid: 897c28bd92f87eb49970e74dd96c6250, type: 2}
   hitBoxes:
   - {fileID: 0}
