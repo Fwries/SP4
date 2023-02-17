@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd98b121d421654bb7e7e9610ffebac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingRoom: {fileID: 0}
+  startingRoom: {fileID: 7406355376709210044, guid: d19901db1e0a1c84e9b75911f75a4048, type: 3}
 --- !u!4 &1837219013
 Transform:
   m_ObjectHideFlags: 0
