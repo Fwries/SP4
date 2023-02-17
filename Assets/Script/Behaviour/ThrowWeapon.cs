@@ -11,7 +11,7 @@ public class ThrowWeapon : MonoBehaviour
     private bool IsThrown;
 
     // Weapon move and rotate variables
-    private Vector3 m_WeaponDir;
+    public Vector3 m_WeaponDir;
     private int m_RotateSpeed;
     private float m_WeaponRotate;
     private float m_WeaponTravelDist;

@@ -27,14 +27,12 @@ public class WeaponBehaviour : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && IsAttack == false)
         {
             //transform.position = raycastHit.point;
-            dir = new Vector3(raycastHit.point.x - transform.position.x, raycastHit.point.y - transform.position.y, raycastHit.point.z - transform.position.z);
+            dir = new Vector3(raycastHit.point.x - transform.position.x,
+                              0.0f,
+                              raycastHit.point.z - transform.position.z);
         }
 
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (raycastHit.point.z > transform.position.z)
-        {
-            angle *= -1;
-        }
+        float angle = -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
 
         if (Input.GetButtonDown("Fire1") && IsAttack == false)
         {
@@ -72,8 +70,7 @@ public class WeaponBehaviour : MonoBehaviour
                 }
             }
         }
-        Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
-        transform.rotation = rotation;
+        transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwing, 0.0f);
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)
