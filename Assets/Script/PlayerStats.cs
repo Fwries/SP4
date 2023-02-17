@@ -27,9 +27,9 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         damage -= ResistDamage;
-        if (ResistDamage < 0) { ResistDamage = 0; }
+        if (damage < 0) { damage = 0; }
 
-        currentHealth -= ResistDamage;
+        currentHealth -= damage;
         HealthBar.SetHealth(currentHealth);
     }
 
