@@ -13,7 +13,7 @@ public class coinBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().Coin++;
+            other.GetComponent<PlayerStats>().IncreaseCoins(1);
             Destroy(this.gameObject);
         }
     }

@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
     public int ResistDamage;
 
     public HealthBarBehaviour HealthBar;
+    public coinCounter coinCounter;
 
 
     private void Start()
@@ -31,6 +32,11 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth -= damage;
         HealthBar.SetHealth(currentHealth);
+    }
+    public void IncreaseCoins(int n)
+    {
+        Coin += n;
+        coinCounter.SetCoins(Coin);
     }
 
     public void EquipmentEquip(ScEquipment scEquipment)
