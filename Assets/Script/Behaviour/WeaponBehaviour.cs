@@ -42,7 +42,7 @@ public class WeaponBehaviour : MonoBehaviour
             AtkSwing = -135;
             IsAttack = true;
             foreach (Hitbox hitbox in hitBoxes)
-                hitbox.active = false;
+                hitbox.active = true;
         }
 
         if (Input.GetButtonDown("Fire2") && IsAttack == false)
