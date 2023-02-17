@@ -4,92 +4,136 @@ using UnityEngine;
 
 public class WeaponBehaviour : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private GameObject Weapon;
-
-    private Vector3 dir;
-    private bool IsAttack;
-    private float AtkSwing;
-    private bool InCooldown;
-    private float Cooldown;
+    [SerializeField] private LayerMask m_LayerMask;
+    [SerializeField] private GameObject m_Weapon;
 
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
 
+    // Mouse click variables
+    private bool m_IsMouseClicked;
+
+    // Weapon move and rotate variables
+    private Vector3 m_WeaponDir;
+    private int m_RotateSpeed;
+    private float m_WeaponRotate;
+    private float m_WeaponTravelDist;
+    private float m_DistTravelled;
+
+    // Weapon cooldown variables
+    private bool m_InCooldown;
+    private float m_CoolDownTimer;
+
     void Start()
     {
         WeaponSwitch(scWeapon);
+
+        m_IsMouseClicked = false;
+
+        m_WeaponDir.Set(0.0f, 0.0f, 0.0f);
+        // We take the mass into account to slow down the rotation speed
+        m_RotateSpeed = 3600 - (180 * scWeapon.Mass);
+        m_WeaponRotate = 0.0f;
+        // We want take the weapon reach into account
+        m_WeaponTravelDist = 2.0f * scWeapon.AtkReach;
+        m_DistTravelled = 0.0f;
+
+        m_InCooldown = false;
+        m_CoolDownTimer = 0.0f;
     }
 
-    private void Update()
+    void Update()
     {
-        if (Weapon == null) { return; }
+        if (m_Weapon == null) { return; }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && IsAttack == false)
+        float angle = 0.0f;
+        if (!m_IsMouseClicked)
         {
-            //transform.position = raycastHit.point;
-            dir = new Vector3(raycastHit.point.x - transform.position.x, raycastHit.point.y - transform.position.y, raycastHit.point.z - transform.position.z);
-        }
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        if (raycastHit.point.z > transform.position.z)
-        {
-            angle *= -1;
-        }
-
-        if (Input.GetButtonDown("Fire1") && IsAttack == false && InCooldown == false)
-        {
-            Weapon.transform.Rotate(90, 0, 0);
-            AtkSwing = -135;
-            IsAttack = true;
-            for (int i = 0; i < hitBoxes.Length; i++)
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, m_LayerMask))
             {
-                hitBoxes[i].active = true;
+                m_WeaponDir = new Vector3(raycastHit.point.x - transform.position.x,
+                                          0.0f,
+                                          raycastHit.point.z - transform.position.z);
+
+                // Unity uses left hand coordinate system
+                angle = -Mathf.Atan2(m_WeaponDir.z, m_WeaponDir.x) * Mathf.Rad2Deg;
             }
-        }
 
-        if (IsAttack)
-        {
-            AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
-            if (AtkSwing > 45)
+            if (!m_InCooldown && Input.GetButtonDown("Fire1"))
             {
-                Weapon.transform.Rotate(-90, 0, 0);
-                AtkSwing = 0;
-                IsAttack = false;
-                InCooldown = true;
-                for (int i = 0; i < hitBoxes.Length; i++)
-                {
-                    hitBoxes[i].active = false;
-                }
-            }
-        }
+                // Set isMouseClicked to true
+                m_IsMouseClicked = true;
 
-        if (InCooldown)
-        {
-            if (Cooldown > scWeapon.AtkCooldown)
-            {
-                Cooldown = 0;
-                InCooldown = false;
+                // Set the hitboxes to be active so that collision can be detected
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = true;
             }
             else
             {
-                Cooldown += Time.deltaTime;
+                transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
             }
         }
 
-        Quaternion rotation = Quaternion.AngleAxis(angle + AtkSwing, new Vector3(0, 1, 0));
-        transform.rotation = rotation;
-    }
-
-    public void WeaponSwitch(ScWeapon _scWeapon)
-    {
-        if (Weapon != null) 
+        if (m_IsMouseClicked)
         {
-            Destroy(Weapon);
+            if (m_DistTravelled > m_WeaponTravelDist)
+            {
+                m_WeaponRotate = 0.0f;
+                m_IsMouseClicked = false;
+                m_InCooldown = true;
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = false;
+
+                // Unparent the weapon, turn it into a top-level object in the hierarchy
+                m_Weapon.transform.SetParent(null);
+            }
+            else
+            {
+                // Calculate the weapon travel vector (Direction and magnitude)
+                // We want to take force (F=ma) into account, but we will use atkSpeed instead of acceleration for now
+                // We only consider acceleration after the weapon reached its destination
+                float force = scWeapon.Mass * scWeapon.AtkSpeed;
+                Vector3 weaponTravelVec = force * m_WeaponTravelDist * m_WeaponDir.normalized * Time.deltaTime;
+
+                // Update the weapon rotation (Again, subtract because Unity uses left hand coordinate system)
+                m_WeaponRotate -= m_RotateSpeed * Time.deltaTime;
+
+                // Move and rotate the weapon to simulate weapon throw
+                m_Weapon.transform.position += weaponTravelVec;
+                m_Weapon.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle + m_WeaponRotate);
+
+                // Update the distance travelled for the weapon
+                m_DistTravelled += weaponTravelVec.magnitude;
+            }
         }
 
-        Weapon = Instantiate(_scWeapon.Prefab, new Vector3(transform.position.x + _scWeapon.OffsetX, transform.position.y + _scWeapon.OffsetY, transform.position.z), Quaternion.identity, transform);
-        hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
+        /*
+        if (m_InCooldown)
+        {
+            if (m_CoolDownTimer > scWeapon.AtkCooldown)
+            {
+                m_CoolDownTimer = 0;
+                m_InCooldown = false;
+            }
+            else
+            {
+                m_CoolDownTimer += Time.deltaTime;
+            }
+        }
+        */
+    }
+
+    public void WeaponSwitch(ScWeapon scWeapon)
+    {
+        if (m_Weapon != null) 
+            Destroy(m_Weapon);
+
+        m_Weapon = Instantiate(scWeapon.Prefab,
+                                new Vector3(transform.position.x + scWeapon.OffsetX,
+                                            transform.position.y + scWeapon.OffsetY,
+                                            transform.position.z),
+                                Quaternion.identity, transform);
+        hitBoxes = m_Weapon?.GetComponent<HitboxContainer>().hitboxes;
     }
 }

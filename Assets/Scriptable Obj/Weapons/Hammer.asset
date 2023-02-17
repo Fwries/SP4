@@ -20,6 +20,6 @@ MonoBehaviour:
   AtkCooldown: 1.5
   AtkReach: 2
   AtkRange: 0
-  Weight: 0
+  Mass: 10
   OffsetX: 0.3
   OffsetY: 0.8
