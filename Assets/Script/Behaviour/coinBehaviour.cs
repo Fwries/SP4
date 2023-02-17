@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class coinBehaviour : MonoBehaviour
 {
+
+    private int coinAmount;
+    public void SetUp(int amount)
+    {
+        coinAmount = amount;
+    }
+
     void Update()
     {
         transform.Rotate(0, Time.deltaTime * 100, 0);
@@ -13,7 +20,7 @@ public class coinBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().IncreaseCoins(1);
+            other.GetComponent<PlayerStats>().IncreaseCoins(coinAmount);
             Destroy(this.gameObject);
         }
     }

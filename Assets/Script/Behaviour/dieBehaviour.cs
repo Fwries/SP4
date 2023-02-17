@@ -7,12 +7,16 @@ public class dieBehaviour : StateMachineBehaviour
 {
     float timer;
     NavMeshAgent agent;
+    public Transform coinPos;
+    private Transform myTransform;
+    private Vector3 coinOff = new Vector3(0f, 0.3f, 0f);
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer = 0;
         agent = animator.GetComponentInParent<NavMeshAgent>();
+        myTransform = animator.GetComponent<Transform>();
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
     }
@@ -23,6 +27,8 @@ public class dieBehaviour : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > 1f)
         {
+            Transform coin = Instantiate(coinPos, myTransform.position + coinOff, Quaternion.identity);
+            coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, animator.GetInteger("CoinAmount")));
             Destroy(animator.GetComponent<Transform>().parent.gameObject);
         }
     }
