@@ -26,7 +26,7 @@ public class RoomTemplates : MonoBehaviour
         if (waitTime <= 0 && spawnedBoss == false)
         {
             rand = Random.Range(0, boss.Length);
-            Instantiate(boss[rand], Rooms[Rooms.Count - 1].transform.position, Quaternion.identity);
+            Instantiate(boss[rand], Rooms[Rooms.Count - 1].transform.position, Quaternion.identity, Rooms[Rooms.Count - 1].transform);
             spawnedBoss = true;
         }
         else
