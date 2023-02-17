@@ -12,14 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   WeaponIcon: {fileID: 0}
   Weapon: Hammer
   Description: 
   RedDmg: 6
   OrangeDmg: 0
   YellowDmg: 0
+=======
+  Prefab: {fileID: 7894559333986417363, guid: 6e84d3dcf43206a42a6601ffbaa1c513, type: 3}
+  Name: 
+  Description: 
+  AtkType: 2
+>>>>>>> Stashed changes
   AtkSpeed: 1.5
   AtkReach: 2
+<<<<<<< HEAD
   Area1: 2
   Area2: 2
+<<<<<<< Updated upstream
   Weight: 0
+=======
+  Mass: 10
+  OffsetX: 0.753
+  OffsetY: 0.732
+=======
+  AtkRange: 0
+  Weight: 0
+  OffsetX: 0.3
+  OffsetY: 0.8
+>>>>>>> a7d85e4b55e5906279b6cda23daacd45c55b470c
+>>>>>>> Stashed changes
