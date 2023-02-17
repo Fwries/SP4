@@ -16,10 +16,10 @@ MonoBehaviour:
   Name: 
   Description: 
   AtkSpeed: 1
-  AtkCooldown: 0.5
+  AtkCooldown: 0.2
   AtkReach: 1
   Area1: 1
   Area2: 1
   Weight: 0
-  OffsetX: 0.753
+  OffsetX: 0
   OffsetY: 0.732
