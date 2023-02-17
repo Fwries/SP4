@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public int MaxHealth = 17;
-    private int currentHealth;
+    public int currentHealth;
     public HealthBarBehaviour HealthBar;
     private void Start()
     {
