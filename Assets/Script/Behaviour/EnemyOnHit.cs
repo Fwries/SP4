@@ -20,7 +20,7 @@ public class EnemyOnHit : MonoBehaviour
     public void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 0.1f && transform.GetComponentInChildren<Animator>().GetBool("IsHit"))
+        if (timer > 0.05f && transform.GetComponentInChildren<Animator>().GetBool("IsHit"))
         {
             UI_DamageIndicator indicator = Instantiate(damageText, transform.position, Quaternion.identity).GetComponent<UI_DamageIndicator>();
             indicator.SetDamageText(transform.GetComponentInChildren<Animator>().GetInteger("PrevHealth") - transform.GetComponentInChildren<Animator>().GetInteger("Health"));

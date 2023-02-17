@@ -15,7 +15,7 @@ public class hellSpawnIdle : StateMachineBehaviour
     {
         agent = animator.GetComponentInParent<NavMeshAgent>();
         agent.velocity = Vector3.zero;
-        agent.isStopped = true;
+        agent.isStopped = false;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
@@ -29,8 +29,13 @@ public class hellSpawnIdle : StateMachineBehaviour
         animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
         float pDistance = animator.GetFloat("distance");
 
+        if (myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer)
+        {
+            agent.SetDestination(player.position);
+        }
+
         //Attacks for hellspawn boss
-        if (timer > 0.1f && pDistance < animator.GetFloat("Range"))
+        if (timer > 3.0f)
         {
             int attackToDo = Random.Range(0, 2);
             if (attackToDo == 0)

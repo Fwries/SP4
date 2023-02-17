@@ -36,7 +36,7 @@ public class hellSpawnAttack : StateMachineBehaviour
         float pDistance = animator.GetFloat("distance");
 
         //Attacks for hellspawn boss
-        if (timer > 5f)
+        if (timer > 2f && myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer && pDistance < animator.GetFloat("Range"))
         {
             if (animator.GetInteger("AttackDecider") == 1)
             {
