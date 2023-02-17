@@ -47,7 +47,7 @@ public class WeaponBehaviour : MonoBehaviour
         {
 
             foreach (Hitbox hitbox in hitBoxes)
-                hitbox.active = false;
+                hitbox.active = true;
 
             Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
 
@@ -64,12 +64,11 @@ public class WeaponBehaviour : MonoBehaviour
                 AtkSwing = 0;
                 IsAttack = false;
 
-                for (int i = 0; i < hitBoxes.Length; i++)
-                {
-                    hitBoxes[i].active = false;
-                }
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = false;
             }
         }
+
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwing, 0.0f);
     }
 
@@ -81,7 +80,8 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         scWeapon = _scWeapon;
-        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), Quaternion.identity, transform);
+        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
+
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
     }
 }

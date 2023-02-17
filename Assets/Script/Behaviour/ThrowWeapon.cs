@@ -9,6 +9,7 @@ public class ThrowWeapon : MonoBehaviour
 
     // Mouse click variables
     private bool IsThrown;
+    public bool StopThrow;
 
     // Weapon move and rotate variables
     private Vector3 m_WeaponDir;
@@ -30,7 +31,7 @@ public class ThrowWeapon : MonoBehaviour
         // We take the mass into account to slow down the rotation speed
         m_RotateSpeed = 3600 - (180 * scWeapon.Mass);
         // We want take the weapon reach into account
-        m_WeaponTravelDist = 2.0f * scWeapon.AtkReach;
+        m_WeaponTravelDist = 5.0f * scWeapon.AtkReach;
 
         // Unparent the weapon, turn it into a top-level object in the hierarchy
         transform.SetParent(null);
@@ -40,10 +41,11 @@ public class ThrowWeapon : MonoBehaviour
     {
         if (IsThrown)
         {
-            if (m_DistTravelled > m_WeaponTravelDist)
+            if (m_DistTravelled > m_WeaponTravelDist || StopThrow)
             {
                 m_WeaponRotate = 0.0f;
                 IsThrown = false;
+                StopThrow = false;
                 this.gameObject.GetComponent<MeshCollider>().enabled = true;
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = false;
