@@ -30,6 +30,7 @@ public class targetBehaviour : StateMachineBehaviour
         agent.isStopped = !myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer;
         timer += Time.deltaTime;
         agent.SetDestination(player.position);
+        myTransform.LookAt(player.position);
         if (timer > Random.Range(3f, 6f))
         {
             animator.SetBool("isTargetting", false);

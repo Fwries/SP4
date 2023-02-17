@@ -11,11 +11,12 @@ public class SpriteBillboard : MonoBehaviour
     {
         if (freezeXZAxis)
         {
-            transform.rotation = Quaternion.Euler(Camera.main.transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, 0.0f);
+            transform.rotation = Quaternion.Euler(Camera.main.transform.eulerAngles.x, 0f, 0.0f);
         }
         else
         {
             transform.rotation = Camera.main.transform.rotation;
         }
+
     }
 }
