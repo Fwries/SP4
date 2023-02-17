@@ -16,7 +16,6 @@ public class HitboxContainer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Check whether the gameObject name has "Player.." in it
         if (other.gameObject.tag == "Player")
         {
             GameObject player = other.gameObject;
@@ -25,5 +24,21 @@ public class HitboxContainer : MonoBehaviour
             playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
             Destroy(this.gameObject);
         }
+        if (other.gameObject.tag == "Wall")
+        {
+            this.gameObject.GetComponent<ThrowWeapon>().StopThrow = true;
+        }
     }
+
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        GameObject player = collision.gameObject;
+    //        Transform playerHand = player.transform.Find("Hand");
+
+    //        playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }
