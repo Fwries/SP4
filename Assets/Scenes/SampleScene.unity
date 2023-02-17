@@ -510,6 +510,7 @@ MonoBehaviour:
   - {fileID: 8684358420233070730, guid: d0f121079bf2c8345a374798c544b1df, type: 3}
   - {fileID: 3487151939594275342, guid: 60c0f983f29d531458c4acb43b2fdf69, type: 3}
   RoomDecor:
+  - {fileID: 8587008000224565855, guid: 5c67c4072d70cf04db40f0b5a24b30d7, type: 3}
   - {fileID: 8587008000224565855, guid: 56c67f382b6658a4cb99bf5bee1405ad, type: 3}
   - {fileID: 8587008000224565855, guid: 3beca9e23ba26524ebef463543eb4523, type: 3}
   - {fileID: 8587008000224565855, guid: 01b734ef4a7d31748b0c7f0959cd8c2f, type: 3}
