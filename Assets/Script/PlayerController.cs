@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         // We do not need to normalize m_Movement as it is already normalized
         m_Movement.x = keyAD;
         m_Movement.z = keyWS;
+        m_Movement.Normalize();
 
         // Update the character's sprite animation
         m_Animator?.SetFloat("MoveX", m_Movement.z);
