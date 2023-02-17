@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 7774802106695998919}
   - component: {fileID: 7774802106695998912}
   - component: {fileID: 7774802106695998913}
-  - component: {fileID: 7811194316897091580}
   - component: {fileID: 2456300345027435585}
   m_Layer: 6
   m_Name: spellcasterWraith
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,20 +73,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &7811194316897091580
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7774802106695998914}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &2456300345027435585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +99,10 @@ GameObject:
   - component: {fileID: 7774802107461129092}
   - component: {fileID: 7774802107461129093}
   - component: {fileID: 7774802107461129094}
+  - component: {fileID: 4100017707386539962}
   m_Layer: 6
   m_Name: GFX_spellcasterWraith
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,3 +207,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!136 &4100017707386539962
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774802107461129088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 16.25
+  m_Height: 26.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 217105323067086753}
   - component: {fileID: 217105323067086752}
   - component: {fileID: 217105323067086755}
+  - component: {fileID: 3707245203983339770}
   m_Layer: 6
   m_Name: GFX_adultGolem
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeXZAxis: 1
+--- !u!136 &3707245203983339770
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217105323067086813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 11
+  m_Height: 30
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &217105323522789179
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,11 +145,10 @@ GameObject:
   - component: {fileID: 217105323522789182}
   - component: {fileID: 217105323522789177}
   - component: {fileID: 217105323522789176}
-  - component: {fileID: 3784724686611505085}
   - component: {fileID: 5096476647723284041}
   m_Layer: 6
   m_Name: AdultGolem
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,20 +207,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &3784724686611505085
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217105323522789179}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.36, z: 0}
 --- !u!114 &5096476647723284041
 MonoBehaviour:
   m_ObjectHideFlags: 0

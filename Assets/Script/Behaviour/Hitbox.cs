@@ -12,7 +12,7 @@ public class Hitbox : MonoBehaviour
         if (!active) { return; }
         if (other.gameObject.tag == "enemy")
         {
-            Animator otherAnim = other.gameObject.GetComponentInChildren<Animator>();
+            Animator otherAnim = other.gameObject.GetComponent<Animator>();
             if (!otherAnim.GetBool("IsHit"))
             {
                 otherAnim.SetBool("IsHit", true);

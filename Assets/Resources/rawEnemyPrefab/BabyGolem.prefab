@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 5537713380075544689}
   - component: {fileID: 5537713380075544690}
   - component: {fileID: 5537713380075544691}
-  - component: {fileID: 2319002067822971429}
   - component: {fileID: 7370565444044588718}
   m_Layer: 6
   m_Name: BabyGolem
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,20 +73,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &2319002067822971429
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5537713380075544688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &7370565444044588718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +99,10 @@ GameObject:
   - component: {fileID: 5537713381491549061}
   - component: {fileID: 5537713381491549060}
   - component: {fileID: 5537713381491549062}
+  - component: {fileID: 4660653136947843073}
   m_Layer: 6
   m_Name: GFX
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,3 +207,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeXZAxis: 1
+--- !u!136 &4660653136947843073
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5537713381491549050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 11
+  m_Height: 30
+  m_Direction: 1
+  m_Center: {x: 0, y: 15, z: 0}

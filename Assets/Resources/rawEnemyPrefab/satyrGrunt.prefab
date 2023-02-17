@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6712169352709666107}
   - component: {fileID: 6712169352709666106}
   - component: {fileID: 6712169352709666105}
+  - component: {fileID: 8218882353171933748}
   m_Layer: 6
   m_Name: GFX_saytrGrunt
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezeXZAxis: 1
+--- !u!136 &8218882353171933748
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6712169352709666111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 11
+  m_Height: 26.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6712169353140059076
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +146,9 @@ GameObject:
   - component: {fileID: 6712169353140059078}
   - component: {fileID: 6712169353140059077}
   - component: {fileID: 7558714829019675898}
-  - component: {fileID: 4960773819125744944}
   m_Layer: 6
   m_Name: satyrGrunt
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,17 +221,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
---- !u!136 &4960773819125744944
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6712169353140059076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}

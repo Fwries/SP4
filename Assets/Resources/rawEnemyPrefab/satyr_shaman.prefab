@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3471727583878928935}
   - component: {fileID: 3471727583878928932}
   - component: {fileID: 3471727583878928933}
+  - component: {fileID: 2642161145031094993}
   m_Layer: 6
   m_Name: GFX_satyrShaman
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +120,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!136 &2642161145031094993
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471727583878928931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 11
+  m_Height: 26.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3471727583926872764
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,11 +145,10 @@ GameObject:
   - component: {fileID: 3471727583926872705}
   - component: {fileID: 3471727583926872766}
   - component: {fileID: 3471727583926872767}
-  - component: {fileID: 2681541211876892465}
   - component: {fileID: 6052815697767508452}
   m_Layer: 6
   m_Name: satyr_shaman
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -193,20 +207,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &2681541211876892465
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471727583926872764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &6052815697767508452
 MonoBehaviour:
   m_ObjectHideFlags: 0

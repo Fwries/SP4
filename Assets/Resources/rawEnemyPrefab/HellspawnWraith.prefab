@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5343221081490487958}
   - component: {fileID: 5343221081490487961}
   - component: {fileID: 5343221081490487960}
+  - component: {fileID: 745015583874617139}
   m_Layer: 0
   m_Name: GFX_hellspawnWraith
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +120,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!136 &745015583874617139
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343221081490487962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 11
+  m_Height: 26.249998
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5343221082640646761
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,10 +146,9 @@ GameObject:
   - component: {fileID: 5343221082640646759}
   - component: {fileID: 5343221082640646758}
   - component: {fileID: 5809754813849506880}
-  - component: {fileID: 155048118771757145}
   m_Layer: 0
   m_Name: HellspawnWraith
-  m_TagString: enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,17 +221,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
---- !u!136 &155048118771757145
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5343221082640646761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.33, z: 0}
