@@ -27,7 +27,7 @@ public class MagicBallBehaviour : MonoBehaviour
         Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            collision.gameObject.GetComponent<PlayerStats>().health -= damage;
         }
     }
 }

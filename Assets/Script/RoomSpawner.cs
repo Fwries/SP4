@@ -16,17 +16,11 @@ public class RoomSpawner : MonoBehaviour
     private RoomTemplates Templates;
     private int rand;
     private bool spawned = false;
-<<<<<<< Updated upstream
     public float waitTime = 4.0f;
-=======
-    public float waitTime = 50.0f;
-
-    Vector3 origin = new Vector3(0f, 0f, 0f);
->>>>>>> Stashed changes
 
     private void Awake()
     {
-        Destroy(gameObject, waitTime);
+        //Destroy(gameObject, waitTime);
         Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
         Invoke("Spawn",0.1f);
     }
@@ -40,109 +34,28 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-<<<<<<< Updated upstream
                 NewRoom.transform.SetParent(this.transform);
-=======
-                NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if(rand>=8)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
->>>>>>> Stashed changes
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-<<<<<<< Updated upstream
                 NewRoom.transform.SetParent(this.transform);
-=======
-                NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
-
->>>>>>> Stashed changes
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-<<<<<<< Updated upstream
                 NewRoom.transform.SetParent(this.transform);
-=======
-                NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
->>>>>>> Stashed changes
             }
             else if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-<<<<<<< Updated upstream
                 NewRoom.transform.SetParent(this.transform);
-=======
-                NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
->>>>>>> Stashed changes
             }
             spawned = true;
         }
@@ -158,7 +71,7 @@ public class RoomSpawner : MonoBehaviour
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
                 Destroy(other.gameObject);
-                //Debug.Log("Secret room spawned");
+                Debug.Log("Secret room spawned");
             }
             spawned = true;
         }

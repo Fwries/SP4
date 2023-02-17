@@ -13,42 +13,23 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   WeaponIcon: {fileID: 0}
   Weapon: Sword
 =======
   Prefab: {fileID: 7260371226939310127, guid: 84bfcda24179d9647a41e07f5ff9c4e4, type: 3}
-=======
-  Prefab: {fileID: 5400898345613603756, guid: 54d722165bb03f84caf02df7bcc284c6, type: 3}
->>>>>>> Stashed changes
   Name: 
 >>>>>>> Stashed changes
   Description: 
-<<<<<<< Updated upstream
   RedDmg: 4
   OrangeDmg: 0
   YellowDmg: 0
   AtkSpeed: 0.5
   AtkReach: 11
-=======
-  AtkSpeed: 1
-  AtkCooldown: 0.2
-  AtkReach: 1
->>>>>>> Stashed changes
   Area1: 1
   Area2: 1
-<<<<<<< HEAD
-  Mass: 4
-  OffsetX: 0.7
-=======
   Weight: 0
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
   OffsetX: 0.25
-=======
-  OffsetX: 0
->>>>>>> a7d85e4b55e5906279b6cda23daacd45c55b470c
->>>>>>> Stashed changes
   OffsetY: 0.732
 >>>>>>> Stashed changes
