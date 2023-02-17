@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
-  m_Name: Stick
+  m_Name: Rapier
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 7993564263508283143, guid: 04c3b2483c0676b4798a0fbcdff7d37c, type: 3}
+  Prefab: {fileID: 3208848167588750184, guid: a42154d74ccc00c40a54ffd0c768739c, type: 3}
   Name: 
   Description: 
-  AtkSpeed: 0.3
+  AtkType: 1
+  AtkSpeed: 0.7
   AtkCooldown: 0
   AtkReach: 0
-  Area1: 0
-  Area2: 0
-  Weight: 1
+  AtkRange: 0
+  Weight: 0
   OffsetX: 0
   OffsetY: 0.732
