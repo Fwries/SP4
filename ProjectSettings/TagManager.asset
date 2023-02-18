@@ -11,6 +11,7 @@ TagManager:
   - enemy
   - HitBox
   - Wall
+  - Chest
   layers:
   - Default
   - TransparentFX
