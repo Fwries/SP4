@@ -56,7 +56,9 @@ GameObject:
   - component: {fileID: 7008318562739834393}
   - component: {fileID: 6263758368526909884}
   - component: {fileID: 8145217620514026870}
+  - component: {fileID: 8883838391394327066}
   - component: {fileID: 3810243618289322209}
+  - component: {fileID: -4763635274004081378}
   m_Layer: 0
   m_Name: Sheild
   m_TagString: Untagged
@@ -133,6 +135,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8883838391394327066
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640739627633087651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1327564059419874226, guid: 0e679e26f85d6224aaeb96f7d877efc9, type: 3}
 --- !u!114 &3810243618289322209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,3 +162,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitboxes: []
+  scWeapon: {fileID: 0}
+--- !u!114 &-4763635274004081378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640739627633087651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5bac5aa6dff214593a77568ea31371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StopThrow: 0

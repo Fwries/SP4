@@ -10,6 +10,8 @@ public class ChestBehviour : MonoBehaviour
     private GameObject player;
     public GameObject prefabToSpawn;
 
+    private bool HasOpen;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -28,10 +30,11 @@ public class ChestBehviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && player != null)
+        if (Input.GetKeyDown(KeyCode.F) && player != null && HasOpen == false)
         {
             Transform coin = Instantiate(coinPos, transform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, 10));
+            HasOpen = true;
         }
     }
 }

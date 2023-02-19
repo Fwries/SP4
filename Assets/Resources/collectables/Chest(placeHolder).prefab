@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 48455615091097323}
   - component: {fileID: 8356086937127333798}
   - component: {fileID: 5946773585557095995}
+  - component: {fileID: 559700286136501671}
   m_Layer: 0
   m_Name: Chest(placeHolder)
   m_TagString: Chest
@@ -111,3 +112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPos: {fileID: 11432032806215808, guid: 3dba8818dfbcc6f42ba8719686145d5c, type: 3}
+  prefabToSpawn: {fileID: 0}
+--- !u!114 &559700286136501671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139693315205272523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55f5d4c240e2e945a247032d6a01965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Common: []
+  Rare: []
+  Epic: []
+  Legendary: []

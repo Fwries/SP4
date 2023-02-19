@@ -71,7 +71,9 @@ GameObject:
   - component: {fileID: 2865361131931318738}
   - component: {fileID: 1183344243552630391}
   - component: {fileID: 4001696861791830717}
+  - component: {fileID: 4163067524540350577}
   - component: {fileID: 8978010532009376110}
+  - component: {fileID: -8432303207830300671}
   m_Layer: 0
   m_Name: Rapier
   m_TagString: Untagged
@@ -154,6 +156,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4163067524540350577
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208848167588750184}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4150914655129254622, guid: 439e522662221e24c9f66d672b87d04a, type: 3}
 --- !u!114 &8978010532009376110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +185,20 @@ MonoBehaviour:
   hitboxes:
   - {fileID: 8803849727682342320}
   - {fileID: 3548026401700638502}
+  scWeapon: {fileID: 0}
+--- !u!114 &-8432303207830300671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208848167588750184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5bac5aa6dff214593a77568ea31371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StopThrow: 0
 --- !u!1 &7421568607953225543
 GameObject:
   m_ObjectHideFlags: 0

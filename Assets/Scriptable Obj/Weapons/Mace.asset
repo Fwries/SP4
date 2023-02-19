@@ -15,11 +15,11 @@ MonoBehaviour:
   Prefab: {fileID: 1149865585574159163, guid: d556885f979f30b4ea127b995480e5f0, type: 3}
   Name: 
   Description: 
+  AtkType: 3
   AtkSpeed: 1.5
   AtkCooldown: 1.5
   AtkReach: 0
-  Area1: 0
-  Area2: 0
-  Weight: 5
+  AtkRange: 0
+  Mass: 0
   OffsetX: 0.3
   OffsetY: 0.8

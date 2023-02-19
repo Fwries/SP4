@@ -8,8 +8,14 @@ public class WeaponBehaviour : MonoBehaviour
     public GameObject Weapon;
 
     private Vector3 dir;
+    private float angle;
+
     private bool IsAttack;
     private float AtkSwing;
+    private float StartSwing;
+    private float EndSwing;
+
+    private Vector3 TransformPos;
 
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
@@ -32,15 +38,29 @@ public class WeaponBehaviour : MonoBehaviour
                               raycastHit.point.z - transform.position.z);
         }
 
-        float angle = -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
-
         if (Input.GetButtonDown("Fire1") && IsAttack == false)
         {
-            Weapon.transform.Rotate(-90, 0, 0);
-            AtkSwing = -135;
-            IsAttack = true;
-            foreach (Hitbox hitbox in hitBoxes)
-                hitbox.active = true;
+            if ((int)scWeapon.AtkType == 1) // Swing
+            {
+                Weapon.transform.Rotate(-90, 0, 0);
+                AtkSwing = StartSwing;
+                IsAttack = true;
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = true;
+            }
+            else if ((int)scWeapon.AtkType == 2) // Stab
+            {
+                Weapon.transform.Rotate(0, 0, -45);
+                Weapon.transform.position -= new Vector3(Mathf.Cos(dir.x), 0, Mathf.Sin(dir.z)) * 2;
+                //IsAttack = true;
+
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = true;
+            }
+            else if ((int)scWeapon.AtkType == 3) // Crush
+            {
+
+            }
         }
 
         if (Input.GetButtonDown("Fire2") && IsAttack == false)
@@ -57,16 +77,37 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (IsAttack)
         {
-            AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
-            if (AtkSwing > 45)
+            if ((int)scWeapon.AtkType == 1) // Swing
             {
-                Weapon.transform.Rotate(90, 0, 0);
-                AtkSwing = 0;
-                IsAttack = false;
+                AtkSwing += 720 * Time.deltaTime / scWeapon.AtkSpeed;
+                if (AtkSwing > EndSwing)
+                {
+                    Weapon.transform.Rotate(90, 0, 0);
+                    AtkSwing = 0;
+                    IsAttack = false;
 
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.active = false;
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.active = false;
+                }
             }
+            if ((int)scWeapon.AtkType == 2) // Stab
+            {
+                //AtkSwing += Time.deltaTime;
+                //Weapon.transform.Translate(new Vector3(Mathf.Cos(dir.x), 0, Mathf.Sin(dir.z)) * Time.deltaTime / scWeapon.AtkSpeed);
+                //if (AtkSwing > scWeapon.AtkSpeed)
+                //{
+                //    Weapon.transform.Rotate(0, 0, 45);
+                //    AtkSwing = 0;
+                //    IsAttack = false;
+
+                //    foreach (Hitbox hitbox in hitBoxes)
+                //        hitbox.active = false;
+                //}
+            }
+        }
+        else
+        {
+            angle = -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
         }
 
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwing, 0.0f);
@@ -81,6 +122,16 @@ public class WeaponBehaviour : MonoBehaviour
 
         scWeapon = _scWeapon;
         Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
+
+        if ((int)scWeapon.AtkType == 1) // Swing
+        {
+            EndSwing = scWeapon.AtkRange / 4;
+            StartSwing = EndSwing * -3;
+        }
+        else if ((int)scWeapon.AtkType == 3) // Crush
+        {
+
+        }
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
     }

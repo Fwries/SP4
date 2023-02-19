@@ -7,10 +7,10 @@ public class ScWeapon : ScriptableObject
 {
     public enum TypeEnum
     {
-        Swing,
-        Stab,
-        Crush,
-        None
+        None,
+        Swing = 1,
+        Stab = 2,
+        Crush = 3,
     };
 
     public GameObject Prefab;
