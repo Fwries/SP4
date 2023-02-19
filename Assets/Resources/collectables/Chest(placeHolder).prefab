@@ -125,7 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55f5d4c240e2e945a247032d6a01965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Common: []
-  Rare: []
-  Epic: []
-  Legendary: []
+  Common:
+  - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}
+  Rare:
+  - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}
+  Epic:
+  - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}
+  Legendary:
+  - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}

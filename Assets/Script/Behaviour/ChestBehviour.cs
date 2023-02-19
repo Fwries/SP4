@@ -6,6 +6,7 @@ public class ChestBehviour : MonoBehaviour
 {
     public Transform coinPos;
     private Vector3 coinOff = new Vector3(0f, 0f, -1.2f);
+    private Vector3 equipOff = new Vector3(1f, 0f, -1.2f);
 
     private GameObject player;
     public GameObject prefabToSpawn;
@@ -32,8 +33,19 @@ public class ChestBehviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasOpen == false)
         {
+            // Coins spawning (guaranteed)
             Transform coin = Instantiate(coinPos, transform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, 10));
+
+            // Weapon spawning (chance)
+
+            // Equipment spawning (percentage chance done in rarityList script)
+            prefabToSpawn =transform.GetComponent<RarietyList>().GetRandomGameObject();
+            if (prefabToSpawn != null)
+            {
+                Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
+            }
+
             HasOpen = true;
         }
     }
