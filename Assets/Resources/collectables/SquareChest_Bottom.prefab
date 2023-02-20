@@ -146,6 +146,7 @@ MonoBehaviour:
   - {fileID: 6025645853527779856, guid: 98b05c271fb4ddf4dac17139b1457d04, type: 3}
   - {fileID: 1263530598435482049, guid: 6e8aa6b97f5917842a8d1a1bd782ee2d, type: 3}
   - {fileID: 7569929156190634388, guid: c502c00fdeb24744b9e16b8fffa22223, type: 3}
+  - {fileID: 4217952599582549240, guid: 31ad58f8929290345adb3073c1c361b9, type: 3}
   Rare:
   - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}
   - {fileID: 654216820536912669, guid: cbf55eccee77d864d9f46c6660967a0f, type: 3}
