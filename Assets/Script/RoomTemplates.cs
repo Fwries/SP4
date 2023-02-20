@@ -42,5 +42,9 @@ public class RoomTemplates : MonoBehaviour
             Rooms.Clear();
             Map.GetComponent<MapSpawner>().RegenerateMap();
         }
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Map.GetComponent<MapSpawner>().RegenerateMap();
+        }
     }
 }
