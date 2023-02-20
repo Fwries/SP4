@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
         // The Horizontal and Vertical ranges change from 0 to +1 or -1 with increase/decrease in 0.05f steps - Unity
         // GetAxisRaw has changes from 0 to 1 or -1 immediately, so with no steps - Unity
         // Use GetAxisRaw if we dont want the player character to "slide" around for a while after updating
-        float keyWS = Input.GetAxis("Vertical");
-        float keyAD = Input.GetAxis("Horizontal");
+        float keyWS = Input.GetAxisRaw("Vertical");
+        float keyAD = Input.GetAxisRaw("Horizontal");
 
         // Assign the inputs to m_Movement
         m_Movement.x = keyAD;
