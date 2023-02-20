@@ -147,14 +147,20 @@ MonoBehaviour:
   - {fileID: 1263530598435482049, guid: 6e8aa6b97f5917842a8d1a1bd782ee2d, type: 3}
   - {fileID: 7569929156190634388, guid: c502c00fdeb24744b9e16b8fffa22223, type: 3}
   - {fileID: 4217952599582549240, guid: 31ad58f8929290345adb3073c1c361b9, type: 3}
+  - {fileID: 4697989199229766275, guid: 675ce9ab75e5cb842bba3eeba1778767, type: 3}
+  - {fileID: 7894559333986417363, guid: 6e84d3dcf43206a42a6601ffbaa1c513, type: 3}
   Rare:
   - {fileID: 1714184383971618628, guid: 3c45a45bbcf6d60408c459c3cf98abfb, type: 3}
   - {fileID: 654216820536912669, guid: cbf55eccee77d864d9f46c6660967a0f, type: 3}
+  - {fileID: 3208848167588750184, guid: a42154d74ccc00c40a54ffd0c768739c, type: 3}
   Epic:
   - {fileID: 2985776013163633082, guid: 1fdf49b7ff3e0df43892ba43e1c16e3b, type: 3}
   - {fileID: 6865994055832323894, guid: 1b0e15fb38918a24d85911b0392ac42d, type: 3}
+  - {fileID: 7993564263508283143, guid: 04c3b2483c0676b4798a0fbcdff7d37c, type: 3}
+  - {fileID: 1149865585574159163, guid: d556885f979f30b4ea127b995480e5f0, type: 3}
   Legendary:
   - {fileID: 538942117439789948, guid: 8090f63cbdc4b9646ba5f216d6d4385c, type: 3}
+  - {fileID: 7640739627633087651, guid: 1f58b703eb7895b4a8ca7ce6d3084eae, type: 3}
 --- !u!1001 &1932183300127407388
 PrefabInstance:
   m_ObjectHideFlags: 0
