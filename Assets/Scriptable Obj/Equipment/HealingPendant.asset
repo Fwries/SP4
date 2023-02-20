@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231e779bea61e5342b8342f93e6f8354, type: 3}
+  m_Name: HealingPendant
+  m_EditorClassIdentifier: 
+  EquipmentIcon: {fileID: 21300000, guid: affec71ac0981bb4baf64f42900ed811, type: 3}
+  Description: Lets you regenerate health after being idle for awhile. Very rare!
+  AtkSpeedAdd: 0
+  HealthAdd: 0
+  ReachAdd: 0
+  SpeedAdd: 0
+  RegenAdd: 1
+  DodgeAdd: 0
+  CritChanceAdd: 0
+  LifeStealAdd: 0
+  ResistDamageAdd: 0
