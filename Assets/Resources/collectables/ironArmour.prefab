@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 6534916642775771725}
   m_Layer: 0
   m_Name: ironArmour
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -325,3 +325,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: 69ca973719647f846bcd45473b6e6053, type: 2}
+  isShopItem: 0

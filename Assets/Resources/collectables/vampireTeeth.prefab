@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3154717002320714513}
   m_Layer: 0
   m_Name: vampireTeeth
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -509,3 +509,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: bfda24e3169ac6e488bc85d6406e88c5, type: 2}
+  isShopItem: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1498893800326331803}
   m_Layer: 0
   m_Name: leatherBoots
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,3 +373,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: 290ca890c8a0c0442ac5e0c868017b46, type: 2}
+  isShopItem: 0

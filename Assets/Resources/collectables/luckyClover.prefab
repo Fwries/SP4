@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3371523119118762922}
   m_Layer: 0
   m_Name: luckyClover
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: ec170a6d78b76ba4e90b63b3b804a4da, type: 2}
+  isShopItem: 0
 --- !u!136 &3371523119118762922
 CapsuleCollider:
   m_ObjectHideFlags: 0

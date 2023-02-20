@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7377132133333453393}
   m_Layer: 0
   m_Name: ironBuckle
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -522,3 +522,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: 6a2a49712ddeb8e42a3e207666e2c153, type: 2}
+  isShopItem: 0

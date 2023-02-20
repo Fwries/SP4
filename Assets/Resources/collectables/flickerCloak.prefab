@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3685157353975343365}
   m_Layer: 0
   m_Name: flickerCloak
-  m_TagString: Untagged
+  m_TagString: equipment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: 6a01b8110fc56114cb2cd126aa461e2e, type: 2}
+  isShopItem: 0
 --- !u!136 &3685157353975343365
 CapsuleCollider:
   m_ObjectHideFlags: 0

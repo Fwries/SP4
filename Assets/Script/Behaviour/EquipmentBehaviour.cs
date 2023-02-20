@@ -6,6 +6,7 @@ public class EquipmentBehaviour : MonoBehaviour
 {
     public string equipmentName;
     public ScEquipment scEquipment;
+    public bool isShopItem = false;
 
     // Update is called once per frame
     void Update()
@@ -15,11 +16,20 @@ public class EquipmentBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (isShopItem == false)
         {
-            other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
-            Destroy(this.gameObject);
+            if (other.gameObject.tag == "Player")
+            {
+                other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    public void broughtFromShop(GameObject player)
+    {
+        player.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
+        DestroyImmediate(this.gameObject, true);
     }
 
 }

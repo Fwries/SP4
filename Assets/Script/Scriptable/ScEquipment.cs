@@ -7,6 +7,7 @@ public class ScEquipment : ScriptableObject
 {
     public Sprite EquipmentIcon;
     public string Description;
+    public int shopPrice;
     public float AtkSpeedAdd;
     public int HealthAdd;
     public int ReachAdd;
