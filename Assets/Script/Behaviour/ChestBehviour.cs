@@ -5,8 +5,8 @@ using UnityEngine;
 public class ChestBehviour : MonoBehaviour
 {
     public Transform coinPos;
-    private Vector3 coinOff = new Vector3(0f, 0f, -1.2f);
-    private Vector3 equipOff = new Vector3(1f, 0f, -1.2f);
+    private Vector3 coinOff = new Vector3(0f, 0.2f, -1.2f);
+    private Vector3 equipOff = new Vector3(1f, 0.3f, -1.2f);
 
     private GameObject player;
     public GameObject prefabToSpawn;
