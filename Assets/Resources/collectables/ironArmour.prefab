@@ -323,6 +323,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4db3b2471668964292127ce3c8a6318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentName: Iron Armour
-  scEquipment: {fileID: 0}
-  scRarietyList: {fileID: 0}
+  equipmentName: 
+  scEquipment: {fileID: 11400000, guid: 69ca973719647f846bcd45473b6e6053, type: 2}

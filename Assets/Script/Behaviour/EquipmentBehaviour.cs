@@ -6,11 +6,20 @@ public class EquipmentBehaviour : MonoBehaviour
 {
     public string equipmentName;
     public ScEquipment scEquipment;
-    public ScRarietyList scRarietyList;
 
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, Time.deltaTime * 100, 0);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
+            Destroy(this.gameObject);
+        }
+    }
+
 }
