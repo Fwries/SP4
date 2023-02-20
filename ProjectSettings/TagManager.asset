@@ -12,6 +12,8 @@ TagManager:
   - HitBox
   - Wall
   - Chest
+  - Bullet
+  - BreakWall
   layers:
   - Default
   - TransparentFX
