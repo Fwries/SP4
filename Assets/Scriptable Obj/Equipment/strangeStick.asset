@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: 3552427c12ed45843bcf3c790731b629, type: 3}
   Description: Don't ask me how this works. Makes your weapon's reach longer
+  shopPrice: 10
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 2

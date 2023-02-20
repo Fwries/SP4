@@ -14,6 +14,7 @@ TagManager:
   - Chest
   - Bullet
   - BreakWall
+  - equipment
   layers:
   - Default
   - TransparentFX
