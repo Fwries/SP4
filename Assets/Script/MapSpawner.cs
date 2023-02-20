@@ -14,10 +14,10 @@ public class MapSpawner : MonoBehaviour
             Map = Instantiate(startingRoom, this.transform.position, Quaternion.identity, this.transform);
             mapSpawned = true;
         }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            Destroy(Map);
-            mapSpawned = false;
-        }
+    }
+    public void RegenerateMap()
+    {
+        Destroy(Map);
+        mapSpawned = false;
     }
 }

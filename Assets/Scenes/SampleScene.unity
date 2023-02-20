@@ -1304,6 +1304,7 @@ MonoBehaviour:
   SecretRoom: {fileID: 231897167727135564, guid: d69bb5364a8200c4ab733efaadb7db60, type: 3}
   Rooms: []
   waitTime: 4
+  Map: {fileID: 1837219011}
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0

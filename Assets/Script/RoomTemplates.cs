@@ -19,6 +19,7 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     private bool spawnedBoss;
+    public GameObject Map;
 
     int rand;
     private void Update()
@@ -32,6 +33,14 @@ public class RoomTemplates : MonoBehaviour
         else
         {
             waitTime -= Time.deltaTime;
+        }
+
+        if (spawnedBoss == true && Rooms.Count < 10)
+        {
+            spawnedBoss = false;
+            waitTime = 4;
+            Rooms.Clear();
+            Map.GetComponent<MapSpawner>().RegenerateMap();
         }
     }
 }
