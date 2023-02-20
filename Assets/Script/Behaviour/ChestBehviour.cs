@@ -33,6 +33,8 @@ public class ChestBehviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasOpen == false)
         {
+            Transform chestTop = transform.GetChild(0);
+            chestTop.rotation = Quaternion.Euler(45f, 0f, 0f);
             // Coins spawning (guaranteed)
             Transform coin = Instantiate(coinPos, transform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, 10));
