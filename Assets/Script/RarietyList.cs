@@ -26,15 +26,15 @@ public class RarietyList : MonoBehaviour
         }
         else if (RandRariety < 81)
         {
-            return Rare[Random.Range(0, Common.Length)];
+            return Rare[Random.Range(0, Rare.Length)];
         }
         else if (RandRariety < 96)
         {
-            return Epic[Random.Range(0, Common.Length)];
+            return Epic[Random.Range(0, Epic.Length)];
         }
         else if (RandRariety < 101)
         {
-            return Legendary[Random.Range(0, Common.Length)];
+            return Legendary[Random.Range(0, Legendary.Length)];
         }
         return null;
     }

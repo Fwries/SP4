@@ -38,6 +38,11 @@ public class PlayerStats : MonoBehaviour
         Coin += n;
         coinCounter.SetCoins(Coin);
     }
+    public void RecoverHealth(int amount)
+    {
+        currentHealth += amount;
+        HealthBar.SetHealth(currentHealth);
+    }
 
     public void EquipmentEquip(ScEquipment scEquipment)
     {
@@ -51,5 +56,7 @@ public class PlayerStats : MonoBehaviour
         CritChance += scEquipment.CritChanceAdd;
         LifeSteal += scEquipment.LifeStealAdd;
         ResistDamage += scEquipment.ResistDamageAdd;
+
+        HealthBar.SetHealth(currentHealth);
     }
 }
