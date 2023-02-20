@@ -29,6 +29,9 @@ public class dieBehaviour : StateMachineBehaviour
         {
             Transform coin = Instantiate(coinPos, myTransform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, animator.GetInteger("CoinAmount")));
+
+            RoomPrescence roomPrescence = animator.GetComponentInParent<RoomPrescence>();
+            roomPrescence.EnemyDestroyed();
             Destroy(animator.GetComponent<Transform>().parent.gameObject);
         }
     }

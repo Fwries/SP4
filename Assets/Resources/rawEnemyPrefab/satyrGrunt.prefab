@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7558714829019675898}
   m_Layer: 6
   m_Name: satyrGrunt
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
