@@ -10,12 +10,12 @@ public class coinCounter : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        coinText.text = "X" + currentCoin.ToString();
+        coinText.text = "x" + currentCoin.ToString();
     }
 
     public void SetCoins(int n)
     {
         currentCoin = n;
-        coinText.text = "X" + currentCoin.ToString();
+        coinText.text = "x" + currentCoin.ToString();
     }
 }

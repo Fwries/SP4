@@ -92,13 +92,13 @@ TextMesh:
   m_Anchor: 1
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 10
+  m_FontSize: 16
   m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278192383
+    rgba: 4278190335
 --- !u!114 &5645844488384182230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 3
+  offset: {x: 0, y: 2, z: 0}
+  randomizeIntensity: {x: 0.1, y: 0, z: 0}
 --- !u!95 &8335054291429410580
 Animator:
   serializedVersion: 5
