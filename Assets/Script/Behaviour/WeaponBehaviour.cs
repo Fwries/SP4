@@ -151,6 +151,8 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
+
+        Inventory.instance.SetWeapon(scWeapon);
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)

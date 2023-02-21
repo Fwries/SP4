@@ -9,7 +9,7 @@ public class WeaponSlot : MonoBehaviour
     public void ChangeWeapon(ScWeapon newWeapon)
     {
         Weapon = newWeapon;
-        //icon.sprite = Weapon.EquipmentIcon;
+        icon.sprite = Weapon.WeaponIcon;
         icon.enabled = true;
     }
 

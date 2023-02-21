@@ -27,10 +27,16 @@ public class Inventory : MonoBehaviour
 	public delegate void OnItemChanged();
 	public OnItemChanged onItemChangedCallback;
 
+	// Callback which is triggered when
+	// an weapon changes.
+	public delegate void OnWeaponChanged();
+	public OnWeaponChanged onWeaponChangedCallback;
+
 	public int space = 9;  // Amount of slots in inventory
 
 	// Current list of items in inventory
 	public List<ScEquipment> items = new List<ScEquipment>();
+	public ScWeapon CurrentWeapon;
 
 	// Check if item is alr in inventory
 	bool stack = false;
@@ -65,5 +71,11 @@ public class Inventory : MonoBehaviour
 		stack = false;
 		return true;
 	}
-
+	public bool SetWeapon(ScWeapon weapon)
+	{
+		CurrentWeapon = weapon;
+		if (onWeaponChangedCallback != null)
+			onWeaponChangedCallback.Invoke();
+		return true;
+	}
 }

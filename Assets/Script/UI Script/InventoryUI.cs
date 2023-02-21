@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour
     {
         inventory = Inventory.instance;
         inventory.onItemChangedCallback += UpdateUI;
+        inventory.onWeaponChangedCallback += UpdateWeapon;
         slots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
         currentWeapon=weaponParent.GetComponentInChildren<WeaponSlot>();
     }
@@ -41,6 +42,17 @@ public class InventoryUI : MonoBehaviour
         {
             Debug.Log("AHHHHHHHHHH");
             slots[i].ChangeCount(inventory.items[i]);
+        }
+    }
+    void UpdateWeapon()
+    {
+        if (inventory.CurrentWeapon != null)
+        {
+            currentWeapon.ChangeWeapon(inventory.CurrentWeapon);
+        }
+        else
+        {
+            currentWeapon.ClearSlot();
         }
     }
 }
