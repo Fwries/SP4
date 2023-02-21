@@ -122,6 +122,8 @@ public class WeaponBehaviour : MonoBehaviour
 
         scWeapon = _scWeapon;
         Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
+        Weapon.GetComponent<MeshCollider>().enabled = false;
+
 
         if ((int)scWeapon.AtkType == 1) // Swing
         {

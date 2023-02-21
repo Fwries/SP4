@@ -107,8 +107,8 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149865585574159163}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -128,7 +128,7 @@ MonoBehaviour:
   hitboxes:
   - {fileID: 5977504654603376504}
   - {fileID: 7750841871913079432}
-  scWeapon: {fileID: 0}
+  scWeapon: {fileID: 11400000, guid: 80966a1ff5d82a84ab9edda3bfa51e78, type: 2}
 --- !u!114 &7874768987197610250
 MonoBehaviour:
   m_ObjectHideFlags: 0

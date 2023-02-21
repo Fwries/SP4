@@ -21,8 +21,11 @@ public class HitboxContainer : MonoBehaviour
             GameObject player = other.gameObject;
             Transform playerHand = player.transform.Find("Hand");
 
-            playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
-            Destroy(this.gameObject);
+            if (playerHand.gameObject.GetComponent<WeaponBehaviour>().Weapon == null)
+            {
+                playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
+                Destroy(this.gameObject);
+            }
         }
         if (other.gameObject.tag == "Wall")
         {
