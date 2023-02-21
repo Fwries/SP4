@@ -50,8 +50,8 @@ public class WeaponBehaviour : MonoBehaviour
             }
             else if ((int)scWeapon.AtkType == 2) // Stab
             {
-                Weapon.transform.Rotate(0, 0, -45);
-                Weapon.transform.position -= new Vector3(Mathf.Cos(dir.x), 0, Mathf.Sin(dir.z)) * 2;
+                Weapon.transform.Rotate(0, -90, 45);
+                Weapon.transform.position -= (Weapon.transform.forward) * 2;
                 //IsAttack = true;
 
                 foreach (Hitbox hitbox in hitBoxes)
