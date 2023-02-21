@@ -5,7 +5,9 @@ using UnityEngine;
 public class MagicBallBehaviour : MonoBehaviour
 {
     public GameObject explosionParticles;
+    public GameObject player;
     private Vector3 shootDir;
+    Color originalColor;
     private int damage;
     float projSpeed;
     public void SetUp(Vector3 shootDirection, int Damage, float ProjSpeed)
@@ -32,7 +34,26 @@ public class MagicBallBehaviour : MonoBehaviour
         Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
+            player = collision.gameObject;
+            StartCoroutine(TintSpriteRed());
+
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
         }
+    }
+
+    private IEnumerator TintSpriteRed()
+    {
+        SpriteRenderer spriteRenderer = player.GetComponentInChildren<SpriteRenderer>();
+        Color originalColor = spriteRenderer.color;
+
+        // Change the sprite color to the tint color
+        spriteRenderer.color = Color.red;
+
+        // Wait for 0.3 seconds
+        yield return new WaitForSeconds(0.3f);
+        //Debug.Log("turn back");
+
+        // Change the sprite color back to the original color
+        spriteRenderer.color = originalColor;
     }
 }

@@ -85,7 +85,6 @@ public class hellSpawnAttack : StateMachineBehaviour
                 }
                 if (numProjectiles2 <= 0)
                 {
-                    Debug.Log("ATTACK2");
                     animator.SetInteger("AttackDecider", 0);
                 }
             }

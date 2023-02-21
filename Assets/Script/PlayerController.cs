@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Camera          m_MainCamera;
     private CameraSettings  m_CameraSettings;
 
+    float tintTimer;
+
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
 
     void Start()
@@ -34,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
         m_MainCamera = Camera.main;
         m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
+
+        tintTimer = 1f;
     }
 
     void UpdateMovementOnWASDPressed()
@@ -58,6 +62,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateMovementOnWASDPressed();
+
+        if (transform.GetComponentInChildren<SpriteRenderer>().color == new Color(1f, 1f, 1f))
+        {
+            tintTimer = 0f;
+        }
+
+        if (tintTimer < 0.3f)
+        {
+            tintTimer += Time.deltaTime;
+        }
+        else if (tintTimer > 0.3f && tintTimer < 0.4f)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            tintTimer = 1f;
+        }
     }
     void UpdateCharacterOnMovementUpdated()
     {

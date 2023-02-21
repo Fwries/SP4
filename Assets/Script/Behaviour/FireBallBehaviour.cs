@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireBallBehaviour : MonoBehaviour
 {
     public GameObject explosionParticles;
+    public GameObject player;
     private Vector3 shootDir;
     private int damage;
     float projSpeed;
@@ -32,7 +33,26 @@ public class FireBallBehaviour : MonoBehaviour
         Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
+            player = collision.gameObject;
+            StartCoroutine(TintSpriteRed());
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
         }
+    }
+
+    private IEnumerator TintSpriteRed()
+    {
+        SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
+
+        // Save the original color
+        Color originalColor = spriteRenderer.color;
+
+        // Change the sprite color to the tint color
+        spriteRenderer.color = Color.red;
+
+        // Wait for 0.3 seconds
+        yield return new WaitForSeconds(0.3f);
+
+        // Change the sprite color back to the original color
+        spriteRenderer.color = originalColor;
     }
 }

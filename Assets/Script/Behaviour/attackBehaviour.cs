@@ -34,6 +34,11 @@ public class attackBehaviour : StateMachineBehaviour
 
         if (timer > animator.GetFloat("AttackSpeed"))
         {
+            SpriteRenderer spriteRenderer = player.GetComponentInChildren<SpriteRenderer>();
+            // Change the sprite color to the tint color
+            spriteRenderer.color = Color.red;
+
+
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(animator.GetInteger("Damage"));
             timer = 0;
         }
