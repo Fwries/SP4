@@ -211,6 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticles: {fileID: 77758339210535855, guid: 2f41c6c4bd4a09d4b83f9de4aff48145, type: 3}
+  projParticles1: {fileID: 6839455235961694759, guid: 2d538c241d9a11142a61f5bcf6716fcd, type: 3}
+  projParticlesReal: {fileID: 0}
+  player: {fileID: 0}
 --- !u!54 &7923628548049066465
 Rigidbody:
   m_ObjectHideFlags: 0
