@@ -17,4 +17,10 @@ public class ScEquipment : ScriptableObject
     public int CritChanceAdd;
     public int LifeStealAdd;
     public int ResistDamageAdd;
+    [SerializeField]private int BaseStack = 0;
+    public int stack;
+    private void OnEnable()
+    {
+        stack = BaseStack;
+    }
 }

@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EquipmentSlot : MonoBehaviour
 {
     public Image icon;
+    public TMP_Text ItemCount;
     ScEquipment Item;
 
     public void AddItem(ScEquipment newItem)
@@ -13,6 +13,7 @@ public class EquipmentSlot : MonoBehaviour
         Item = newItem;
         icon.sprite = Item.EquipmentIcon;
         icon.enabled = true;
+        ItemCount.text = " ";
     }
 
     public void ClearSlot()
@@ -21,5 +22,14 @@ public class EquipmentSlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+        ItemCount.text = " ";
+    }
+    public void ChangeCount(ScEquipment newItem)
+    {
+        Item = newItem;
+        if (Item.stack > 0)
+        {
+            ItemCount.text = Item.stack.ToString();
+        }
     }
 }

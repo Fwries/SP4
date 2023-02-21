@@ -32,24 +32,37 @@ public class Inventory : MonoBehaviour
 	// Current list of items in inventory
 	public List<ScEquipment> items = new List<ScEquipment>();
 
+	// Check if item is alr in inventory
+	bool stack = false;
+
 	// Add a new item. If there is enough room we
 	// return true. Else we return false.
-	public bool Add(ScEquipment item)
+	public bool AddItem(ScEquipment item)
 	{
-		
 		// Check if out of space
 		if (items.Count >= space)
 		{
 			Debug.Log("Not enough room.");
 			return false;
 		}
-
-		items.Add(item);    // Add item to list
-
+		for (int i=0; i < items.Count; i++)
+		{
+			if (item.name == items[i].name)
+			{
+				items[i].stack++;
+				Debug.Log("Add to stack");
+				stack = true;
+			}
+		}
+		if(stack==false)
+		{
+			// Add item to list
+			items.Add(item);
+        }
 		// Trigger callback
 		if (onItemChangedCallback != null)
 			onItemChangedCallback.Invoke();
-
+		stack = false;
 		return true;
 	}
 

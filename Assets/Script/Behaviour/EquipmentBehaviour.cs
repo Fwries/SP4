@@ -21,7 +21,7 @@ public class EquipmentBehaviour : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
-                Inventory.instance.Add(scEquipment);
+                Inventory.instance.AddItem(scEquipment);
                 Destroy(this.gameObject);
             }
         }
