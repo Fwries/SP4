@@ -42,7 +42,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && player != null && HasBought == false)
+        if (Input.GetKeyDown(KeyCode.F) && player != null && HasBought == false && pedastalItem != null)
         {
             if (prefabToSpawn.CompareTag("equipment"))
             {
