@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8496132176484464540, guid: 4a3e869a539f14141ad03e201476c03c, type: 3}
+  Prefab: {fileID: 6222689472201612851, guid: 4a3e869a539f14141ad03e201476c03c, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 03bfb53d2598aff409f302acdcfb3ff8, type: 3}
   Name: Axe
   Description: 
   AtkType: 1

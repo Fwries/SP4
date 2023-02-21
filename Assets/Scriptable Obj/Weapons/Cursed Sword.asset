@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cursed Sword
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3610939065463330030, guid: 8ac8972c78a693c46afee6e47e2d204e, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: cdaa45f658cb1d64f9361d30a682eb6e, type: 3}
   Name: Cursed Sword
   Description: 
   AtkType: 1

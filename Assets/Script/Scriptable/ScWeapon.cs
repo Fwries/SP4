@@ -14,6 +14,7 @@ public class ScWeapon : ScriptableObject
     };
 
     public GameObject Prefab;
+    public Sprite WeaponIcon;
     public string Name;
     public string Description;
 

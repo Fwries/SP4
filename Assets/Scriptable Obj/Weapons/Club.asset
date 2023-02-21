@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   Prefab: {fileID: 901847194963998080, guid: 1ec902c487aea6f4dacfb3ff8d6a98ea, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 5864ff8cd292e8247a89a57ad13732b5, type: 3}
   Name: Club
   Description: 
   AtkType: 1
