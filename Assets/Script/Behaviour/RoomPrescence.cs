@@ -34,7 +34,7 @@ public class RoomPrescence : MonoBehaviour
         {
             bufferTime += 0.05f;
         }
-        else if ((bufferTime > 4.5f && bufferTime < 4.7f) && roomCleared == false)
+        else if ((bufferTime > 4.5f && bufferTime < 4.7f) && roomCleared == false && playerIn == true)
         {
             bufferTime = 4.7f;
             //Put up walls:
