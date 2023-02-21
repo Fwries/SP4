@@ -18,8 +18,8 @@ MonoBehaviour:
   AtkType: 0
   AtkSpeed: 0
   AtkCooldown: 0
-  AtkReach: 0
+  AtkReach: 1
   AtkRange: 0
-  Weight: 0
+  Mass: 2
   OffsetX: 0.732
   OffsetY: 0.732
