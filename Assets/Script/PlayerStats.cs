@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public string Username;
     public int MaxHealth = 17;
     public int currentHealth;
     public int Coin;
