@@ -19,7 +19,7 @@ MonoBehaviour:
   AtkSpeed: 0.7
   AtkCooldown: 0
   AtkReach: 1
-  AtkRange: 10
+  AtkRange: 3
   Mass: 1
   OffsetX: 0
   OffsetY: 0.732

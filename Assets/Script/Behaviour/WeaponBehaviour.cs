@@ -50,9 +50,10 @@ public class WeaponBehaviour : MonoBehaviour
             }
             else if ((int)scWeapon.AtkType == 2) // Stab
             {
-                Weapon.transform.Rotate(0, -90, 45);
-                Weapon.transform.position -= (Weapon.transform.forward) * 2;
-                //IsAttack = true;
+                Weapon.transform.Rotate(0, -90, 0);
+                Weapon.transform.position -= (Weapon.transform.forward) * -0.2f;
+                Weapon.transform.Rotate(0, 90, 0);
+                IsAttack = true;
 
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = true;
@@ -92,17 +93,21 @@ public class WeaponBehaviour : MonoBehaviour
             }
             if ((int)scWeapon.AtkType == 2) // Stab
             {
-                //AtkSwing += Time.deltaTime;
-                //Weapon.transform.Translate(new Vector3(Mathf.Cos(dir.x), 0, Mathf.Sin(dir.z)) * Time.deltaTime / scWeapon.AtkSpeed);
-                //if (AtkSwing > scWeapon.AtkSpeed)
-                //{
-                //    Weapon.transform.Rotate(0, 0, 45);
-                //    AtkSwing = 0;
-                //    IsAttack = false;
+                Weapon.transform.Rotate(0, -90, 0);
+                EndSwing += Time.deltaTime * scWeapon.AtkSpeed;
+                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing / scWeapon.AtkReach;
+                Weapon.transform.Rotate(0, 90, 0);
 
-                //    foreach (Hitbox hitbox in hitBoxes)
-                //        hitbox.active = false;
-                //}
+                if (EndSwing > (scWeapon.AtkSpeed / scWeapon.AtkReach) / 4)
+                {
+                    Weapon.transform.position = new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z);
+                    //Weapon.transform.Rotate(0, 0, -45);
+                    EndSwing = 0;
+                    IsAttack = false;
+
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.active = false;
+                }
             }
         }
         else
