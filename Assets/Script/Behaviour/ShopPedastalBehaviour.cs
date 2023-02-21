@@ -8,6 +8,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
 
     private GameObject player;
     public GameObject prefabToSpawn;
+    private GameObject pedastalItem;
     
     private bool HasBought;
 
@@ -17,7 +18,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
         prefabToSpawn = transform.GetComponent<RarietyList>().GetRandomGameObject();
         if (prefabToSpawn != null)
         {
-            GameObject pedastalItem = Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
+           pedastalItem = Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
            pedastalItem.transform.SetParent(this.transform);
         }
     }
@@ -50,7 +51,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 if (playerCoins >= itemPrice)
                 {
                     player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
-                    prefabToSpawn.gameObject.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
+                    pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
                 }
             }
         }
