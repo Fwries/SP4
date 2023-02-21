@@ -7,6 +7,7 @@ public class RoomPrescence : MonoBehaviour
 {
     public bool shouldTargetPlayer;
     public bool playerIn;
+    public bool playerInIn;
     public bool roomCleared;
 
     public float bufferTime;
@@ -17,6 +18,7 @@ public class RoomPrescence : MonoBehaviour
     {
         shouldTargetPlayer = false;
         playerIn = false;
+        playerInIn = false;
         roomCleared = false;
         bufferTime = 4.7f;
         enemyCount = GetComponentsInChildren<Transform>().Count(GetComponentInChildren => GetComponentInChildren.CompareTag("enemy")) / 2;
@@ -28,13 +30,14 @@ public class RoomPrescence : MonoBehaviour
         {
             bufferTime = 0f;
             playerIn = false;
+            playerInIn = true;
         }
 
         if (bufferTime < 4.5f)
         {
             bufferTime += 0.05f;
         }
-        else if ((bufferTime > 4.5f && bufferTime < 4.7f) && roomCleared == false && playerIn == true)
+        else if ((bufferTime > 4.5f && bufferTime < 4.7f) && roomCleared == false && playerInIn == true)
         {
             bufferTime = 4.7f;
             //Put up walls:
@@ -70,8 +73,8 @@ public class RoomPrescence : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            shouldTargetPlayer = true;
             playerIn = true;
+            shouldTargetPlayer = true;
         }
     }
     public void OnTriggerExit(Collider other)
@@ -80,6 +83,7 @@ public class RoomPrescence : MonoBehaviour
         {
             shouldTargetPlayer = false;
             playerIn = false;
+            playerInIn = false;
         }
     }
 
