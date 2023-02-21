@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireBallBehaviour : MonoBehaviour
 {
+    public GameObject explosionParticles;
     private Vector3 shootDir;
     private int damage;
     float projSpeed;
@@ -25,6 +26,9 @@ public class FireBallBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Instantiate(explosionParticles, transform.position, Quaternion.identity);
+
+
         Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {

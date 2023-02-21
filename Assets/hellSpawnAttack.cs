@@ -79,7 +79,7 @@ public class hellSpawnAttack : StateMachineBehaviour
                     Vector3 shootdir = (player.position - (myTransform.position - offset));
                     shootdir.y = 0f;
                     shootdir.Normalize();
-                    proj.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
+                    proj.GetComponent<FireBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
                     numProjectiles2--;
                     nextFireTime = Time.time + fireRate;
                 }
