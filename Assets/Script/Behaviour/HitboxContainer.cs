@@ -27,10 +27,6 @@ public class HitboxContainer : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        if (other.gameObject.tag == "Wall")
-        {
-            this.gameObject.GetComponent<ThrowWeapon>().StopThrow = true;
-        }
     }
 
     //void OnCollisionEnter(Collision collision)

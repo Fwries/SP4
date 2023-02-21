@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7993564263508283143, guid: 04c3b2483c0676b4798a0fbcdff7d37c, type: 3}
-  Name: 
+  Name: Stick
   Description: 
   AtkType: 1
   AtkSpeed: 0.5

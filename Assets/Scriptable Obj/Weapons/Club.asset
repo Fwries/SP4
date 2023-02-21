@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
-  m_Name: Sword
+  m_Name: Club
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4697989199229766275, guid: 675ce9ab75e5cb842bba3eeba1778767, type: 3}
-  Name: Sword
+  Prefab: {fileID: 901847194963998080, guid: 1ec902c487aea6f4dacfb3ff8d6a98ea, type: 3}
+  Name: Club
   Description: 
   AtkType: 1
-  AtkSpeed: 1
-  AtkCooldown: 0.2
-  AtkReach: 1
-  AtkRange: 180
-  Mass: 4
+  AtkSpeed: 0
+  AtkCooldown: 0
+  AtkReach: 0
+  AtkRange: 0
+  Mass: 0
   OffsetX: 0
-  OffsetY: 0.732
+  OffsetY: 0

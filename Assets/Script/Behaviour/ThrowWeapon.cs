@@ -59,7 +59,7 @@ public class ThrowWeapon : MonoBehaviour
                 Vector3 weaponTravelVec = force * m_WeaponTravelDist * m_WeaponDir.normalized * Time.deltaTime;
 
                 // Update the weapon rotation (Again, subtract because Unity uses left hand coordinate system)
-                m_WeaponRotate -= m_RotateSpeed * Time.deltaTime;
+                m_WeaponRotate += m_RotateSpeed * Time.deltaTime;
 
                 // Move and rotate the weapon to simulate weapon throw
                 transform.position += weaponTravelVec;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Hammer
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7894559333986417363, guid: 6e84d3dcf43206a42a6601ffbaa1c513, type: 3}
-  Name: 
+  Name: Hammer
   Description: 
   AtkType: 3
   AtkSpeed: 1.5

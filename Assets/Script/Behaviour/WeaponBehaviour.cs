@@ -17,6 +17,7 @@ public class WeaponBehaviour : MonoBehaviour
     private float AtkSwingY;
     private float StartSwing;
     private float EndSwing;
+    private int atkType;
 
     private Vector3 TransformPos;
 
@@ -43,15 +44,15 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && !IsAttack && !IsCoolDown)
         {
-            if ((int)scWeapon.AtkType == 1) // Swing
+            if (atkType == 1) // Swing
             {
-                Weapon.transform.Rotate(-90, 0, 0);
+                Weapon.transform.Rotate(90, 0, 0);
                 AtkSwingY = StartSwing;
                 IsAttack = true;
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = true;
             }
-            else if ((int)scWeapon.AtkType == 2) // Stab
+            else if (atkType == 2) // Stab
             {
                 Weapon.transform.Rotate(0, -90, 0);
                 Weapon.transform.position -= (Weapon.transform.forward) * -0.2f;
@@ -61,7 +62,7 @@ public class WeaponBehaviour : MonoBehaviour
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = true;
             }
-            else if ((int)scWeapon.AtkType == 3) // Crush
+            else if (atkType == 3) // Crush
             {
                 AtkSwingZ = StartSwing;
                 IsAttack = true;
@@ -84,12 +85,12 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (IsAttack)
         {
-            if ((int)scWeapon.AtkType == 1) // Swing
+            if (atkType == 1) // Swing
             {
                 AtkSwingY += 720 * Time.deltaTime / scWeapon.AtkSpeed;
                 if (AtkSwingY > EndSwing)
                 {
-                    Weapon.transform.Rotate(90, 0, 0);
+                    Weapon.transform.Rotate(-90, 0, 0);
                     AtkSwingY = 0;
                     IsAttack = false;
                     IsCoolDown = true;
@@ -98,7 +99,7 @@ public class WeaponBehaviour : MonoBehaviour
                         hitbox.active = false;
                 }
             }
-            else if ((int)scWeapon.AtkType == 2) // Stab
+            else if (atkType == 2) // Stab
             {
                 Weapon.transform.Rotate(0, -90, 0);
                 EndSwing += Time.deltaTime * scWeapon.AtkSpeed;
@@ -116,7 +117,7 @@ public class WeaponBehaviour : MonoBehaviour
                         hitbox.active = false;
                 }
             }
-            else if ((int)scWeapon.AtkType == 3) // Crush
+            else if (atkType == 3) // Crush
             {
                 AtkSwingZ += 720 * Time.deltaTime / scWeapon.AtkSpeed;
                 if (AtkSwingZ > EndSwing)
@@ -142,6 +143,10 @@ public class WeaponBehaviour : MonoBehaviour
             {
                 IsCoolDown = false;
                 Cooldown = 0;
+                if (scWeapon.Name == "Stick")
+                {
+                    atkType = Random.Range(1, 4);
+                }
             }
         }
 
@@ -160,13 +165,14 @@ public class WeaponBehaviour : MonoBehaviour
         Weapon.GetComponent<MeshCollider>().enabled = false;
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
-        
-        if ((int)scWeapon.AtkType == 1) // Swing
+        atkType = (int)scWeapon.AtkType;
+
+        if (atkType == 1) // Swing
         {
             EndSwing = scWeapon.AtkRange / 4;
             StartSwing = EndSwing * -3;
         }
-        else if ((int)scWeapon.AtkType == 3) // Crush
+        else if (atkType == 3) // Crush
         {
             EndSwing = scWeapon.AtkRange / 4;
             StartSwing = EndSwing * -3;
