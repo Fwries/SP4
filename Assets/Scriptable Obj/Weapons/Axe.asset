@@ -17,10 +17,10 @@ MonoBehaviour:
   Name: Axe
   Description: 
   AtkType: 1
-  AtkSpeed: 0
-  AtkCooldown: 0
-  AtkReach: 0
-  AtkRange: 0
-  Mass: 0
+  AtkSpeed: 1.5
+  AtkCooldown: 1
+  AtkReach: 1
+  AtkRange: 120
+  Mass: 1
   OffsetX: 0
-  OffsetY: 0
+  OffsetY: 0.732

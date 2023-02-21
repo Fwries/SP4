@@ -22,5 +22,5 @@ MonoBehaviour:
   AtkReach: 1
   AtkRange: 360
   Mass: 3
-  OffsetX: 0.3
-  OffsetY: 0.8
+  OffsetX: 0
+  OffsetY: 0.732
