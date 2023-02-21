@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class attackBehaviour : StateMachineBehaviour
 {
+    public GameObject slamParticles;
     NavMeshAgent agent;
     float timer;
     Transform player;
@@ -38,7 +39,10 @@ public class attackBehaviour : StateMachineBehaviour
             // Change the sprite color to the tint color
             spriteRenderer.color = Color.red;
 
-
+            if (slamParticles != null)
+            {
+                Instantiate(slamParticles, player.position, Quaternion.identity);
+            }
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(animator.GetInteger("Damage"));
             timer = 0;
         }
