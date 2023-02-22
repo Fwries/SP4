@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Camera          m_MainCamera;
     private CameraSettings  m_CameraSettings;
 
+    public AudioClip movementSound;
+
     float tintTimer;
 
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
