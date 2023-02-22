@@ -35,7 +35,5 @@ public class ScreenShake : MonoBehaviour
             transform.position = StartPos + Random.insideUnitSphere * strength / 100;
             yield return null;
         }
-
-        transform.position = StartPos;
     }
 }

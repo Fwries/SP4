@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hitbox : MonoBehaviour
 {
+    public int index;
     public int Crit = 1;
     public int Damage;
     public bool active;
@@ -22,7 +23,7 @@ public class Hitbox : MonoBehaviour
                 otherAnim.SetInteger("PrevHealth", otherAnim.GetInteger("Health"));
                 otherAnim.SetInteger("Health", Health - (Damage * Crit));
 
-                this.gameObject.GetComponentInParent<HitboxContainer>().OnHit();
+                this.gameObject.GetComponentInParent<HitboxContainer>().OnHit(index);
             }
         }
         if(other.gameObject.tag=="BreakWall")

@@ -6,6 +6,7 @@ public class WeaponBehaviour : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private Camera MainCamera;
 
     public GameObject Weapon;
 
@@ -169,8 +170,9 @@ public class WeaponBehaviour : MonoBehaviour
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
     }
 
-    public void LifeSteal()
+    public void Attack(int Damage)
     {
+        MainCamera.GetComponent<ScreenShake>().Shake(Damage);
         playerStats.RecoverHealth(playerStats.LifeSteal);
     }
 

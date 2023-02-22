@@ -6,7 +6,7 @@ public class HitboxContainer : MonoBehaviour
     public ScWeapon scWeapon;
 
     // Update is called once per frame
-    public void OnHit()
+    public void OnHit(int index)
     {
         for (int i = 0; i < hitboxes.Length; i++)
         {
@@ -15,7 +15,7 @@ public class HitboxContainer : MonoBehaviour
 
         if (transform.parent != null)
         {
-            transform.gameObject.GetComponentInParent<WeaponBehaviour>().LifeSteal();
+            transform.gameObject.GetComponentInParent<WeaponBehaviour>().Attack(hitboxes[index].Damage * hitboxes[index].Crit);
         }
     }
 
