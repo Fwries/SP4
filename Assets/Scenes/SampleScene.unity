@@ -2092,6 +2092,7 @@ MonoBehaviour:
   ResistDamage: 0
   HealthBar: {fileID: 25270104}
   coinCounter: {fileID: 2108283707}
+  dodgeText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
 --- !u!1001 &1520078089
 PrefabInstance:
   m_ObjectHideFlags: 0
