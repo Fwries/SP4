@@ -11,7 +11,7 @@ public class ScEquipment : ScriptableObject
     public float AtkSpeedAdd;
     public int HealthAdd;
     public int ReachAdd;
-    public int SpeedAdd;
+    public float SpeedAdd;
     public int RegenAdd;
     public int DodgeAdd;
     public int CritChanceAdd;

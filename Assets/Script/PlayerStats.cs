@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 
     public float AtkSpeed;
     public int Reach;
-    public int Speed;
+    public float Speed;
     public int Regen;
     public int Dodge;
     public int CritChance;
