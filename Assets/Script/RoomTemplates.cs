@@ -19,11 +19,35 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     private bool spawnedBoss;
+    private bool spawned;
     public GameObject Map;
 
     int rand;
+    int enemyRand;
     private void Update()
     {
+        if(waitTime<=0&&spawned==false)
+        {
+            for(int i=0;i<Rooms.Count;i++)
+            {
+                enemyRand = Random.Range(0, EnemySetsEasy.Length);
+                rand = Random.Range(0, 10);
+                if (rand >= 8)
+                {
+                    GameObject NewDecor = Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation);
+                    NewDecor.transform.SetParent(this.transform);
+                }
+                else
+                {
+                    rand = Random.Range(1, RoomDecor.Length);
+                    GameObject NewDecor = Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation);
+                    NewDecor.transform.SetParent(this.transform);
+                    GameObject enemies = Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity);
+                    enemies.transform.SetParent(this.transform);
+                }
+            }
+            spawned = true;
+        }
         if (waitTime <= 0 && spawnedBoss == false)
         {
             rand = Random.Range(0, boss.Length);
@@ -38,6 +62,7 @@ public class RoomTemplates : MonoBehaviour
         if (spawnedBoss == true && Rooms.Count < 10)
         {
             spawnedBoss = false;
+            spawned = false;
             waitTime = 4;
             Rooms.Clear();
             Map.GetComponent<MapSpawner>().RegenerateMap();

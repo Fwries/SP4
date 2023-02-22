@@ -37,24 +37,8 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
                 GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if(rand>=8)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
             }
             else if (DoorDirection == 2)
             {
@@ -63,23 +47,6 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
-
             }
             else if (DoorDirection == 3)
             {
@@ -88,22 +55,6 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
             }
             else if (DoorDirection == 4)
             {
@@ -112,22 +63,6 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-
-                rand = Random.Range(0, 10);
-                if (rand == 10)
-                {
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[0], transform.position, Templates.RoomDecor[0].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-                else
-                {
-                    rand = Random.Range(1, Templates.RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(Templates.RoomDecor[rand], transform.position, Templates.RoomDecor[rand].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform.parent);
-                }
-
-                GameObject enemies = Instantiate(Templates.EnemySetsEasy[enemyRand], transform.position, Quaternion.identity);
-                enemies.transform.SetParent(this.transform.parent);
             }
 
             spawned = true;
