@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (Random.Range(0, 100) >= Dodge) { return; }
+        if (Random.Range(0, 100) <= Dodge) { return; }
 
         damage -= ResistDamage;
         if (damage < 0) { damage = 0; }
