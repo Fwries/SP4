@@ -30,6 +30,7 @@ public class EquipmentBehaviour : MonoBehaviour
     public void broughtFromShop(GameObject player)
     {
         player.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
+        Inventory.instance.AddItem(scEquipment);
         DestroyImmediate(this.gameObject, true);
     }
 
