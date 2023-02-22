@@ -34,16 +34,13 @@ public class RoomTemplates : MonoBehaviour
                 rand = Random.Range(0, 10);
                 if (rand >= 8)
                 {
-                    GameObject NewDecor = Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform);
+                    GameObject NewDecor = Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
                 }
                 else
                 {
                     rand = Random.Range(1, RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation);
-                    NewDecor.transform.SetParent(this.transform);
-                    GameObject enemies = Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity);
-                    enemies.transform.SetParent(this.transform);
+                    GameObject NewDecor = Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+                    GameObject enemies = Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
                 }
             }
             spawned = true;
