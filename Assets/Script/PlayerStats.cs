@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private Camera MainCamera;
+
     public string Username;
     public int MaxHealth = 20;
     public int currentHealth;
@@ -61,6 +63,7 @@ public class PlayerStats : MonoBehaviour
         if (damage < 0) { damage = 0; }
 
         currentHealth -= damage;
+        MainCamera.GetComponent<ScreenShake>().Shake(damage);
         HealthBar.SetHealth(currentHealth);
     }
     public void IncreaseCoins(int n)

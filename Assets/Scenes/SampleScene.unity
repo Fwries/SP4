@@ -2386,6 +2386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e28791a42ec09d40a4aa8f39068615c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCamera: {fileID: 963194227}
   Username: 
   MaxHealth: 20
   currentHealth: 0
