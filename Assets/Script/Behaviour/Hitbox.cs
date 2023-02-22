@@ -27,6 +27,7 @@ public class Hitbox : MonoBehaviour
         if(other.gameObject.tag=="BreakWall")
         {
             Destroy(other.gameObject);
+            transform.gameObject.GetComponentInParent<HitboxContainer>().DestroyWeapon();
         }
     }
 }

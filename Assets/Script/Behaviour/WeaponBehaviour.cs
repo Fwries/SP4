@@ -31,6 +31,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     private void Update()
     {
+        Inventory.instance.SetWeapon(scWeapon);
         if (Weapon == null) { return; }
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -151,8 +152,6 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
-
-        Inventory.instance.SetWeapon(scWeapon);
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)
