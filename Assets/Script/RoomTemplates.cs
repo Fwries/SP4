@@ -70,7 +70,7 @@ public class RoomTemplates : MonoBehaviour
             Rooms.Clear();
             Map.GetComponent<MapSpawner>().RegenerateMap();
         }
-        else
+        if (Rooms.Count > 10)
         {
             MapSpawned = true;
         }

@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform equipmentParent;
     public Transform weaponParent;
+    public GameObject equipmentUI;
     EquipmentSlot[] slots;
     WeaponSlot currentWeapon;
     Inventory inventory;
@@ -22,7 +23,10 @@ public class InventoryUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            equipmentUI.SetActive(!equipmentUI.activeSelf);
+        }
     }
 
     void UpdateUI()
