@@ -8,6 +8,7 @@ public class EnemyOnHit : MonoBehaviour
 
     public float timer;
     public GameObject damageText;
+    [SerializeField] private AudioClip hurt;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -28,6 +29,7 @@ public class EnemyOnHit : MonoBehaviour
 
             transform.GetComponentInChildren<Animator>().SetBool("IsHit", false);
             transform.GetComponentInChildren<Animator>().SetInteger("PrevHealth", transform.GetComponentInChildren<Animator>().GetInteger("Health"));
+            SoundManager.Instance.PlaySound(hurt);
             timer = 0.0f;
         }
     }

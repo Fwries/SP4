@@ -221,3 +221,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
+  hurt: {fileID: 8300000, guid: 5c189b93fb7c8b34e8d77e7a2ec0ac2c, type: 3}
