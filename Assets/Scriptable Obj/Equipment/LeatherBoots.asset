@@ -18,7 +18,7 @@ MonoBehaviour:
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0
-  SpeedAdd: 2
+  SpeedAdd: 1
   RegenAdd: 0
   DodgeAdd: 0
   CritChanceAdd: 0

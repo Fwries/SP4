@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats m_PlayerStats;
 
     // Variables affecting the player character m_Movement
-    public float m_SPEED = 5.0f;
+    public float m_SPEED = 1.0f;
     private Vector3 m_CharacterDir;
 
     // Character's m_RigidBody
