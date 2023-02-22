@@ -59,6 +59,10 @@ public class PlayerStats : MonoBehaviour
     public void RecoverHealth(int amount)
     {
         currentHealth += amount;
+        if (currentHealth > MaxHealth)
+        {
+            currentHealth = MaxHealth;
+        }
         HealthBar.SetHealth(currentHealth);
     }
 
