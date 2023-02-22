@@ -15,7 +15,7 @@ MonoBehaviour:
   EquipmentIcon: {fileID: 21300000, guid: da1cd0c4136a25a4991c6d7c37584b27, type: 3}
   Description: Gets your player high and more violent
   shopPrice: 10
-  AtkSpeedAdd: 0.1
+  AtkSpeedAdd: -0.1
   HealthAdd: 0
   ReachAdd: 0
   SpeedAdd: 0
