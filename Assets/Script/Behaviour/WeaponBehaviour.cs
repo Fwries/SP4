@@ -7,6 +7,7 @@ public class WeaponBehaviour : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Camera MainCamera;
+    [SerializeField] private AudioClip swordSwing;
 
     public GameObject Weapon;
 
@@ -85,6 +86,7 @@ public class WeaponBehaviour : MonoBehaviour
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.Crit = 1;
             }
+            SoundManager.Instance.PlaySound(swordSwing);
         }
 
         if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)

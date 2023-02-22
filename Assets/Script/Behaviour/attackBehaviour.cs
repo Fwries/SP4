@@ -10,6 +10,9 @@ public class attackBehaviour : StateMachineBehaviour
     float timer;
     Transform player;
     Transform myTransform;
+
+    [SerializeField] private AudioClip slamEffect;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -39,9 +42,10 @@ public class attackBehaviour : StateMachineBehaviour
             // Change the sprite color to the tint color
             spriteRenderer.color = Color.red;
 
-            if (slamParticles != null)
+            if (slamParticles != null && slamEffect != null)
             {
                 Instantiate(slamParticles, player.position, Quaternion.identity);
+                SoundManager.Instance.PlaySound(slamEffect);
             }
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(animator.GetInteger("Damage"));
             timer = 0;

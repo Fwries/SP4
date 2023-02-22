@@ -511,6 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamParticles: {fileID: 1496768513225198218, guid: d8609f8dc6c8d334ea4215fee4d72879, type: 3}
+  slamEffect: {fileID: 8300000, guid: 2a0d1edfe574c6e4387bb047a2f1014b, type: 3}
 --- !u!114 &4239715771139783560
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -629,6 +629,7 @@ MonoBehaviour:
     m_Bits: 1
   playerStats: {fileID: 1498030894}
   MainCamera: {fileID: 963194227}
+  swordSwing: {fileID: 8300000, guid: b3c4bb22c47e9a14092c038194810035, type: 3}
   Weapon: {fileID: 0}
   scWeapon: {fileID: 11400000, guid: 897c28bd92f87eb49970e74dd96c6250, type: 2}
   hitBoxes:
