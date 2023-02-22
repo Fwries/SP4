@@ -118,10 +118,10 @@ public class WeaponBehaviour : MonoBehaviour
             {
                 Weapon.transform.Rotate(0, -90, 0);
                 EndSwing += Time.deltaTime * (scWeapon.AtkSpeed + playerStats.AtkSpeed);
-                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing / (scWeapon.AtkReach + playerStats.Reach);
+                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing * (scWeapon.AtkReach + playerStats.Reach);
                 Weapon.transform.Rotate(0, 90, 0);
 
-                if (EndSwing > ((scWeapon.AtkSpeed + playerStats.AtkSpeed) / (scWeapon.AtkReach + playerStats.Reach)) / 4)
+                if (EndSwing > ((scWeapon.AtkSpeed + playerStats.AtkSpeed) / 10))
                 {
                     Weapon.transform.position = new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z);
                     EndSwing = 0;

@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 1149865585574159163, guid: d556885f979f30b4ea127b995480e5f0, type: 3}
   WeaponIcon: {fileID: 21300000, guid: c540f3f73c97f964ca54856bcbfd96ab, type: 3}
   Name: Mace
-  Description: 'Damage: 10'
+  Description: 'Damage: 20'
   AtkType: 1
   AtkSpeed: 1.5
   AtkCooldown: 2.5

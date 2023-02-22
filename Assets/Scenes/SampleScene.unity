@@ -2002,7 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Username: 
-  MaxHealth: 17
+  MaxHealth: 20
   currentHealth: 0
   Coin: 0
   AtkSpeed: 0
