@@ -72,6 +72,17 @@ public class WeaponBehaviour : MonoBehaviour
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = true;
             }
+
+            if (Random.Range(0, 100) <= playerStats.CritChance)
+            {
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.Crit = 2;
+            }
+            else
+            {
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.Crit = 1;
+            }
         }
 
         if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)
@@ -154,6 +165,11 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
+    }
+
+    public void LifeSteal()
+    {
+        playerStats.RecoverHealth(playerStats.LifeSteal);
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)
