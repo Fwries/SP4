@@ -11,6 +11,8 @@ public class ChestBehviour : MonoBehaviour
     private GameObject player;
     public GameObject prefabToSpawn;
 
+    public Behaviour halo;
+
     private bool HasOpen;
 
     private void OnTriggerEnter(Collider other)
@@ -47,6 +49,9 @@ public class ChestBehviour : MonoBehaviour
             {
                 Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
             }
+
+            //Remove glow
+            halo.enabled = false;
 
             HasOpen = true;
         }

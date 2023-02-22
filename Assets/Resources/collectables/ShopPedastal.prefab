@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 631105150448519064}
   - component: {fileID: 4477786948045677306}
   - component: {fileID: 8149272622524459583}
+  - component: {fileID: 2988982472770051034}
   m_Layer: 0
   m_Name: ShopPedastal
   m_TagString: Untagged
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b03782963d34384c8e3bd1faa7ce7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 0}
 --- !u!136 &4477786948045677306
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -159,3 +161,15 @@ MonoBehaviour:
   Legendary:
   - {fileID: 538942117439789948, guid: 8090f63cbdc4b9646ba5f216d6d4385c, type: 3}
   - {fileID: 7640739627633087651, guid: 1f58b703eb7895b4a8ca7ce6d3084eae, type: 3}
+--- !u!122 &2988982472770051034
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2429266725627929912}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4284064941
+  m_Size: 1.01

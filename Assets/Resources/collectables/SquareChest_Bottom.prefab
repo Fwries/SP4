@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5529997109281015731}
   - component: {fileID: 7650668021314898869}
   - component: {fileID: 4367421189969775804}
+  - component: {fileID: 4572954622951363705}
   m_Layer: 0
   m_Name: SquareChest_Bottom
   m_TagString: Untagged
@@ -129,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPos: {fileID: 11432032806215808, guid: 3dba8818dfbcc6f42ba8719686145d5c, type: 3}
   prefabToSpawn: {fileID: 0}
+  halo: {fileID: 4572954622951363705}
 --- !u!114 &4367421189969775804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,18 @@ MonoBehaviour:
   Legendary:
   - {fileID: 538942117439789948, guid: 8090f63cbdc4b9646ba5f216d6d4385c, type: 3}
   - {fileID: 7640739627633087651, guid: 1f58b703eb7895b4a8ca7ce6d3084eae, type: 3}
+--- !u!122 &4572954622951363705
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006695971777584361}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4282490009
+  m_Size: 0.96
 --- !u!1001 &1932183300127407388
 PrefabInstance:
   m_ObjectHideFlags: 0
