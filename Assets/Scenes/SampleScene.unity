@@ -1737,11 +1737,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1807523110}
-  DescriptionBox: {fileID: 0}
-  _name: {fileID: 0}
-  _damage: {fileID: 0}
-  _type: {fileID: 0}
-  _cooldown: {fileID: 0}
+  DescriptionBox: {fileID: 1463116653}
+  _name: {fileID: 2027695600}
+  _damage: {fileID: 1655511337}
+  _type: {fileID: 315650318}
+  _cooldown: {fileID: 1547599649}
 --- !u!1 &1400743385
 GameObject:
   m_ObjectHideFlags: 0
