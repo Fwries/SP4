@@ -33,7 +33,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Item = newItem;
         if (Item.stack > 0)
         {
-            ItemCount.text = Item.stack.ToString();
+            ItemCount.text = (Item.stack + 1).ToString();
         }
     }
 

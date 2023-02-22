@@ -24,3 +24,5 @@ MonoBehaviour:
   CritChanceAdd: 0
   LifeStealAdd: 0
   ResistDamageAdd: 1
+  BaseStack: 0
+  stack: 0
