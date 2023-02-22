@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponBehaviour : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private PlayerStats playerStats;
+
     public GameObject Weapon;
 
     private Vector3 dir;
@@ -88,7 +90,7 @@ public class WeaponBehaviour : MonoBehaviour
         {
             if (atkType == 1) // Swing
             {
-                AtkSwingY += 720 * Time.deltaTime / scWeapon.AtkSpeed;
+                AtkSwingY += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
                 if (AtkSwingY > EndSwing)
                 {
                     Weapon.transform.Rotate(-90, 0, 0);
@@ -103,11 +105,11 @@ public class WeaponBehaviour : MonoBehaviour
             else if (atkType == 2) // Stab
             {
                 Weapon.transform.Rotate(0, -90, 0);
-                EndSwing += Time.deltaTime * scWeapon.AtkSpeed;
-                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing / scWeapon.AtkReach;
+                EndSwing += Time.deltaTime * (scWeapon.AtkSpeed + playerStats.AtkSpeed);
+                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing / (scWeapon.AtkReach + playerStats.Reach);
                 Weapon.transform.Rotate(0, 90, 0);
 
-                if (EndSwing > (scWeapon.AtkSpeed / scWeapon.AtkReach) / 4)
+                if (EndSwing > ((scWeapon.AtkSpeed + playerStats.AtkSpeed) / (scWeapon.AtkReach + playerStats.Reach)) / 4)
                 {
                     Weapon.transform.position = new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z);
                     EndSwing = 0;
@@ -120,7 +122,7 @@ public class WeaponBehaviour : MonoBehaviour
             }
             else if (atkType == 3) // Crush
             {
-                AtkSwingZ += 720 * Time.deltaTime / scWeapon.AtkSpeed;
+                AtkSwingZ += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
                 if (AtkSwingZ > EndSwing)
                 {
                     AtkSwingZ = 0;

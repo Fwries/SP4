@@ -12,6 +12,11 @@ public class HitboxContainer : MonoBehaviour
         {
             hitboxes[i].active = false;
         }
+
+        //if ()
+        //{
+
+        //}
     }
 
     void OnTriggerEnter(Collider other)

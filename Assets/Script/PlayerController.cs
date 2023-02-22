@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats m_PlayerStats;
 
     // Variables affecting the player character m_Movement
-    private const float m_SPEED = 5.0f;
+    public float m_SPEED = 5.0f;
     private Vector3 m_CharacterDir;
 
     // Character's m_RigidBody
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     void UpdateCharacterOnMovementUpdated()
     {
         // Update the character direction
-        m_CharacterDir = m_SPEED * m_Movement;
+        m_CharacterDir = (m_SPEED + m_PlayerStats.Speed) * m_Movement;
 
         // Move the character
         m_RigidBody?.MovePosition(m_RigidBody.position + m_CharacterDir * Time.fixedDeltaTime);

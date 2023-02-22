@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public string Username;
-    public int MaxHealth = 17;
+    public int MaxHealth = 20;
     public int currentHealth;
     public int Coin;
 
     public float AtkSpeed;
     public int Reach;
     public int Speed;
-    public float Regen;
+    public int Regen;
     public int Dodge;
     public int CritChance;
     public int LifeSteal;
@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     public HealthBarBehaviour HealthBar;
     public coinCounter coinCounter;
 
+    private float Cooldown;
 
     private void Start()
     {
@@ -26,8 +27,24 @@ public class PlayerStats : MonoBehaviour
         HealthBar.SetMaxHealth(currentHealth);
     }
 
+    void Update()
+    {
+        Cooldown += Time.deltaTime;
+        if (Cooldown >= 1)
+        {
+            if (Regen > 0)
+            {
+                RecoverHealth(Regen);
+            }
+
+            Cooldown = 0;
+        }
+    }
+
     public void TakeDamage(int damage)
     {
+        if (Random.Range(0, 100) >= Dodge) { return; }
+
         damage -= ResistDamage;
         if (damage < 0) { damage = 0; }
 
