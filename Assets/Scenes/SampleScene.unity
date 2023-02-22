@@ -3428,7 +3428,7 @@ MonoBehaviour:
   Rooms: []
   waitTime: 4
   Map: {fileID: 1837219011}
-  LoadScreen: {fileID: 467775438}
+  LoadScreen: {fileID: 467775436}
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0

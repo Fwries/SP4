@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class RoomTemplates : MonoBehaviour
 
     public float waitTime;
     public GameObject Map;
-    public Image LoadScreen;
+    public GameObject LoadScreen;
 
     private bool spawnedBoss;
     private bool spawned;
@@ -77,11 +76,11 @@ public class RoomTemplates : MonoBehaviour
         }
         if (MapSpawned == true && waitTime <= 0)
         {
-            LoadScreen.enabled = false;
+            LoadScreen.SetActive(false);
         }
         else
         {
-            LoadScreen.enabled = true;
+            LoadScreen.SetActive(true);
         }
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
