@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         Cooldown += Time.deltaTime;
-        if (Cooldown >= 1)
+        if (Cooldown >= 20)
         {
             if (Regen > 0)
             {
