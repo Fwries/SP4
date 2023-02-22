@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 128164453699659762, guid: 366d6a590c89f4446a3adcf9f99bb02a, type: 3}
   WeaponIcon: {fileID: 21300000, guid: 5ed8f0701be36d945bc19e62a42ab014, type: 3}
   Name: Katana
-  Description: 
+  Description: 'Damage: 4'
   AtkType: 3
   AtkSpeed: 1
   AtkCooldown: 0.4

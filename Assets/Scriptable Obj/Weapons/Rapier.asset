@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 3208848167588750184, guid: a42154d74ccc00c40a54ffd0c768739c, type: 3}
   WeaponIcon: {fileID: 21300000, guid: e7c5c518e4f27f045b5fd581dcc8557e, type: 3}
   Name: Rapier
-  Description: 
+  Description: 'Damage: 3'
   AtkType: 2
   AtkSpeed: 0.7
   AtkCooldown: 0.2

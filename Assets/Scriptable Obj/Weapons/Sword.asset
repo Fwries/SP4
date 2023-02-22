@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 4697989199229766275, guid: 675ce9ab75e5cb842bba3eeba1778767, type: 3}
   WeaponIcon: {fileID: 21300000, guid: 779e819e216ec7d469fe73740095b8fd, type: 3}
   Name: Sword
-  Description: 
+  Description: 'Damage: 4'
   AtkType: 1
   AtkSpeed: 1
   AtkCooldown: 0.2

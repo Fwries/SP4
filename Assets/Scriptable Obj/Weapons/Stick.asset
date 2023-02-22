@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 7993564263508283143, guid: 04c3b2483c0676b4798a0fbcdff7d37c, type: 3}
   WeaponIcon: {fileID: 21300000, guid: 2434d4300dbf50c44bf6c09fd0981b8c, type: 3}
   Name: Stick
-  Description: 
+  Description: 'Damage: 1'
   AtkType: 1
   AtkSpeed: 0.5
   AtkCooldown: 0

@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class EquipmentSlot : MonoBehaviour
+public class EquipmentSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Image icon;
     public TMP_Text ItemCount;
+    public GameObject DescriptionBox;
+    public TMP_Text Description;
     ScEquipment Item;
 
     public void AddItem(ScEquipment newItem)
@@ -13,6 +16,7 @@ public class EquipmentSlot : MonoBehaviour
         Item = newItem;
         icon.sprite = Item.EquipmentIcon;
         icon.enabled = true;
+        Description.text = Item.Description;
         ItemCount.text = " ";
     }
 
@@ -31,5 +35,17 @@ public class EquipmentSlot : MonoBehaviour
         {
             ItemCount.text = Item.stack.ToString();
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(Item!=null)
+        {
+            DescriptionBox.SetActive(true);
+        }
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        DescriptionBox.SetActive(false);
     }
 }
