@@ -13,7 +13,10 @@ public class HitboxContainer : MonoBehaviour
             hitboxes[i].active = false;
         }
 
-        transform.gameObject.GetComponentInParent<WeaponBehaviour>().LifeSteal();
+        if (transform.parent != null)
+        {
+            transform.gameObject.GetComponentInParent<WeaponBehaviour>().LifeSteal();
+        }
     }
 
     void OnTriggerEnter(Collider other)
