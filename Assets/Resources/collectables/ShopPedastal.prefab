@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 0}
+  halo: {fileID: 2988982472770051034}
 --- !u!136 &4477786948045677306
 CapsuleCollider:
   m_ObjectHideFlags: 0

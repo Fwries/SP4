@@ -31,11 +31,7 @@ public class HitboxContainer : MonoBehaviour
 
     public void DestroyWeapon()
     {
-        WeaponBehaviour WeaponBehav = transform.gameObject.GetComponentInParent<WeaponBehaviour>();
-        WeaponBehav.Weapon = null;
-        WeaponBehav.scWeapon = null;
-        WeaponBehav.hitBoxes = null;
-        Destroy(this.gameObject);
+        DestroyImmediate(this.gameObject, true);
     }
 
     //void OnCollisionEnter(Collision collision)

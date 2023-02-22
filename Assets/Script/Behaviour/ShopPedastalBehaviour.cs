@@ -5,12 +5,14 @@ using UnityEngine;
 public class ShopPedastalBehaviour : MonoBehaviour
 {
     private Vector3 equipOff = new Vector3(0f, 1.6f, 0f);
+    private Vector3 weaponOff = new Vector3(-1f, 0f, 0f);
 
     private GameObject player;
     public GameObject prefabToSpawn;
     private GameObject pedastalItem;
     
     private bool HasBought;
+    public Behaviour halo;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasBought == false && pedastalItem != null)
         {
+            // Logic for equipment
             if (prefabToSpawn.CompareTag("equipment"))
             {
                 int playerCoins = player.GetComponent<PlayerStats>().Coin;
@@ -54,6 +57,25 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
                 }
             }
+            // Logic for weapon
+            else if (pedastalItem.GetComponent<ThrowWeapon>() != null)
+            {
+                Debug.Log("Weapon buying");
+                GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
+                weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
+                weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
+                pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
+            }
+            // Logic for consumable (just potion tbh)
+            else if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
+            {
+                Debug.Log("Weapon buying");
+                player.GetComponent<PlayerStats>().RecoverHealth(5);
+                pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
+            }
+            HasBought = true;
+            halo.enabled = false;
         }
     }
 }

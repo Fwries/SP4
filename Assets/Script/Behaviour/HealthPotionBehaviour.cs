@@ -23,4 +23,9 @@ public class HealthPotionBehaviour : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void broughtFromShop(GameObject player)
+    {
+        DestroyImmediate(this.gameObject, true);
+    }
 }
