@@ -2520,7 +2520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SPEED: 5
-  movementSound: {fileID: 0}
+  movementSound: {fileID: 8300000, guid: f96fbdd46a1a52346ba11f18ab6de924, type: 3}
 --- !u!54 &1498030892
 Rigidbody:
   m_ObjectHideFlags: 0

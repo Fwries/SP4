@@ -59,6 +59,11 @@ public class PlayerController : MonoBehaviour
         m_Animator?.SetFloat("MoveX", m_Movement.z);
         m_Animator?.SetFloat("MoveY", m_Movement.x);
         m_Animator?.SetFloat("Speed", m_Movement.sqrMagnitude);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            SoundManager.Instance.PlayWalk(movementSound);
+        }
     }
 
     void Update()
