@@ -301,3 +301,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85084756271f3f47a249ec893922a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glug: {fileID: 8300000, guid: 9f34b16bdfbc19c4c8b011ba7b872657, type: 3}

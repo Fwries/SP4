@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthPotionBehaviour : MonoBehaviour
 {
     private int healAmount;
+    [SerializeField] private AudioClip glug;
     public void SetUp(int amount)
     {
         healAmount = amount;
@@ -20,12 +21,14 @@ public class HealthPotionBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerStats>().RecoverHealth(5);
+            SoundManager.Instance.PlaySound(glug);
             Destroy(this.gameObject);
         }
     }
 
     public void broughtFromShop(GameObject player)
     {
+        SoundManager.Instance.PlaySound(glug);
         DestroyImmediate(this.gameObject, true);
     }
 }
