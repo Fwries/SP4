@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
 
     public HealthBarBehaviour HealthBar;
     public coinCounter coinCounter;
+    public GameObject dodgeText;
 
     private float Cooldown;
 
@@ -43,7 +44,13 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (Random.Range(0, 100) <= Dodge) { return; }
+        if (Random.Range(0, 100) <= Dodge) 
+        {
+            var go = Instantiate(dodgeText, transform.position, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().color = Color.white;
+            go.GetComponent<TextMesh>().text = "DODGED";
+            return; 
+        }
 
         damage -= ResistDamage;
         if (damage < 0) { damage = 0; }
