@@ -12,6 +12,7 @@ public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public TMP_Text _type;
     public TMP_Text _cooldown;
     ScWeapon Weapon;
+    public CoolDownBehavior cooldownBar;
 
     public void ChangeWeapon(ScWeapon newWeapon)
     {
@@ -22,6 +23,7 @@ public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         _damage.text = Weapon.Description;
         _type.text ="Atk Type: "+Weapon.AtkType.ToString();
         _cooldown.text ="Atk Cooldown: " + Weapon.AtkCooldown.ToString();
+        cooldownBar.SetMaxCooldown(Weapon.AtkCooldown);
     }
 
     public void ClearSlot()

@@ -36,7 +36,10 @@ public class Inventory : MonoBehaviour
 
 	// Current list of items in inventory
 	public List<ScEquipment> items = new List<ScEquipment>();
+	
+	//currentWeapon
 	public ScWeapon CurrentWeapon;
+
 
 	// Check if item is alr in inventory
 	bool stack = false;
@@ -74,6 +77,7 @@ public class Inventory : MonoBehaviour
 	public bool SetWeapon(ScWeapon weapon)
 	{
 		CurrentWeapon = weapon;
+
 		if (onWeaponChangedCallback != null)
 			onWeaponChangedCallback.Invoke();
 		return true;

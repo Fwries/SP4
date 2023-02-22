@@ -25,6 +25,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
+    public CoolDownBehavior cooldownBar;
 
     void Start()
     {
@@ -153,6 +154,7 @@ public class WeaponBehaviour : MonoBehaviour
         if (IsCoolDown)
         {
             Cooldown += Time.deltaTime;
+            cooldownBar.SetCooldown(Cooldown);
             if (Cooldown >= scWeapon.AtkCooldown)
             {
                 IsCoolDown = false;

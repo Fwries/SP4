@@ -26,9 +26,9 @@ public class RoomTemplates : MonoBehaviour
     int enemyRand;
     private void Update()
     {
-        if(waitTime<=0&&spawned==false)
+        if (waitTime <= 0 && spawned == false)
         {
-            for(int i=0;i<Rooms.Count;i++)
+            for (int i = 0; i < Rooms.Count; i++)
             {
                 enemyRand = Random.Range(0, EnemySetsEasy.Length);
                 rand = Random.Range(0, 10);
