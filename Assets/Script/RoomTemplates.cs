@@ -38,9 +38,12 @@ public class RoomTemplates : MonoBehaviour
                 }
                 else
                 {
-                    rand = Random.Range(1, RoomDecor.Length);
-                    Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-                    Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
+                    if (Rooms[i] != Rooms[Rooms.Count - 1])
+                    {
+                        rand = Random.Range(1, RoomDecor.Length);
+                        Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+                        Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
+                    }
                 }
             }
             spawned = true;
