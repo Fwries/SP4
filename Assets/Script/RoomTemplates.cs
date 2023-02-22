@@ -32,15 +32,15 @@ public class RoomTemplates : MonoBehaviour
             {
                 enemyRand = Random.Range(0, EnemySetsEasy.Length);
                 rand = Random.Range(0, 10);
-                if (rand >= 8)
+                if (rand >= 9 && Rooms[i] != Rooms[Rooms.Count-1])
                 {
-                    GameObject NewDecor = Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+                    Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
                 }
                 else
                 {
                     rand = Random.Range(1, RoomDecor.Length);
-                    GameObject NewDecor = Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-                    GameObject enemies = Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
+                    Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+                    Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
                 }
             }
             spawned = true;
