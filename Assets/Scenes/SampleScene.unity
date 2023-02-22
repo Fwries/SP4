@@ -2578,6 +2578,7 @@ MonoBehaviour:
   HealthBar: {fileID: 25270104}
   coinCounter: {fileID: 2108283707}
   dodgeText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
+  playerHurt: {fileID: 8300000, guid: 80bc6d2070f244d4cb71849c58931282, type: 3}
 --- !u!1001 &1520078089
 PrefabInstance:
   m_ObjectHideFlags: 0

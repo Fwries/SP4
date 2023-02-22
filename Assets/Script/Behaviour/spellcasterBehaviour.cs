@@ -11,6 +11,7 @@ public class spellcasterBehaviour : StateMachineBehaviour
     Transform myTransform;
 
     [SerializeField] private Transform magicBall;
+    [SerializeField] private AudioClip projectileSound;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -37,6 +38,7 @@ public class spellcasterBehaviour : StateMachineBehaviour
             shootdir.y = 0f;
             shootdir.Normalize();
             ballTransform.GetComponent<MagicBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
+            SoundManager.Instance.PlaySound(projectileSound);
             timer = 0;
         }
 

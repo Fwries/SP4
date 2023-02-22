@@ -214,6 +214,7 @@ MonoBehaviour:
   projParticles1: {fileID: 6839455235961694759, guid: 2d538c241d9a11142a61f5bcf6716fcd, type: 3}
   projParticlesReal: {fileID: 0}
   player: {fileID: 0}
+  playerHurt: {fileID: 8300000, guid: 80bc6d2070f244d4cb71849c58931282, type: 3}
 --- !u!54 &7923628548049066465
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class PlayerStats : MonoBehaviour
 
     private float Cooldown;
 
+    [SerializeField] private AudioClip playerHurt;
+
     private void Start()
     {
         currentHealth = MaxHealth;
@@ -64,6 +66,7 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth -= damage;
         MainCamera.GetComponent<ScreenShake>().Shake(damage);
+        SoundManager.Instance.PlaySound(playerHurt);
         HealthBar.SetHealth(currentHealth);
     }
     public void IncreaseCoins(int n)

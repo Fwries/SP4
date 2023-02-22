@@ -12,6 +12,7 @@ public class MagicBallBehaviour : MonoBehaviour
     Color originalColor;
     private int damage;
     float projSpeed;
+
     private void Awake()
     {
         projParticlesReal = Instantiate(projParticles1, transform.position, Quaternion.identity);
