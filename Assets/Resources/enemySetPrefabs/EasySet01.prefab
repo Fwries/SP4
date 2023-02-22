@@ -268,6 +268,7 @@ MonoBehaviour:
   roomCleared: 0
   bufferTime: 0
   enemyCount: 0
+  wallSound: {fileID: 8300000, guid: 45a914f05ecd2484ba731ae247eae8c2, type: 3}
 --- !u!1 &5410765833867319688
 GameObject:
   m_ObjectHideFlags: 0

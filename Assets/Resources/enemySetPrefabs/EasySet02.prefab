@@ -68,9 +68,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shouldTargetPlayer: 0
   playerIn: 0
+  playerInIn: 0
   roomCleared: 0
   bufferTime: 0
   enemyCount: 0
+  wallSound: {fileID: 8300000, guid: 45a914f05ecd2484ba731ae247eae8c2, type: 3}
 --- !u!1 &4134907808232286849
 GameObject:
   m_ObjectHideFlags: 0

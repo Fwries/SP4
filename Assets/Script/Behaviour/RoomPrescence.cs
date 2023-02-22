@@ -12,6 +12,8 @@ public class RoomPrescence : MonoBehaviour
 
     public float bufferTime;
     public int enemyCount;
+    [SerializeField] private AudioClip wallSound;
+    private bool playSound;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class RoomPrescence : MonoBehaviour
         roomCleared = false;
         bufferTime = 4.7f;
         enemyCount = GetComponentsInChildren<Transform>().Count(GetComponentInChildren => GetComponentInChildren.CompareTag("enemy")) / 2;
+        playSound = false;
     }
 
     private void Update()
@@ -48,6 +51,7 @@ public class RoomPrescence : MonoBehaviour
                     child.gameObject.SetActive(true);
                 }
             }
+            SoundManager.Instance.PlaySound(wallSound);
         }
 
         //Logic to check if room is cleared
@@ -63,6 +67,11 @@ public class RoomPrescence : MonoBehaviour
                 {
                     child.gameObject.SetActive(false);
                 }
+            }
+            if (playSound == false)
+            {
+                SoundManager.Instance.PlaySound(wallSound);
+                playSound = true;
             }
         }
 
