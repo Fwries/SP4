@@ -35,7 +35,7 @@ public class RoomTemplates : MonoBehaviour
             {
                 enemyRand = Random.Range(0, EnemySetsEasy.Length);
                 rand = Random.Range(0, 10);
-                if (rand >= 9 && Rooms[i] != Rooms[Rooms.Count-1])
+                if (rand >= 8 && Rooms[i] != Rooms[Rooms.Count-1])
                 {
                     Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
                 }
