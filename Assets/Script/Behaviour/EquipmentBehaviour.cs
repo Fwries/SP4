@@ -8,6 +8,8 @@ public class EquipmentBehaviour : MonoBehaviour
     public ScEquipment scEquipment;
     public bool isShopItem = false;
 
+    [SerializeField] private AudioClip equipped;
+
     // Update is called once per frame
     void Update()
     {
@@ -22,6 +24,7 @@ public class EquipmentBehaviour : MonoBehaviour
             {
                 other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
                 Inventory.instance.AddItem(scEquipment);
+                SoundManager.Instance.PlaySound(equipped);
                 Destroy(this.gameObject);
             }
         }
@@ -31,6 +34,7 @@ public class EquipmentBehaviour : MonoBehaviour
     {
         player.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
         Inventory.instance.AddItem(scEquipment);
+        SoundManager.Instance.PlaySound(equipped);
         DestroyImmediate(this.gameObject, true);
     }
 

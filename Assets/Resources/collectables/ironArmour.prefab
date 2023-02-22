@@ -326,3 +326,4 @@ MonoBehaviour:
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: 69ca973719647f846bcd45473b6e6053, type: 2}
   isShopItem: 0
+  equipped: {fileID: 8300000, guid: 3296034404bf5194c90327827c131d51, type: 3}

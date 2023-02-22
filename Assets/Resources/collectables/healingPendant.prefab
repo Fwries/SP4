@@ -497,6 +497,7 @@ MonoBehaviour:
   equipmentName: 
   scEquipment: {fileID: 11400000, guid: f377d1b858d5ddf428a8fac95960f01e, type: 2}
   isShopItem: 0
+  equipped: {fileID: 8300000, guid: 3296034404bf5194c90327827c131d51, type: 3}
 --- !u!136 &1310913507443373437
 CapsuleCollider:
   m_ObjectHideFlags: 0
