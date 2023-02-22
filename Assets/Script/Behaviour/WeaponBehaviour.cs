@@ -8,6 +8,7 @@ public class WeaponBehaviour : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Camera MainCamera;
     [SerializeField] private AudioClip swordSwing;
+    [SerializeField] private AudioClip weaponEquip;
 
     public GameObject Weapon;
 
@@ -99,6 +100,7 @@ public class WeaponBehaviour : MonoBehaviour
 
             Weapon = null;
             scWeapon = null;
+            SoundManager.Instance.PlaySound(swordSwing);
         }
 
         if (IsAttack)
@@ -202,5 +204,6 @@ public class WeaponBehaviour : MonoBehaviour
             EndSwing = scWeapon.AtkRange / 4;
             StartSwing = EndSwing * -3;
         }
+        SoundManager.Instance.PlaySound(weaponEquip);
     }
 }
