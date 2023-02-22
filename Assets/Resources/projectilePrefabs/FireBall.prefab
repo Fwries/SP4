@@ -227,3 +227,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticles: {fileID: 77758339210535855, guid: cbab3b138e2f86c459f0d3f61b8b3e47, type: 3}
+  fireBallParticles: {fileID: 6839455235961694759, guid: 8b9228dbd61b05d49be6fad84017f630, type: 3}
+  player: {fileID: 0}
