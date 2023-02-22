@@ -6,6 +6,7 @@ public class coinBehaviour : MonoBehaviour
 {
 
     private int coinAmount;
+    [SerializeField] private AudioClip collected;
     public void SetUp(int amount)
     {
         coinAmount = amount;
@@ -21,6 +22,7 @@ public class coinBehaviour : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerStats>().IncreaseCoins(coinAmount);
+            SoundManager.Instance.PlaySound(collected);
             Destroy(this.gameObject);
         }
     }
