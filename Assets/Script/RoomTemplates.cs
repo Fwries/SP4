@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -18,12 +19,15 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> Rooms;
 
     public float waitTime;
+    public GameObject Map;
+    public Image LoadScreen;
+
     private bool spawnedBoss;
     private bool spawned;
-    public GameObject Map;
+    private bool MapSpawned;
 
-    int rand;
-    int enemyRand;
+    private int rand;
+    private int enemyRand;
     private void Update()
     {
         if (waitTime <= 0 && spawned == false)
@@ -66,6 +70,18 @@ public class RoomTemplates : MonoBehaviour
             waitTime = 4;
             Rooms.Clear();
             Map.GetComponent<MapSpawner>().RegenerateMap();
+        }
+        else
+        {
+            MapSpawned = true;
+        }
+        if (MapSpawned == true && waitTime <= 0)
+        {
+            LoadScreen.enabled = false;
+        }
+        else
+        {
+            LoadScreen.enabled = true;
         }
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
