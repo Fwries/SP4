@@ -40,7 +40,6 @@ public class InventoryUI : MonoBehaviour
         }
         for (int i = 0; i < inventory.items.Count; i++)
         {
-            Debug.Log("AHHHHHHHHHH");
             slots[i].ChangeCount(inventory.items[i]);
         }
     }

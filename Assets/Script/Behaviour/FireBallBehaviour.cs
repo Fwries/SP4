@@ -35,7 +35,7 @@ public class FireBallBehaviour : MonoBehaviour
         {
             player = collision.gameObject;
             StartCoroutine(TintSpriteRed());
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            collision.gameObject.GetComponentInChildren<PlayerStats>().TakeDamage(damage);
         }
     }
 
