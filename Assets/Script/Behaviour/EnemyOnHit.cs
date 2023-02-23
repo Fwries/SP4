@@ -29,7 +29,7 @@ public class EnemyOnHit : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        if (timer > 0.05f && transform.GetComponentInChildren<Animator>().GetBool("IsHit"))
+        if (timer > 0.02f && transform.GetComponentInChildren<Animator>().GetBool("IsHit"))
         {
             var go = Instantiate(damageText, transform.position, Quaternion.identity, transform);
             //indicator.SetDamageText(transform.GetComponentInChildren<Animator>().GetInteger("PrevHealth") - transform.GetComponentInChildren<Animator>().GetInteger("Health"));
