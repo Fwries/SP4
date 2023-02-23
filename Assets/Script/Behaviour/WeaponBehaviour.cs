@@ -32,6 +32,8 @@ public class WeaponBehaviour : MonoBehaviour
 
     void Start()
     {
+        MainCamera = this.transform.Find("Main Camera").GetComponent<Camera>();
+        cooldownBar = this.transform.Find("CooldownBar").GetComponent<CoolDownBehavior>();
         WeaponSwitch(scWeapon);
     }
 
