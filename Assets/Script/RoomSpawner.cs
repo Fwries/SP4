@@ -39,6 +39,7 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
                 NewRoom.transform.SetParent(this.transform.parent);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                Templates.AddMapScaleZ();
             }
             else if (DoorDirection == 2)
             {
@@ -47,6 +48,7 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
+                Templates.AddMapScaleX();
             }
             else if (DoorDirection == 3)
             {
@@ -55,6 +57,7 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
+                Templates.AddMapScaleZ();
             }
             else if (DoorDirection == 4)
             {
@@ -63,6 +66,7 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
+                Templates.AddMapScaleX();
             }
 
             spawned = true;
@@ -78,6 +82,10 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Quaternion.identity);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
+                if ((DoorDirection == 1) || (DoorDirection == 3))
+                    Templates.AddMapScaleZ();
+                else if ((DoorDirection == 2) || (DoorDirection == 4))
+                    Templates.AddMapScaleX();
                 Destroy(other.gameObject);
                 //Debug.Log("Secret room spawned");
             }

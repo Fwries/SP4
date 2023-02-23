@@ -21,12 +21,27 @@ public class RoomTemplates : MonoBehaviour
     public GameObject Map;
     public GameObject LoadScreen;
 
+    private const float m_ROOM_SIZE = 17.0f;
+    private float m_MapScaleZ = 0.0f;
+    private float m_MapScaleX = 0.0f;
+
     private bool spawnedBoss;
     private bool spawned;
     private bool MapSpawned;
 
     private int rand;
     private int enemyRand;
+
+    public void AddMapScaleZ()
+    {
+        m_MapScaleZ += m_ROOM_SIZE;
+    }
+
+    public void AddMapScaleX()
+    {
+        m_MapScaleX += m_ROOM_SIZE;
+    }
+
     private void Update()
     {
         if (waitTime <= 0 && spawned == false)

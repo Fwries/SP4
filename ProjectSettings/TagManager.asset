@@ -15,11 +15,13 @@ TagManager:
   - Bullet
   - BreakWall
   - equipment
+  - RoomType
+  - MinimapCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Minimap
   - Water
   - UI
   - Enemies
@@ -28,7 +30,7 @@ TagManager:
   - 
   - Wall
   - Ground
-  - 
+  - GroundMinimap
   - 
   - 
   - 
