@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentParent: {fileID: 1068468176}
   weaponParent: {fileID: 1708117265}
-  equipmentUI: {fileID: 0}
+  equipmentUI: {fileID: 1068468175}
 --- !u!1 &43485805
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,6 +3836,9 @@ MonoBehaviour:
   waitTime: 4
   Map: {fileID: 1837219011}
   LoadScreen: {fileID: 467775436}
+  spawnedBoss: 0
+  spawned: 0
+  MapSpawned: 0
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0

@@ -21,9 +21,9 @@ public class RoomTemplates : MonoBehaviour
     public GameObject Map;
     public GameObject LoadScreen;
 
-    public bool spawnedBoss;
-    public bool spawned;
-    public bool MapSpawned;
+    private bool spawnedBoss;
+    private bool spawned;
+    private bool MapSpawned;
 
     private int rand;
     private int enemyRand;
