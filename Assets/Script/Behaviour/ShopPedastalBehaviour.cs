@@ -82,6 +82,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
                     HasBought = true;
                     halo.enabled = false;
+                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
             // Logic for weapon
@@ -101,6 +102,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
                     HasBought = true;
                     halo.enabled = false;
+                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
             // Logic for consumable (just potion tbh)
@@ -114,6 +116,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
                     HasBought = true;
                     halo.enabled = false;
+                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
         }
