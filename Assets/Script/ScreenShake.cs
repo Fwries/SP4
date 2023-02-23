@@ -26,13 +26,14 @@ public class ScreenShake : MonoBehaviour
 
     IEnumerator Shaking()
     {
-        Vector3 StartPos = transform.position;
+        Vector3 ShakePos;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            transform.position = StartPos + Random.insideUnitSphere * strength / 100;
+            ShakePos = Random.insideUnitSphere * strength / 100;
+            transform.position += ShakePos;
             yield return null;
         }
     }
