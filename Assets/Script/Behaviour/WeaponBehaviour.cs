@@ -41,7 +41,7 @@ public class WeaponBehaviour : MonoBehaviour
     }
     void Awake()
     {
-        photonview = this.transform.GetComponent<PhotonView>();
+        photonview = this.transform.parent.GetComponent<PhotonView>();
     }
 
     private void Update()
