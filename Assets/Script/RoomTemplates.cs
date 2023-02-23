@@ -62,7 +62,7 @@ public class RoomTemplates : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
 
-        if (spawnedBoss == true && Rooms.Count < 10)
+        if (waitTime <= 0 && Rooms.Count <= 10)
         {
             spawnedBoss = false;
             spawned = false;
@@ -70,7 +70,7 @@ public class RoomTemplates : MonoBehaviour
             Rooms.Clear();
             Map.GetComponent<MapSpawner>().RegenerateMap();
         }
-        if (Rooms.Count > 10)
+        if (Rooms.Count >= 10)
         {
             MapSpawned = true;
         }
