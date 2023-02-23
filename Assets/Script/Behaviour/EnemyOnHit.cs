@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyOnHit : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EnemyOnHit : MonoBehaviour
 
     public float timer;
     public GameObject damageText;
+    public Slider bossBar;
+
     [SerializeField] private AudioClip hurt;
 
 
@@ -20,6 +23,11 @@ public class EnemyOnHit : MonoBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public void Update()
     {
+        if (bossBar != null)
+        {
+            bossBar.value = transform.GetComponentInChildren<Animator>().GetInteger("Health");
+        }
+
         timer += Time.deltaTime;
         if (timer > 0.05f && transform.GetComponentInChildren<Animator>().GetBool("IsHit"))
         {
