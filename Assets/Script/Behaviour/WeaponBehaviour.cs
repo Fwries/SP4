@@ -178,6 +178,11 @@ public class WeaponBehaviour : MonoBehaviour
     {
         MainCamera.GetComponent<ScreenShake>().Shake(Damage);
         playerStats.RecoverHealth(playerStats.LifeSteal);
+        
+        if (scWeapon.Name == "Scythe")
+        {
+            playerStats.RecoverHealth(3);
+        }
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)
