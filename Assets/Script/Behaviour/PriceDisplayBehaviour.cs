@@ -10,6 +10,6 @@ public class PriceDisplayBehaviour : MonoBehaviour
 
     public void destroyThis()
     {
-        //DestroyImmediate(gameObject, true);
+        DestroyImmediate(gameObject, true);
     }
 }

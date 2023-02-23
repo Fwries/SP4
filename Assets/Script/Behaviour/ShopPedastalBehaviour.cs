@@ -15,6 +15,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
     private bool HasBought;
     public Behaviour halo;
     public GameObject priceDisplay;
+    public GameObject realPriceDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -27,18 +28,18 @@ public class ShopPedastalBehaviour : MonoBehaviour
         }
         if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
         {
-            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            go.GetComponent<TextMesh>().text = (pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice.ToString());
+            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            realPriceDisplay.GetComponent<TextMesh>().text = (pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice.ToString());
         }
         else if (prefabToSpawn.CompareTag("equipment"))
         {
-            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            go.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice.ToString());
+            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            realPriceDisplay.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice.ToString());
         }
         else
         {
-            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            go.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice.ToString());
+            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            realPriceDisplay.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice.ToString());
         }
     }
 
@@ -82,7 +83,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
                     HasBought = true;
                     halo.enabled = false;
-                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
             // Logic for weapon
@@ -102,7 +103,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
                     HasBought = true;
                     halo.enabled = false;
-                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
             // Logic for consumable (just potion tbh)
@@ -116,7 +117,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                     pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
                     HasBought = true;
                     halo.enabled = false;
-                    //priceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
         }
