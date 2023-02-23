@@ -21,7 +21,7 @@ MonoBehaviour:
   AtkCooldown: 2.5
   AtkReach: 1
   AtkRange: 360
-  Mass: 3
+  Mass: 3.5
   OffsetX: 0
   OffsetY: 0.732
   shopPrice: 20

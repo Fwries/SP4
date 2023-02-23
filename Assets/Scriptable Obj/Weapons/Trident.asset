@@ -19,9 +19,9 @@ MonoBehaviour:
   AtkType: 2
   AtkSpeed: 0.7
   AtkCooldown: 1
-  AtkReach: 1
+  AtkReach: 5
   AtkRange: 3
-  Mass: 1
+  Mass: 2.5
   OffsetX: 0
   OffsetY: 0.732
   shopPrice: 25

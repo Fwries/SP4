@@ -61,9 +61,12 @@ public class ShopPedastalBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pedastalItem.GetComponent<ThrowWeapon>() != null)
+        if (pedastalItem != null)
         {
-            pedastalItem.transform.Rotate(0, Time.deltaTime * 100, 0);
+            if (pedastalItem.GetComponent<ThrowWeapon>() != null)
+            {
+                pedastalItem.transform.Rotate(0, Time.deltaTime * 100, 0);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasBought == false && pedastalItem != null)
