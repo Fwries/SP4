@@ -34,10 +34,14 @@ public class WeaponBehaviour : MonoBehaviour
 
     void Start()
     {
-        photonview = this.transform.GetComponent<PhotonView>();
+        
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         cooldownBar = GameObject.Find("CooldownBar").GetComponent<CoolDownBehavior>();
         WeaponSwitch(scWeapon);
+    }
+    void Awake()
+    {
+        photonview = this.transform.GetComponent<PhotonView>();
     }
 
     private void Update()
