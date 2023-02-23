@@ -29,7 +29,7 @@ public class ThrowWeapon : MonoBehaviour
         hitBoxes = NEWhitBoxes;
 
         // We take the mass into account to slow down the rotation speed
-        m_RotateSpeed = 7200;
+        m_RotateSpeed = 72000;
         // We want take the weapon reach into account
         m_WeaponTravelDist = 5.0f - scWeapon.Mass;
 
