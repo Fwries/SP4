@@ -6,6 +6,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
 {
     private Vector3 equipOff = new Vector3(0f, 1.6f, 0f);
     private Vector3 weaponOff = new Vector3(-1f, 0f, 0f);
+    private Vector3 textOff = new Vector3(0f, 2.7f, 0f);
 
     private GameObject player;
     public GameObject prefabToSpawn;
@@ -13,6 +14,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
     
     private bool HasBought;
     public Behaviour halo;
+    public GameObject priceDisplay;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,21 @@ public class ShopPedastalBehaviour : MonoBehaviour
         {
            pedastalItem = Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
            pedastalItem.transform.SetParent(this.transform);
+        }
+        if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
+        {
+            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().text = (pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice.ToString());
+        }
+        else if (prefabToSpawn.CompareTag("equipment"))
+        {
+            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice.ToString());
+        }
+        else
+        {
+            var go = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice.ToString());
         }
     }
 
