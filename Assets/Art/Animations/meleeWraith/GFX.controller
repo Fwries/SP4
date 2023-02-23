@@ -286,7 +286,7 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: Speed
     m_Type: 1
-    m_DefaultFloat: 2
+    m_DefaultFloat: 4
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
@@ -532,6 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8fb395c39d66241bd2be2501dd2e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slamParticles: {fileID: 0}
+  slamEffect: {fileID: 0}
 --- !u!1107 &4593655923992550787
 AnimatorStateMachine:
   serializedVersion: 6

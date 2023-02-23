@@ -20,6 +20,8 @@ public class hellSpawnAttack : StateMachineBehaviour
     private float nextFireTime;
 
     [SerializeField] private Transform fireBall;
+    [SerializeField] private AudioClip attackSound;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -67,8 +69,10 @@ public class hellSpawnAttack : StateMachineBehaviour
 
                     Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
                     projectileRb.velocity = animator.GetFloat("ProjSpeed") * offset.normalized;
+                    projectile.GetComponent<FireBallBehaviour>().SetUp(animator.GetInteger("Damage"));
                 }
                 animator.SetInteger("AttackDecider", 0);
+                SoundManager.Instance.PlaySound(attackSound);
             }
             else
             {
@@ -82,6 +86,8 @@ public class hellSpawnAttack : StateMachineBehaviour
                     proj.GetComponent<FireBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
                     numProjectiles2--;
                     nextFireTime = Time.time + fireRate;
+
+                    SoundManager.Instance.PlaySound(attackSound);
                 }
                 if (numProjectiles2 <= 0)
                 {

@@ -26,12 +26,15 @@ public class hellSpawnIdle : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         timer += Time.deltaTime;
+        //Update the animation vars
+        animator.SetFloat("MoveX", (player.position - myTransform.position).normalized.x);
         animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
         float pDistance = animator.GetFloat("distance");
 
         if (myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer)
         {
             agent.SetDestination(player.position);
+            myTransform.LookAt(player.position);
         }
 
         //Attacks for hellspawn boss

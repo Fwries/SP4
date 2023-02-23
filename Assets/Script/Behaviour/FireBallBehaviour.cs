@@ -25,6 +25,10 @@ public class FireBallBehaviour : MonoBehaviour
         damage = Damage;
         projSpeed = ProjSpeed;
     }
+    public void SetUp(int Damage)
+    {
+        damage = Damage;
+    }
 
     private void Update()
     {
