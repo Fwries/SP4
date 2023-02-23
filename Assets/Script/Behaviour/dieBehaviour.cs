@@ -36,7 +36,7 @@ public class dieBehaviour : StateMachineBehaviour
             roomPrescence.EnemyDestroyed();
             if (portal != null)
             {
-                portal = Instantiate(portal, myTransform.position, Quaternion.identity);
+                portal = Instantiate(portal, myTransform.position, Quaternion.identity,this.myTransform.parent.parent);
             }
 
             Destroy(animator.GetComponent<Transform>().parent.gameObject);

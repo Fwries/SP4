@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,12 +23,20 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip movementSound;
 
+    private PhotonView photonView;
+
     float tintTimer;
 
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
 
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+        if (photonView.Owner.ActorNumber == 1)
+        {
+            this.gameObject.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
+        }
+
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
 
         m_CharacterDir.Set(0.0f, 0.0f, 0.0f);

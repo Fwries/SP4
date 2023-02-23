@@ -32,6 +32,8 @@ public class WeaponBehaviour : MonoBehaviour
 
     void Start()
     {
+        MainCamera = this.transform.Find("Main Camera").GetComponent<Camera>();
+        cooldownBar = this.transform.Find("CooldownBar").GetComponent<CoolDownBehavior>();
         WeaponSwitch(scWeapon);
     }
 
@@ -178,6 +180,11 @@ public class WeaponBehaviour : MonoBehaviour
     {
         MainCamera.GetComponent<ScreenShake>().Shake(Damage);
         playerStats.RecoverHealth(playerStats.LifeSteal);
+        
+        if (scWeapon.Name == "Scythe")
+        {
+            playerStats.RecoverHealth(3);
+        }
     }
 
     public void WeaponSwitch(ScWeapon _scWeapon)
