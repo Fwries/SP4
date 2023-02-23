@@ -137,7 +137,7 @@ MonoBehaviour:
   numProjectiles2: 0
   fireRate: 0.2
   fireBall: {fileID: 4543613848356704180, guid: 30cb048efdf566247a0864da5a0cbbae, type: 3}
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 8aa0d43c63df1ae4f8c7e85a79be07d0, type: 3}
 --- !u!114 &-2229476624333324201
 MonoBehaviour:
   m_ObjectHideFlags: 1

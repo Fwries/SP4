@@ -78,6 +78,7 @@ public class hellSpawnAttack : StateMachineBehaviour
             {
                 if (Time.time >= nextFireTime && numProjectiles2 > 0)
                 {
+                    SoundManager.Instance.PlaySound(attackSound);
                     var offset = new Vector3(0f, -0.1f, -0.5f);
                     var proj = GameObject.Instantiate(fireBall, myTransform.position - offset, myTransform.rotation);
                     Vector3 shootdir = (player.position - (myTransform.position - offset));
@@ -86,8 +87,6 @@ public class hellSpawnAttack : StateMachineBehaviour
                     proj.GetComponent<FireBallBehaviour>().SetUp(shootdir, animator.GetInteger("Damage"), animator.GetFloat("ProjSpeed"));
                     numProjectiles2--;
                     nextFireTime = Time.time + fireRate;
-
-                    SoundManager.Instance.PlaySound(attackSound);
                 }
                 if (numProjectiles2 <= 0)
                 {
