@@ -28,4 +28,6 @@ public class ScWeapon : ScriptableObject
 
     public float OffsetX;
     public float OffsetY;
+
+    public int shopPrice;
 }
