@@ -21,9 +21,9 @@ public class RoomTemplates : MonoBehaviour
     public GameObject Map;
     public GameObject LoadScreen;
 
-    private bool spawnedBoss;
-    private bool spawned;
-    private bool MapSpawned;
+    public bool spawnedBoss;
+    public bool spawned;
+    public bool MapSpawned;
 
     private int rand;
     private int enemyRand;
@@ -64,11 +64,7 @@ public class RoomTemplates : MonoBehaviour
 
         if (waitTime <= 0 && Rooms.Count <= 10)
         {
-            spawnedBoss = false;
-            spawned = false;
-            waitTime = 4;
-            Rooms.Clear();
-            Map.GetComponent<MapSpawner>().RegenerateMap();
+            NewMap();
         }
         if (Rooms.Count >= 10)
         {
@@ -86,5 +82,15 @@ public class RoomTemplates : MonoBehaviour
         {
             Map.GetComponent<MapSpawner>().RegenerateMap();
         }
+    }
+
+    public void NewMap()
+    {
+        spawnedBoss = false;
+        spawned = false;
+        waitTime = 4;
+        MapSpawned = false;
+        Rooms.Clear();
+        Map.GetComponent<MapSpawner>().RegenerateMap();
     }
 }
