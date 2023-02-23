@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WeaponBehaviour : MonoBehaviour
 {
@@ -29,9 +30,11 @@ public class WeaponBehaviour : MonoBehaviour
     public ScWeapon scWeapon;
     public Hitbox[] hitBoxes;
     public CoolDownBehavior cooldownBar;
+    private PhotonView photonview;
 
     void Start()
     {
+        photonview = this.transform.GetComponent<PhotonView>();
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         cooldownBar = GameObject.Find("CooldownBar").GetComponent<CoolDownBehavior>();
         WeaponSwitch(scWeapon);
@@ -39,141 +42,143 @@ public class WeaponBehaviour : MonoBehaviour
 
     private void Update()
     {
-        Inventory.instance.SetWeapon(scWeapon);
-        if (Weapon == null) { return; }
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && IsAttack == false)
+        if (photonview.IsMine)
         {
-            //transform.position = raycastHit.point;
-            dir = new Vector3(raycastHit.point.x - transform.position.x,
-                              0.0f,
-                              raycastHit.point.z - transform.position.z);
-        }
+            Inventory.instance.SetWeapon(scWeapon);
+            if (Weapon == null) { return; }
 
-        if (Input.GetButtonDown("Fire1") && !IsAttack && !IsCoolDown)
-        {
-            if (atkType == 1) // Swing
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerMask) && IsAttack == false)
             {
-                Weapon.transform.Rotate(90, 0, 0);
-                AtkSwingY = StartSwing;
-                IsAttack = true;
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.active = true;
-            }
-            else if (atkType == 2) // Stab
-            {
-                Weapon.transform.Rotate(0, -90, 0);
-                Weapon.transform.position -= (Weapon.transform.forward) * -0.2f;
-                Weapon.transform.Rotate(0, 90, 0);
-                IsAttack = true;
-
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.active = true;
-            }
-            else if (atkType == 3) // Crush
-            {
-                AtkSwingZ = StartSwing;
-                IsAttack = true;
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.active = true;
+                //transform.position = raycastHit.point;
+                dir = new Vector3(raycastHit.point.x - transform.position.x,
+                                  0.0f,
+                                  raycastHit.point.z - transform.position.z);
             }
 
-            if (Random.Range(0, 100) <= playerStats.CritChance)
+            if (Input.GetButtonDown("Fire1") && !IsAttack && !IsCoolDown)
+            {
+                if (atkType == 1) // Swing
+                {
+                    Weapon.transform.Rotate(90, 0, 0);
+                    AtkSwingY = StartSwing;
+                    IsAttack = true;
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.active = true;
+                }
+                else if (atkType == 2) // Stab
+                {
+                    Weapon.transform.Rotate(0, -90, 0);
+                    Weapon.transform.position -= (Weapon.transform.forward) * -0.2f;
+                    Weapon.transform.Rotate(0, 90, 0);
+                    IsAttack = true;
+
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.active = true;
+                }
+                else if (atkType == 3) // Crush
+                {
+                    AtkSwingZ = StartSwing;
+                    IsAttack = true;
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.active = true;
+                }
+
+                if (Random.Range(0, 100) <= playerStats.CritChance)
+                {
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.Crit = 2;
+                }
+                else
+                {
+                    foreach (Hitbox hitbox in hitBoxes)
+                        hitbox.Crit = 1;
+                }
+                SoundManager.Instance.PlaySound(swordSwing);
+            }
+
+            if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)
             {
                 foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.Crit = 2;
+                    hitbox.active = true;
+
+                Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
+
+                Weapon = null;
+                scWeapon = null;
+                SoundManager.Instance.PlaySound(swordSwing);
+            }
+
+            if (IsAttack)
+            {
+                if (atkType == 1) // Swing
+                {
+                    AtkSwingY += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
+                    if (AtkSwingY > EndSwing)
+                    {
+                        Weapon.transform.Rotate(-90, 0, 0);
+                        AtkSwingY = 0;
+                        IsAttack = false;
+                        IsCoolDown = true;
+
+                        foreach (Hitbox hitbox in hitBoxes)
+                            hitbox.active = false;
+                    }
+                }
+                else if (atkType == 2) // Stab
+                {
+                    Weapon.transform.Rotate(0, -90, 0);
+                    EndSwing += Time.deltaTime * (scWeapon.AtkSpeed + playerStats.AtkSpeed);
+                    Weapon.transform.position -= (Weapon.transform.forward) * EndSwing * (scWeapon.AtkReach + playerStats.Reach);
+                    Weapon.transform.Rotate(0, 90, 0);
+
+                    if (EndSwing > ((scWeapon.AtkSpeed + playerStats.AtkSpeed) / 10))
+                    {
+                        Weapon.transform.position = new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z);
+                        EndSwing = 0;
+                        IsAttack = false;
+                        IsCoolDown = true;
+
+                        foreach (Hitbox hitbox in hitBoxes)
+                            hitbox.active = false;
+                    }
+                }
+                else if (atkType == 3) // Crush
+                {
+                    AtkSwingZ += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
+                    if (AtkSwingZ > EndSwing)
+                    {
+                        AtkSwingZ = 0;
+                        IsAttack = false;
+                        IsCoolDown = true;
+
+                        foreach (Hitbox hitbox in hitBoxes)
+                            hitbox.active = false;
+                    }
+                }
             }
             else
             {
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.Crit = 1;
+                angle = -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
             }
-            SoundManager.Instance.PlaySound(swordSwing);
-        }
 
-        if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)
-        {
-
-            foreach (Hitbox hitbox in hitBoxes)
-                hitbox.active = true;
-
-            Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
-
-            Weapon = null;
-            scWeapon = null;
-            SoundManager.Instance.PlaySound(swordSwing);
-        }
-
-        if (IsAttack)
-        {
-            if (atkType == 1) // Swing
+            if (IsCoolDown)
             {
-                AtkSwingY += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
-                if (AtkSwingY > EndSwing)
+                Cooldown += Time.deltaTime;
+                cooldownBar.SetCooldown(Cooldown);
+                if (Cooldown >= scWeapon.AtkCooldown)
                 {
-                    Weapon.transform.Rotate(-90, 0, 0);
-                    AtkSwingY = 0;
-                    IsAttack = false;
-                    IsCoolDown = true;
-
-                    foreach (Hitbox hitbox in hitBoxes)
-                        hitbox.active = false;
+                    IsCoolDown = false;
+                    Cooldown = 0;
+                    if (scWeapon.Name == "Stick")
+                    {
+                        atkType = Random.Range(1, 4);
+                    }
                 }
             }
-            else if (atkType == 2) // Stab
-            {
-                Weapon.transform.Rotate(0, -90, 0);
-                EndSwing += Time.deltaTime * (scWeapon.AtkSpeed + playerStats.AtkSpeed);
-                Weapon.transform.position -= (Weapon.transform.forward) * EndSwing * (scWeapon.AtkReach + playerStats.Reach);
-                Weapon.transform.Rotate(0, 90, 0);
 
-                if (EndSwing > ((scWeapon.AtkSpeed + playerStats.AtkSpeed) / 10))
-                {
-                    Weapon.transform.position = new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z);
-                    EndSwing = 0;
-                    IsAttack = false;
-                    IsCoolDown = true;
-
-                    foreach (Hitbox hitbox in hitBoxes)
-                        hitbox.active = false;
-                }
-            }
-            else if (atkType == 3) // Crush
-            {
-                AtkSwingZ += 720 * Time.deltaTime / (scWeapon.AtkSpeed + playerStats.AtkSpeed);
-                if (AtkSwingZ > EndSwing)
-                {
-                    AtkSwingZ = 0;
-                    IsAttack = false;
-                    IsCoolDown = true;
-
-                    foreach (Hitbox hitbox in hitBoxes)
-                        hitbox.active = false;
-                }
-            }
+            transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
         }
-        else
-        {
-            angle = -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg;
-        }
-
-        if (IsCoolDown)
-        {
-            Cooldown += Time.deltaTime;
-            cooldownBar.SetCooldown(Cooldown);
-            if (Cooldown >= scWeapon.AtkCooldown)
-            {
-                IsCoolDown = false;
-                Cooldown = 0;
-                if (scWeapon.Name == "Stick")
-                {
-                    atkType = Random.Range(1, 4);
-                }
-            }
-        }
-
-        transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
     }
 
     public void Attack(int Damage)

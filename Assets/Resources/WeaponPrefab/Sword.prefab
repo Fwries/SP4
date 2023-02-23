@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 6116696195569926976}
   - component: {fileID: 4560257600545661217}
   - component: {fileID: -7517555181048557419}
+  - component: {fileID: 234327211163927684}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -343,3 +344,26 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &234327211163927684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697989199229766275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: -7517555181048557419}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
