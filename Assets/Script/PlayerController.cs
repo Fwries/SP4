@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         photonView = GetComponent<PhotonView>();
         if (photonView.Owner.ActorNumber == 1)
         {
-            this.gameObject.transform.position = new Vector3(0.0f, 5.0f, 0.0f);
+            this.gameObject.transform.position = new Vector3(5.0f, 0.5f, 0.0f);
         }
 
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
@@ -53,25 +53,28 @@ public class PlayerController : MonoBehaviour
 
     void UpdateMovementOnWASDPressed()
     {
-        // The Horizontal and Vertical ranges change from 0 to +1 or -1 with increase/decrease in 0.05f steps - Unity
-        // GetAxisRaw has changes from 0 to 1 or -1 immediately, so with no steps - Unity
-        // Use GetAxisRaw if we dont want the player character to "slide" around for a while after updating
-        float keyWS = Input.GetAxisRaw("Vertical");
-        float keyAD = Input.GetAxisRaw("Horizontal");
-
-        // Assign the inputs to m_Movement
-        m_Movement.x = keyAD;
-        m_Movement.z = keyWS;
-        m_Movement.Normalize();
-
-        // Update the character's sprite animation
-        m_Animator?.SetFloat("MoveX", m_Movement.z);
-        m_Animator?.SetFloat("MoveY", m_Movement.x);
-        m_Animator?.SetFloat("Speed", m_Movement.sqrMagnitude);
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (photonView.IsMine)
         {
-            SoundManager.Instance.PlayWalk(movementSound);
+            // The Horizontal and Vertical ranges change from 0 to +1 or -1 with increase/decrease in 0.05f steps - Unity
+            // GetAxisRaw has changes from 0 to 1 or -1 immediately, so with no steps - Unity
+            // Use GetAxisRaw if we dont want the player character to "slide" around for a while after updating
+            float keyWS = Input.GetAxisRaw("Vertical");
+            float keyAD = Input.GetAxisRaw("Horizontal");
+
+            // Assign the inputs to m_Movement
+            m_Movement.x = keyAD;
+            m_Movement.z = keyWS;
+            m_Movement.Normalize();
+
+            // Update the character's sprite animation
+            m_Animator?.SetFloat("MoveX", m_Movement.z);
+            m_Animator?.SetFloat("MoveY", m_Movement.x);
+            m_Animator?.SetFloat("Speed", m_Movement.sqrMagnitude);
+
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                SoundManager.Instance.PlayWalk(movementSound);
+            }
         }
     }
 

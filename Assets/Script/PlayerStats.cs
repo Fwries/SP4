@@ -29,8 +29,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        HealthBar = this.transform.Find("HealthBar").GetComponent<HealthBarBehaviour>();
-        coinCounter = this.transform.Find("Coins").GetComponent<coinCounter>();
+        HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarBehaviour>();
+        coinCounter = GameObject.Find("Coins").GetComponent<coinCounter>();
         MainCamera = Camera.main;
 
         currentHealth = MaxHealth;
