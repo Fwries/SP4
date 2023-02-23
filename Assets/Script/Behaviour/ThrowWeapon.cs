@@ -29,9 +29,9 @@ public class ThrowWeapon : MonoBehaviour
         hitBoxes = NEWhitBoxes;
 
         // We take the mass into account to slow down the rotation speed
-        m_RotateSpeed = 3600 - (180 * scWeapon.Mass);
+        m_RotateSpeed = 7200;
         // We want take the weapon reach into account
-        m_WeaponTravelDist = 3.0f * scWeapon.AtkReach;
+        m_WeaponTravelDist = 5.0f - scWeapon.Mass;
 
         // Unparent the weapon, turn it into a top-level object in the hierarchy
         transform.SetParent(null);
@@ -63,7 +63,7 @@ public class ThrowWeapon : MonoBehaviour
 
                 // Move and rotate the weapon to simulate weapon throw
                 transform.position += weaponTravelVec;
-                transform.localRotation = Quaternion.Euler(0.0f, 0.0f, angle + m_WeaponRotate);
+                transform.localRotation = Quaternion.Euler(0.0f, angle, m_WeaponRotate);
 
                 // Update the distance travelled for the weapon
                 m_DistTravelled += weaponTravelVec.magnitude;

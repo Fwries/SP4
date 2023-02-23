@@ -24,7 +24,7 @@ public class ScWeapon : ScriptableObject
     public float AtkCooldown;
     public int AtkReach;
     public float AtkRange;
-    public int Mass;
+    public float Mass;
 
     public float OffsetX;
     public float OffsetY;
