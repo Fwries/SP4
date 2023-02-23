@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: 861aed4241f026c46ba4ea76dae012f6, type: 3}
   Description: A shield that reduces oncoming damage. Very rare!
-  shopPrice: 10
+  shopPrice: 30
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0

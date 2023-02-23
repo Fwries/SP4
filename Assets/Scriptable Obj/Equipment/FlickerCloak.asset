@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: c39046cb71866be4a9dc01a7b51005ab, type: 3}
   Description: Gives you a chance to dodge oncoming attacks
-  shopPrice: 10
+  shopPrice: 40
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0

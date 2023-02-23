@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: affec71ac0981bb4baf64f42900ed811, type: 3}
   Description: Lets you regenerate health after being idle for awhile. Very rare!
-  shopPrice: 10
+  shopPrice: 100
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: 2d2af40cb7ce7924fa37b401b6d258d9, type: 3}
   Description: Makes your feet more comfy. Run faster!
-  shopPrice: 10
+  shopPrice: 35
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0

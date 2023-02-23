@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquipmentIcon: {fileID: 21300000, guid: bd1edb3d1efe1d54e94472d07da0ed63, type: 3}
   Description: Gives you a small chance to double damage dealt
-  shopPrice: 10
+  shopPrice: 15
   AtkSpeedAdd: 0
   HealthAdd: 0
   ReachAdd: 0

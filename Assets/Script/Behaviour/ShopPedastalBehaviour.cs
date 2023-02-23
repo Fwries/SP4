@@ -55,30 +55,42 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 {
                     player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
                     pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
+                    HasBought = true;
+                    halo.enabled = false;
                 }
             }
             // Logic for weapon
             else if (pedastalItem.GetComponent<ThrowWeapon>() != null)
             {
-                Debug.Log("Weapon buying");
-                if (player.GetComponentInChildren<WeaponBehaviour>().Weapon != null)
+                int playerCoins = player.GetComponent<PlayerStats>().Coin;
+                int itemPrice = prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice;
+                if (playerCoins >= itemPrice)
                 {
-                    GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
-                    weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
-                    weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                    if (player.GetComponentInChildren<WeaponBehaviour>().Weapon != null)
+                    {
+                        GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
+                        weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
+                        weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                    }
+                    player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
+                    pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
+                    HasBought = true;
+                    halo.enabled = false;
                 }
-                player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
-                pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
             }
             // Logic for consumable (just potion tbh)
             else if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
             {
-                Debug.Log("Weapon buying");
-                player.GetComponent<PlayerStats>().RecoverHealth(5);
-                pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
+                int playerCoins = player.GetComponent<PlayerStats>().Coin;
+                int itemPrice = prefabToSpawn.GetComponent<HealthPotionBehaviour>().shopPrice;
+                if (playerCoins >= itemPrice)
+                {
+                    player.GetComponent<PlayerStats>().RecoverHealth(5);
+                    pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
+                    HasBought = true;
+                    halo.enabled = false;
+                }
             }
-            HasBought = true;
-            halo.enabled = false;
         }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class HealthPotionBehaviour : MonoBehaviour
 {
     private int healAmount;
+    public int shopPrice = 10;
+
     [SerializeField] private AudioClip glug;
     public void SetUp(int amount)
     {
