@@ -61,9 +61,12 @@ public class ShopPedastalBehaviour : MonoBehaviour
             else if (pedastalItem.GetComponent<ThrowWeapon>() != null)
             {
                 Debug.Log("Weapon buying");
-                GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
-                weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
-                weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                if (player.GetComponentInChildren<WeaponBehaviour>().Weapon != null)
+                {
+                    GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
+                    weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
+                    weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                }
                 player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
                 pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
             }
