@@ -11,6 +11,8 @@ public class dieBehaviour : StateMachineBehaviour
     private Transform myTransform;
     private Vector3 coinOff = new Vector3(0f, 0.3f, 0f);
 
+    public GameObject portal;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -32,6 +34,11 @@ public class dieBehaviour : StateMachineBehaviour
 
             RoomPrescence roomPrescence = animator.GetComponentInParent<RoomPrescence>();
             roomPrescence.EnemyDestroyed();
+            if (portal != null)
+            {
+                portal = Instantiate(portal, myTransform.position, Quaternion.identity);
+            }
+
             Destroy(animator.GetComponent<Transform>().parent.gameObject);
         }
     }
