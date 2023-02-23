@@ -18,10 +18,10 @@ MonoBehaviour:
   Description: 'Damage: 5'
   AtkType: 1
   AtkSpeed: 1.2
-  AtkCooldown: 0.7
+  AtkCooldown: 0.2
   AtkReach: 1
   AtkRange: 200
   Mass: 2
   OffsetX: 0
   OffsetY: 0.732
-  shopPrice: 30
+  shopPrice: 20
