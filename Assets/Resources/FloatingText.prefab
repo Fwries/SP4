@@ -93,7 +93,7 @@ TextMesh:
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 16
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: c673a2a2b1fda3e4d9b6e047ec690bdb, type: 3}
   m_Color:
