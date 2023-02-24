@@ -72,6 +72,10 @@ public class ThrowWeapon : MonoBehaviour
     [PunRPC]
     void RPC_SetWeaponHitbox(int view_id)
     {
-        PhotonView.Find(view_id).gameObject.GetComponent<MeshCollider>().enabled = true;
+        GameObject Weapon = PhotonView.Find(view_id).gameObject;
+        if (Weapon != null)
+        {
+            Weapon.GetComponent<MeshCollider>().enabled = true;
+        }
     }
 }
