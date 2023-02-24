@@ -69,28 +69,28 @@ public class RoomTemplates : MonoBehaviour
     {
         if (waitTime <= 0 && spawned == false)
         {
-            for (int i = 0; i < Rooms.Count; i++)
-            {
-                enemyRand = Random.Range(0, EnemySetsEasy.Length);
-                rand = Random.Range(0, 10);
-                if (rand >= 8 && Rooms[i] != Rooms[Rooms.Count-1])
-                {
-                    Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-                }
-                else
-                {
-                    if (Rooms[i] != Rooms[Rooms.Count - 1])
-                    {
-                        rand = Random.Range(1, RoomDecor.Length);
-                        Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-                        Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
-                    }
-                }
+            //for (int i = 0; i < Rooms.Count; i++)
+            //{
+            //    enemyRand = Random.Range(0, EnemySetsEasy.Length);
+            //    rand = Random.Range(0, 10);
+            //    if (rand >= 8 && Rooms[i] != Rooms[Rooms.Count-1])
+            //    {
+            //        Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+            //    }
+            //    else
+            //    {
+            //        if (Rooms[i] != Rooms[Rooms.Count - 1])
+            //        {
+            //            rand = Random.Range(1, RoomDecor.Length);
+            //            Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
+            //            Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
+            //        }
+            //    }
 
-                if (i == Rooms.Count - 1)
-                    GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
-                                                                     .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
-            }
+            //    if (i == Rooms.Count - 1)
+            //        GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
+            //                                                         .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
+            //}
             spawned = true;
         }
         if (waitTime <= 0 && spawnedBoss == false)
