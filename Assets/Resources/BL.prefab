@@ -10174,6 +10174,7 @@ GameObject:
   - component: {fileID: 1393198170186228220}
   - component: {fileID: 1747004272999501947}
   - component: {fileID: 4972854121756567931}
+  - component: {fileID: 6412141758480585188}
   m_Layer: 0
   m_Name: SpawnPoint (1)
   m_TagString: SpawnPoint
@@ -10239,6 +10240,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6412141758480585188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247152293723629572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2267301573155494686
 GameObject:
   m_ObjectHideFlags: 0
@@ -27595,6 +27618,7 @@ GameObject:
   - component: {fileID: 2155009162380458277}
   - component: {fileID: 8534812944064588743}
   - component: {fileID: 7425925070317730370}
+  - component: {fileID: 6916047220972702042}
   m_Layer: 0
   m_Name: SpawnPoint (2)
   m_TagString: SpawnPoint
@@ -27660,6 +27684,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6916047220972702042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6718845858224397089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6729302754119307897
 GameObject:
   m_ObjectHideFlags: 0

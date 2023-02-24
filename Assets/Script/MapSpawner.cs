@@ -21,7 +21,7 @@ public class MapSpawner : MonoBehaviour
             //}
             if (mapSpawned == false)
             {
-                Map = Instantiate(startingRoom, transform.position, Quaternion.identity);
+                Map = PhotonNetwork.Instantiate("startingRoom", transform.position, Quaternion.identity);
                 Map.transform.SetParent(transform);
                 mapSpawned = true;
             }
@@ -29,7 +29,7 @@ public class MapSpawner : MonoBehaviour
     }
     public void RegenerateMap()
     {
-        Destroy(Map);
+        PhotonNetwork.Destroy(Map);
         mapSpawned = false;
     }
 }
