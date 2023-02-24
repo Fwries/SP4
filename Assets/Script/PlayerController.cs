@@ -34,7 +34,11 @@ public class PlayerController : MonoBehaviour
         photonView = GetComponent<PhotonView>();
         if (photonView.Owner.ActorNumber == 1)
         {
-            this.gameObject.transform.position = new Vector3(5.0f, 0.5f, 0.0f);
+            this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
+        }
+        else if(photonView.Owner.ActorNumber == 2)
+        {
+            this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
         }
 
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
