@@ -105,9 +105,9 @@ public class RoomSpawner : MonoBehaviour
                     GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
                     NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                     NewRoom.transform.SetParent(transform);
+                    GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
                     CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
-                    Destroy(other.gameObject);
-                    Debug.Log("Secret room spawned");
+                    PhotonNetwork.Destroy(other.gameObject);
                 }
                 spawned = true;
             }
