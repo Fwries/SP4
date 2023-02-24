@@ -50,9 +50,11 @@ public class RoomSpawner : MonoBehaviour
 
     void Spawn()
     {
-        if (spawned == false)
+        if (PhotonNetwork.IsMasterClient)
         {
-            GameObject NewRoom;
+            if (spawned == false)
+            {
+                GameObject NewRoom;
 
             if (DoorDirection == 1)
             {
@@ -83,9 +85,10 @@ public class RoomSpawner : MonoBehaviour
                 NewRoom.transform.SetParent(transform.parent);
             }
 
-            CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
+                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
 
-            spawned = true;
+                spawned = true;
+            }
         }
     }
 
