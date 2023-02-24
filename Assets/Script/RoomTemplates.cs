@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -33,7 +34,11 @@ public class RoomTemplates : MonoBehaviour
 
     private int rand;
     private int enemyRand;
-
+    private PhotonView photonView;
+    private void Awake()
+    {
+        photonView = transform.GetComponent<PhotonView>();
+    }
     public Vector2 GetMinBound()
     {
         return m_MinBound;
@@ -101,7 +106,7 @@ public class RoomTemplates : MonoBehaviour
             waitTime -= Time.deltaTime;
         }
 
-        if (waitTime <= 0 && Rooms.Count <= 10)
+        if (waitTime <= 0 && Rooms.Count < 10)
         {
             NewMap();
         }
@@ -111,11 +116,11 @@ public class RoomTemplates : MonoBehaviour
         }
         if (MapSpawned == true && waitTime <= 0)
         {
-            LoadScreen.SetActive(false);
+            photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
         }
         else
         {
-            LoadScreen.SetActive(true);
+            photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
         }
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
@@ -131,5 +136,11 @@ public class RoomTemplates : MonoBehaviour
         MapSpawned = false;
         Rooms.Clear();
         Map.GetComponent<MapSpawner>().RegenerateMap();
+    }
+    [PunRPC]
+
+    public void LoadScreenCheck(bool mapSpawned)
+    {
+        LoadScreen.SetActive(!mapSpawned);
     }
 }
