@@ -40,7 +40,7 @@ public class WeaponBehaviour : MonoBehaviour
     void Awake()
     {
         photonview = this.transform.parent.GetComponent<PhotonView>();
-        photonview.RPC("RPC_WeaponSwitch", RpcTarget.All, scWeapon.Name);
+        WeaponSwitch(scWeapon);
     }
 
     private void Update()
@@ -203,37 +203,7 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         scWeapon = _scWeapon;
-        Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
-        Weapon.transform.SetParent(transform);
-        Weapon.GetComponent<MeshCollider>().enabled = false;
-
-        hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
-        atkType = (int)scWeapon.AtkType;
-
-        if (atkType == 1) // Swing
-        {
-            EndSwing = scWeapon.AtkRange / 4;
-            StartSwing = EndSwing * -3;
-        }
-        else if (atkType == 3) // Crush
-        {
-            EndSwing = scWeapon.AtkRange / 4;
-            StartSwing = EndSwing * -3;
-        }
-        SoundManager.Instance.PlaySound(weaponEquip);
-    }
-
-    [PunRPC]
-    void RPC_WeaponSwitch(string _scWeapon)
-    {
-        if (Weapon != null)
-        {
-            Destroy(Weapon);
-        }
-
-        scWeapon = Resources.Load<ScWeapon>(_scWeapon);
-        Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
-        Weapon.transform.SetParent(transform);
+        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
         Weapon.GetComponent<MeshCollider>().enabled = false;
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;

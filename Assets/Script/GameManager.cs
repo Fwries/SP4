@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void SpawnPlayer()
     {
-        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0.0f, 0.5f, 0.0f), Quaternion.identity);
+        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
     }
 
     void Start()
