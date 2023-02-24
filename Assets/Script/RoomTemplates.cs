@@ -21,9 +21,11 @@ public class RoomTemplates : MonoBehaviour
     public GameObject Map;
     public GameObject LoadScreen;
 
+    public Sprite bossSprite;
+    
     private const float m_ROOM_SIZE = 17.0f;
-    private float m_MapScaleZ = 0.0f;
-    private float m_MapScaleX = 0.0f;
+    private Vector2 m_MinBound;
+    private Vector2 m_MaxBound;
 
     private bool spawnedBoss;
     private bool spawned;
@@ -32,14 +34,30 @@ public class RoomTemplates : MonoBehaviour
     private int rand;
     private int enemyRand;
 
-    public void AddMapScaleZ()
+    public Vector2 GetMinBound()
     {
-        m_MapScaleZ += m_ROOM_SIZE;
+        return m_MinBound;
     }
 
-    public void AddMapScaleX()
+    public void SetMinBound(float x = float.NaN, float y = float.NaN)
     {
-        m_MapScaleX += m_ROOM_SIZE;
+        if (!float.IsNaN(x))
+            m_MinBound.x = x;
+        if (!float.IsNaN(y))
+            m_MinBound.y = y;
+    }
+
+    public Vector2 GetMaxBound()
+    {
+        return m_MaxBound;
+    }
+
+    public void SetMaxBound(float x = float.NaN, float y = float.NaN)
+    {
+        if (!float.IsNaN(x))
+            m_MaxBound.x = x;
+        if (!float.IsNaN(y))
+            m_MaxBound.y = y;
     }
 
     private void Update()
@@ -63,13 +81,19 @@ public class RoomTemplates : MonoBehaviour
                         Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
                     }
                 }
+
+                if (i == Rooms.Count - 1)
+                    GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
+                                                                     .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
             }
             spawned = true;
         }
         if (waitTime <= 0 && spawnedBoss == false)
         {
             rand = Random.Range(0, boss.Length);
-            Instantiate(boss[rand], Rooms[Rooms.Count - 1].transform.position, Quaternion.identity, Rooms[Rooms.Count - 1].transform);
+            Transform lastRoomTransform = Rooms[Rooms.Count - 1].transform;
+            Instantiate(boss[rand], lastRoomTransform.position, Quaternion.identity, lastRoomTransform);
+            lastRoomTransform.Find("MinimapObjects").Find("RoomType").GetComponent<SpriteRenderer>().sprite = bossSprite;
             spawnedBoss = true;
         }
         else
