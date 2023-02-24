@@ -32,16 +32,18 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
 
-    void Start()
+    void Awake()
     {
         photonView = GetComponent<PhotonView>();
         if (photonView.Owner.ActorNumber == 1)
         {
             this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
         }
         else if(photonView.Owner.ActorNumber == 2)
         {
             this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
         }
 
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
@@ -56,18 +58,6 @@ public class PlayerController : MonoBehaviour
         m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
 
         tintTimer = 1f;
-    }
-
-    private void Awake()
-    {
-        if (photonView.Owner.ActorNumber == 1)
-        {
-            transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
-        }
-        else if (photonView.Owner.ActorNumber == 2)
-        {
-            transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
-        }
     }
 
     void UpdateMovementOnWASDPressed()
