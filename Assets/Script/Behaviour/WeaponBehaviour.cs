@@ -208,6 +208,8 @@ public class WeaponBehaviour : MonoBehaviour
             Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
             Weapon.transform.SetParent(transform);
             Weapon.GetComponent<MeshCollider>().enabled = false;
+
+            GetComponent<PhotonView>().RPC("RPC_SetWeapon", RpcTarget.Others, Weapon.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
         }
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
@@ -224,5 +226,14 @@ public class WeaponBehaviour : MonoBehaviour
             StartSwing = EndSwing * -3;
         }
         SoundManager.Instance.PlaySound(weaponEquip);
+    }
+
+    [PunRPC]
+    void RPC_SetWeapon(int view_id, int ParentID)
+    {
+        Weapon = PhotonView.Find(view_id).gameObject;
+        GameObject Parent = PhotonView.Find(ParentID).gameObject;
+        Weapon.transform.SetParent(Parent.transform);
+        Weapon.GetComponent<MeshCollider>().enabled = false;
     }
 }
