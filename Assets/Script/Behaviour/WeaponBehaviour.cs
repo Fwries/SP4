@@ -199,7 +199,7 @@ public class WeaponBehaviour : MonoBehaviour
     {
         scWeapon = _scWeapon;
 
-        if (PhotonNetwork.IsMasterClient)
+        if (photonview.IsMine)
         {
             if (Weapon != null)
             {
