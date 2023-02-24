@@ -15,6 +15,7 @@ public class PortalBehaviour : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            Debug.Log("AHHHHHHHHHH");
             Map.NewMap();
         }
     }

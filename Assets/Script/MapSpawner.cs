@@ -15,8 +15,7 @@ public class MapSpawner : MonoBehaviour
         {
             if (mapSpawned == false)
             {
-                Map = PhotonNetwork.Instantiate("startingRoom", transform.position, Quaternion.identity);
-                Map.transform.SetParent(transform);
+                Map = Instantiate(startingRoom, this.transform.position, Quaternion.identity, this.transform);
                 mapSpawned = true;
             }
         }
