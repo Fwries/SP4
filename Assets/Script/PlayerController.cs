@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private PhotonView photonView;
 
+    [SerializeField] private Sprite player2Sprite;
+    [SerializeField] private Sprite player3Sprite;
+
     float tintTimer;
 
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
@@ -53,6 +56,18 @@ public class PlayerController : MonoBehaviour
         m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
 
         tintTimer = 1f;
+    }
+
+    private void Awake()
+    {
+        if (photonView.Owner.ActorNumber == 1)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
+        }
+        else if (photonView.Owner.ActorNumber == 2)
+        {
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
+        }
     }
 
     void UpdateMovementOnWASDPressed()
