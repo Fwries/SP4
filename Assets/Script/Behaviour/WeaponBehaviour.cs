@@ -231,9 +231,9 @@ public class WeaponBehaviour : MonoBehaviour
     [PunRPC]
     void RPC_SetWeapon(int view_id, int ParentID)
     {
-        Weapon = PhotonView.Find(view_id).gameObject;
         GameObject Parent = PhotonView.Find(ParentID).gameObject;
-        Weapon.transform.SetParent(Parent.transform);
-        Weapon.GetComponent<MeshCollider>().enabled = false;
+        Parent.GetComponent<WeaponBehaviour>().Weapon = PhotonView.Find(view_id).gameObject;
+        Parent.GetComponent<WeaponBehaviour>().Weapon.transform.SetParent(Parent.transform);
+        Parent.GetComponent<WeaponBehaviour>().Weapon.GetComponent<MeshCollider>().enabled = false;
     }
 }
