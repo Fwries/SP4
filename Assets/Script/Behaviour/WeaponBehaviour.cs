@@ -100,18 +100,6 @@ public class WeaponBehaviour : MonoBehaviour
                 SoundManager.Instance.PlaySound(swordSwing);
             }
 
-            if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)
-            {
-                foreach (Hitbox hitbox in hitBoxes)
-                    hitbox.active = true;
-
-                Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
-
-                Weapon = null;
-                scWeapon = null;
-                SoundManager.Instance.PlaySound(swordSwing);
-            }
-
             if (IsAttack)
             {
                 if (atkType == 1) // Swing
@@ -181,6 +169,19 @@ public class WeaponBehaviour : MonoBehaviour
             }
 
             transform.rotation = Quaternion.Euler(0.0f, angle + AtkSwingY, -AtkSwingZ);
+
+            if (Input.GetButtonDown("Fire2") && !IsAttack && !IsCoolDown)
+            {
+                foreach (Hitbox hitbox in hitBoxes)
+                    hitbox.active = true;
+
+                Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
+
+                Weapon = null;
+                scWeapon = null;
+                SoundManager.Instance.PlaySound(swordSwing);
+                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            }
         }
     }
 
