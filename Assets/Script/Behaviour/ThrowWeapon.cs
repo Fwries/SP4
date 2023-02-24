@@ -32,9 +32,6 @@ public class ThrowWeapon : MonoBehaviour
         m_RotateSpeed = 72000;
         // We want take the weapon reach into account
         m_WeaponTravelDist = 5.0f - scWeapon.Mass;
-
-        // Unparent the weapon, turn it into a top-level object in the hierarchy
-        transform.SetParent(null);
     }
 
     void Update()
