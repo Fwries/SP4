@@ -25,7 +25,11 @@ public class RoomSpawner : MonoBehaviour
     {
         //Destroy(gameObject, waitTime);
         Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn",0.1f);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Invoke("Spawn", 0.1f);
+        }
     }
 
     private void CheckMinMaxBound(float x, float y)
@@ -87,18 +91,21 @@ public class RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SpawnPoint"))
+        if (PhotonNetwork.IsMasterClient)
         {
-            if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+            if (other.CompareTag("SpawnPoint"))
             {
-                GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(transform);
-                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
-                Destroy(other.gameObject);
-                //Debug.Log("Secret room spawned");
+                if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
+                {
+                    GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
+                    NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                    NewRoom.transform.SetParent(transform);
+                    CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
+                    Destroy(other.gameObject);
+                    //Debug.Log("Secret room spawned");
+                }
+                spawned = true;
             }
-            spawned = true;
         }
     }
 }
