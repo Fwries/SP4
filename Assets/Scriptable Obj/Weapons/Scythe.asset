@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 1816651424779170506, guid: 9482885382f84e149ae70c4d7f70156e, type: 3}
   WeaponIcon: {fileID: 21300000, guid: cae12dac1a0472049ae434fde9727918, type: 3}
   Name: Scythe
-  Description: 'Damage: 7-20'
+  Description: 'Damage: 7-20. On Hit: Restore 3.'
   AtkType: 1
   AtkSpeed: 1
   AtkCooldown: 1
