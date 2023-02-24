@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         photonView = GetComponent<PhotonView>();
- 
+        transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 0);
+
 
         if (photonView.Owner.ActorNumber == 1)
         {
