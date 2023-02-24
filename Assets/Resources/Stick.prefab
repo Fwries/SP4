@@ -152,7 +152,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -2641416769528457149}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -221,6 +222,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 1
   active: 0
+  Weapon: {fileID: 7993564263508283143}
   hitBoxContainer: {fileID: 1026524295232285126}
 --- !u!65 &8956146482955344404
 BoxCollider:

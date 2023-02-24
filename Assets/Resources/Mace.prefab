@@ -232,6 +232,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 15
   active: 0
+  Weapon: {fileID: 1149865585574159163}
   hitBoxContainer: {fileID: 7101323114325742550}
 --- !u!136 &8538595917390027478
 CapsuleCollider:
@@ -296,6 +297,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 3
   active: 0
+  Weapon: {fileID: 1149865585574159163}
   hitBoxContainer: {fileID: 7101323114325742550}
 --- !u!136 &780694793624095277
 CapsuleCollider:

@@ -242,6 +242,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 6
   active: 0
+  Weapon: {fileID: 901847194963998080}
   hitBoxContainer: {fileID: 7893506621821738640}
 --- !u!1 &2349941444163248311
 GameObject:
@@ -306,4 +307,5 @@ MonoBehaviour:
   Crit: 1
   Damage: 2
   active: 0
+  Weapon: {fileID: 901847194963998080}
   hitBoxContainer: {fileID: 7893506621821738640}

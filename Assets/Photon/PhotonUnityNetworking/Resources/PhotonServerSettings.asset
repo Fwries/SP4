@@ -49,6 +49,9 @@ MonoBehaviour:
   - RPC_FUCKWEAPON
   - RPC_PickupWeapon
   - RPC_SetWeaponHitbox
+  - RPC_Damage
+  - RPC_WallBreak
+  - RPC_SetDestination
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

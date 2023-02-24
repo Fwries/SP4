@@ -49,6 +49,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 1
   active: 0
+  Weapon: {fileID: 3208848167588750184}
   hitBoxContainer: {fileID: 8978010532009376110}
 --- !u!65 &2499019401052775391
 BoxCollider:
@@ -292,6 +293,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 3
   active: 0
+  Weapon: {fileID: 3208848167588750184}
   hitBoxContainer: {fileID: 8978010532009376110}
 --- !u!65 &6034277570789864088
 BoxCollider:
