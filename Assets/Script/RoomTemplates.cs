@@ -10,7 +10,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] LeftRooms;
     public GameObject[] RightRooms;
     public GameObject[] RoomDecor;
-    public GameObject[] boss;
+    public GameObject boss;
 
     public GameObject[] EnemySetsEasy;
 
@@ -67,60 +67,69 @@ public class RoomTemplates : MonoBehaviour
 
     private void Update()
     {
-        if (waitTime <= 0 && spawned == false)
+        if (PhotonNetwork.IsMasterClient)
         {
-            //for (int i = 0; i < Rooms.Count; i++)
-            //{
-            //    enemyRand = Random.Range(0, EnemySetsEasy.Length);
-            //    rand = Random.Range(0, 10);
-            //    if (rand >= 8 && Rooms[i] != Rooms[Rooms.Count-1])
-            //    {
-            //        Instantiate(RoomDecor[0], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-            //    }
-            //    else
-            //    {
-            //        if (Rooms[i] != Rooms[Rooms.Count - 1])
-            //        {
-            //            rand = Random.Range(1, RoomDecor.Length);
-            //            Instantiate(RoomDecor[rand], Rooms[i].transform.position, Rooms[i].transform.rotation, Rooms[i].transform);
-            //            Instantiate(EnemySetsEasy[enemyRand], Rooms[i].transform.position, Quaternion.identity, Rooms[i].transform);
-            //        }
-            //    }
+            if (waitTime <= 0 && spawned == false)
+            {
+                for (int i = 0; i < Rooms.Count; i++)
+                {
+                    enemyRand = Random.Range(0, EnemySetsEasy.Length);
+                    rand = Random.Range(0, 10);
+                    if (rand >= 8 && Rooms[i] != Rooms[Rooms.Count - 1])
+                    {
+                        GameObject decor = PhotonNetwork.Instantiate(RoomDecor[0].name, Rooms[i].transform.position, Rooms[i].transform.rotation);
+                        decor.transform.SetParent(Rooms[i].transform);
+                        GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, decor.GetComponent<PhotonView>().ViewID, Rooms[i].GetComponent<PhotonView>().ViewID);
+                    }
+                    else
+                    {
+                        if (Rooms[i] != Rooms[Rooms.Count - 1])
+                        {
+                            rand = Random.Range(1, RoomDecor.Length);
+                            GameObject decor = PhotonNetwork.Instantiate(RoomDecor[rand].name, Rooms[i].transform.position, Rooms[i].transform.rotation);
+                            decor.transform.SetParent(Rooms[i].transform);
+                            GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, decor.GetComponent<PhotonView>().ViewID, Rooms[i].GetComponent<PhotonView>().ViewID);
+                            GameObject enemy = PhotonNetwork.Instantiate(EnemySetsEasy[enemyRand].name, Rooms[i].transform.position, Quaternion.identity);
+                            enemy.transform.SetParent(Rooms[i].transform);
+                            GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, enemy.GetComponent<PhotonView>().ViewID, Rooms[i].GetComponent<PhotonView>().ViewID);
+                        }
+                    }
 
-            //    if (i == Rooms.Count - 1)
-            //        GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
-            //                                                         .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
-            //}
-            spawned = true;
-        }
-        if (waitTime <= 0 && spawnedBoss == false)
-        {
-            rand = Random.Range(0, boss.Length);
-            Transform lastRoomTransform = Rooms[Rooms.Count - 1].transform;
-            Instantiate(boss[rand], lastRoomTransform.position, Quaternion.identity, lastRoomTransform);
-            lastRoomTransform.Find("MinimapObjects").Find("RoomType").GetComponent<SpriteRenderer>().sprite = bossSprite;
-            spawnedBoss = true;
-        }
-        else
-        {
-            waitTime -= Time.deltaTime;
-        }
+                    if (i == Rooms.Count - 1)
+                        GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
+                                                                         .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
+                }
+                spawned = true;
+            }
+            if (waitTime <= 0 && spawnedBoss == false)
+            {
+                Transform lastRoomTransform = Rooms[Rooms.Count - 1].transform;
+                PhotonNetwork.Instantiate(boss.name, lastRoomTransform.position, Quaternion.identity);
+                lastRoomTransform.transform.SetParent(lastRoomTransform.transform);
+                lastRoomTransform.Find("MinimapObjects").Find("RoomType").GetComponent<SpriteRenderer>().sprite = bossSprite;
+                spawnedBoss = true;
+            }
+            else
+            {
+                waitTime -= Time.deltaTime;
+            }
 
-        if (waitTime <= 0 && Rooms.Count < 10)
-        {
-            NewMap();
-        }
-        if (Rooms.Count >= 10)
-        {
-            MapSpawned = true;
-        }
-        if (MapSpawned == true && waitTime <= 0)
-        {
-            photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
-        }
-        else
-        {
-            photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
+            if (waitTime <= 0 && Rooms.Count < 10)
+            {
+                NewMap();
+            }
+            if (Rooms.Count >= 10)
+            {
+                MapSpawned = true;
+            }
+            if (MapSpawned == true && waitTime <= 0)
+            {
+                photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
+            }
+            else
+            {
+                photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
+            }
         }
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
@@ -137,10 +146,17 @@ public class RoomTemplates : MonoBehaviour
         Rooms.Clear();
         Map.GetComponent<MapSpawner>().RegenerateMap();
     }
-    [PunRPC]
 
+    [PunRPC]
     public void LoadScreenCheck(bool mapSpawned)
     {
         LoadScreen.SetActive(!mapSpawned);
+    }
+    [PunRPC]
+    public void SetRoomChild(int childID, int parentID)
+    {
+        GameObject Parent = PhotonView.Find(parentID).gameObject;
+        GameObject Child = PhotonView.Find(childID).gameObject;
+        Child.transform.SetParent(Parent.transform);
     }
 }

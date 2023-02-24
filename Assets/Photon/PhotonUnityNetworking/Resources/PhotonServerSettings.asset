@@ -46,6 +46,9 @@ MonoBehaviour:
   - SetRoomChild
   - Spawn
   - SetRoom
+  - RPC_FUCKWEAPON
+  - RPC_PickupWeapon
+  - RPC_SetWeaponHitbox
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

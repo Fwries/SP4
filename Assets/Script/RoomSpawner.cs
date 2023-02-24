@@ -60,32 +60,32 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.BottomRooms[rand].name, transform.position, Templates.BottomRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                //NewRoom.transform.SetParent(transform.parent);
-                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                NewRoom.transform.SetParent(transform.parent);
+                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.LeftRooms[rand].name, transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                //NewRoom.transform.SetParent(transform.parent);
-                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                NewRoom.transform.SetParent(transform.parent);
+                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.TopRooms[rand].name, transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                //NewRoom.transform.SetParent(transform.parent);
-                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                NewRoom.transform.SetParent(transform.parent);
+                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
             else //if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.RightRooms[rand].name, transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                //NewRoom.transform.SetParent(transform.parent);
-                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                NewRoom.transform.SetParent(transform.parent);
+                GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
 
             CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
@@ -102,11 +102,11 @@ public class RoomSpawner : MonoBehaviour
             {
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
-                    NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                    //GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
+                    //NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                     //NewRoom.transform.SetParent(transform);
-                    GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
-                    CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
+                    //GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                    //CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
                     //PhotonNetwork.Destroy(other.gameObject);
                 }
             }

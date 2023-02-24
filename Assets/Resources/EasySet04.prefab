@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 7273937040888978615}
   - component: {fileID: 6599903193662533938}
   - component: {fileID: 220869789378447530}
+  - component: {fileID: 1760593107051176134}
   m_Layer: 0
   m_Name: EasySet04
   m_TagString: Untagged
@@ -365,6 +366,28 @@ MonoBehaviour:
   bufferTime: 0
   enemyCount: 0
   wallSound: {fileID: 8300000, guid: 45a914f05ecd2484ba731ae247eae8c2, type: 3}
+--- !u!114 &1760593107051176134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7599654304156137540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8826029068698338273
 GameObject:
   m_ObjectHideFlags: 0

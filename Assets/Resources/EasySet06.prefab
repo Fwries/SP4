@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4697450161452911044}
   - component: {fileID: 5997811042286025327}
   - component: {fileID: 1741292301231796780}
+  - component: {fileID: 4039237230022679432}
   m_Layer: 0
   m_Name: EasySet06
   m_TagString: Untagged
@@ -73,6 +74,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14, y: 5, z: 14}
   m_Center: {x: -0.8, y: 0, z: 0}
+--- !u!114 &4039237230022679432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073402088083569455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5817441507277293875
 GameObject:
   m_ObjectHideFlags: 0
