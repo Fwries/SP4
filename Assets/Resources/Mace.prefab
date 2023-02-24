@@ -187,9 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ee708f6d03d3543abd304ebb0b2e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   Crit: 1
   Damage: 15
   active: 0
+  hitBoxContainer: {fileID: 7101323114325742550}
 --- !u!136 &8538595917390027478
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -249,9 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ee708f6d03d3543abd304ebb0b2e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   Crit: 1
   Damage: 3
   active: 0
+  hitBoxContainer: {fileID: 7101323114325742550}
 --- !u!136 &780694793624095277
 CapsuleCollider:
   m_ObjectHideFlags: 0

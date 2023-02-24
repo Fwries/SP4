@@ -49,6 +49,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 4
   active: 0
+  hitBoxContainer: {fileID: 6116696195569926976}
 --- !u!65 &4275391655791364159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 4
   active: 0
+  hitBoxContainer: {fileID: 6116696195569926976}
 --- !u!65 &7765253952363686115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,6 +175,7 @@ MonoBehaviour:
   Crit: 1
   Damage: 4
   active: 0
+  hitBoxContainer: {fileID: 6116696195569926976}
 --- !u!65 &6603784311730803973
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Hitbox : MonoBehaviour
     public int Damage;
     public bool active;
 
+    [SerializeField] private HitboxContainer hitBoxContainer;
+
     void OnTriggerEnter(Collider other)
     {
         if (!active) { return; }
@@ -23,14 +25,14 @@ public class Hitbox : MonoBehaviour
                 otherAnim.SetInteger("PrevHealth", otherAnim.GetInteger("Health"));
                 otherAnim.SetInteger("Health", Health - (Damage * Crit));
 
-                this.gameObject.GetComponentInParent<HitboxContainer>().OnHit(index);
+                hitBoxContainer.OnHit(index);
             }
         }
         if(other.gameObject.tag=="BreakWall")
         {
             Destroy(other.gameObject);
-            this.gameObject.GetComponentInParent<HitboxContainer>().OnHit(index);
-            transform.gameObject.GetComponentInParent<HitboxContainer>().DestroyWeapon();
+            hitBoxContainer.OnHit(index);
+            hitBoxContainer.DestroyWeapon();
         }
     }
 }

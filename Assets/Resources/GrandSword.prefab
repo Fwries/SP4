@@ -198,8 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ee708f6d03d3543abd304ebb0b2e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
+  Crit: 1
   Damage: 5
   active: 0
+  hitBoxContainer: {fileID: -2231358977366350424}
 --- !u!1 &2843157737557230545
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,5 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ee708f6d03d3543abd304ebb0b2e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
+  Crit: 1
   Damage: 3
   active: 0
+  hitBoxContainer: {fileID: -2231358977366350424}
