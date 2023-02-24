@@ -16,7 +16,6 @@ public class RoomSpawner : MonoBehaviour
 
     private RoomTemplates Templates;
     private int rand;
-    private int enemyRand;
     private bool spawned = false;
     public float waitTime = 50.0f;
 
@@ -58,34 +57,30 @@ public class RoomSpawner : MonoBehaviour
             if (DoorDirection == 1)
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
-                enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
-                NewRoom.transform.SetParent(this.transform.parent);
+                NewRoom = PhotonNetwork.Instantiate(Templates.BottomRooms[rand].name, transform.position, Templates.BottomRooms[rand].transform.rotation);
+                NewRoom.transform.SetParent(transform.parent);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
-                enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
+                NewRoom = PhotonNetwork.Instantiate(Templates.LeftRooms[rand].name, transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(this.transform.parent);
+                NewRoom.transform.SetParent(transform.parent);
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
-                enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
+                NewRoom = PhotonNetwork.Instantiate(Templates.TopRooms[rand].name, transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(this.transform.parent);
+                NewRoom.transform.SetParent(transform.parent);
             }
-            else // if (DoorDirection == 4)
+            else //if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
-                enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
+                NewRoom = PhotonNetwork.Instantiate(Templates.RightRooms[rand].name, transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(this.transform.parent);
+                NewRoom.transform.SetParent(transform.parent);
             }
 
             CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
@@ -100,6 +95,7 @@ public class RoomSpawner : MonoBehaviour
         {
             if (other.CompareTag("SpawnPoint"))
             {
+<<<<<<< HEAD
                 if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
                 {
                     GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
@@ -110,6 +106,14 @@ public class RoomSpawner : MonoBehaviour
                     //Debug.Log("Secret room spawned");
                 }
                 spawned = true;
+=======
+                GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                NewRoom.transform.SetParent(transform);
+                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
+                Destroy(other.gameObject);
+                //Debug.Log("Secret room spawned");
+>>>>>>> parent of 40b43d8 (Revert "trying again map")
             }
         }
     }
