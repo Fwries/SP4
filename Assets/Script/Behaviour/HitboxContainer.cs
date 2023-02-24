@@ -36,7 +36,7 @@ public class HitboxContainer : MonoBehaviour
 
     public void DestroyWeapon()
     {
-        DestroyImmediate(this.gameObject, true);
+        Destroy(this.gameObject);
     }
 
     //void OnCollisionEnter(Collision collision)
