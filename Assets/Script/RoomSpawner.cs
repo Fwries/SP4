@@ -28,6 +28,7 @@ public class RoomSpawner : MonoBehaviour
 
         if (PhotonNetwork.IsMasterClient)
         {
+            Debug.Log("SpawnRoom");
             Invoke("Spawn", 0.1f);
         }
     }
@@ -50,45 +51,42 @@ public class RoomSpawner : MonoBehaviour
 
     void Spawn()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (spawned == false)
         {
-            if (spawned == false)
-            {
-                GameObject NewRoom;
+            GameObject NewRoom;
 
-            if (DoorDirection == 1)
-            {
-                rand = Random.Range(0, Templates.BottomRooms.Length);
-                NewRoom = PhotonNetwork.Instantiate(Templates.BottomRooms[rand].name, transform.position, Templates.BottomRooms[rand].transform.rotation);
-                NewRoom.transform.SetParent(transform.parent);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-            }
-            else if (DoorDirection == 2)
-            {
-                rand = Random.Range(0, Templates.LeftRooms.Length);
-                NewRoom = PhotonNetwork.Instantiate(Templates.LeftRooms[rand].name, transform.position, Templates.LeftRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(transform.parent);
-            }
-            else if (DoorDirection == 3)
-            {
-                rand = Random.Range(0, Templates.TopRooms.Length);
-                NewRoom = PhotonNetwork.Instantiate(Templates.TopRooms[rand].name, transform.position, Templates.TopRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(transform.parent);
-            }
-            else //if (DoorDirection == 4)
-            {
-                rand = Random.Range(0, Templates.RightRooms.Length);
-                NewRoom = PhotonNetwork.Instantiate(Templates.RightRooms[rand].name, transform.position, Templates.RightRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(transform.parent);
-            }
+        if (DoorDirection == 1)
+        {
+            rand = Random.Range(0, Templates.BottomRooms.Length);
+            NewRoom = PhotonNetwork.Instantiate(Templates.BottomRooms[rand].name, transform.position, Templates.BottomRooms[rand].transform.rotation);
+            NewRoom.transform.SetParent(transform.parent);
+            NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+        }
+        else if (DoorDirection == 2)
+        {
+            rand = Random.Range(0, Templates.LeftRooms.Length);
+            NewRoom = PhotonNetwork.Instantiate(Templates.LeftRooms[rand].name, transform.position, Templates.LeftRooms[rand].transform.rotation);
+            NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+            NewRoom.transform.SetParent(transform.parent);
+        }
+        else if (DoorDirection == 3)
+        {
+            rand = Random.Range(0, Templates.TopRooms.Length);
+            NewRoom = PhotonNetwork.Instantiate(Templates.TopRooms[rand].name, transform.position, Templates.TopRooms[rand].transform.rotation);
+            NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+            NewRoom.transform.SetParent(transform.parent);
+        }
+        else //if (DoorDirection == 4)
+        {
+            rand = Random.Range(0, Templates.RightRooms.Length);
+            NewRoom = PhotonNetwork.Instantiate(Templates.RightRooms[rand].name, transform.position, Templates.RightRooms[rand].transform.rotation);
+            NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+            NewRoom.transform.SetParent(transform.parent);
+        }
 
-                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
+            CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
 
-                spawned = true;
-            }
+            spawned = true;
         }
     }
 
@@ -105,7 +103,7 @@ public class RoomSpawner : MonoBehaviour
                     NewRoom.transform.SetParent(transform);
                     CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
                     Destroy(other.gameObject);
-                    //Debug.Log("Secret room spawned");
+                    Debug.Log("Secret room spawned");
                 }
                 spawned = true;
             }
