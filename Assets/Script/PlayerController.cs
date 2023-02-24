@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         else if(photonView.Owner.ActorNumber == 3)
         {
             this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
+            this.transform.GetChild(0).GetComponent<Transform>().position = new Vector3(this.gameObject.transform.position.x, 0f, this.gameObject.transform.position.z);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
             transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 3);
         }
