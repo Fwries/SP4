@@ -107,7 +107,7 @@ public class RoomSpawner : MonoBehaviour
                     //NewRoom.transform.SetParent(transform);
                     GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.All, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
                     CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
-                    PhotonNetwork.Destroy(other.gameObject);
+                    //PhotonNetwork.Destroy(other.gameObject);
                 }
             }
             spawned = true;
