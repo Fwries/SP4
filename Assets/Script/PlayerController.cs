@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Sprite player2Sprite;
     [SerializeField] private Sprite player3Sprite;
+    [SerializeField] private int actorNumber;
 
     float tintTimer;
 
@@ -39,11 +40,13 @@ public class PlayerController : MonoBehaviour
         {
             this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
+            actorNumber = photonView.Owner.ActorNumber;
         }
         else if(photonView.Owner.ActorNumber == 2)
         {
             this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
+            actorNumber = photonView.Owner.ActorNumber;
         }
 
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
