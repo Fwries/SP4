@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ThrowWeapon : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class ThrowWeapon : MonoBehaviour
                 m_WeaponRotate = 0.0f;
                 IsThrown = false;
                 StopThrow = false;
-                this.gameObject.GetComponent<MeshCollider>().enabled = true;
+                GetComponent<PhotonView>().RPC("RPC_SetWeaponHitbox", RpcTarget.All, this.GetComponent<PhotonView>().ViewID);
                 foreach (Hitbox hitbox in hitBoxes)
                     hitbox.active = false;
             }
@@ -66,5 +67,11 @@ public class ThrowWeapon : MonoBehaviour
                 m_DistTravelled += weaponTravelVec.magnitude;
             }
         }
+    }
+
+    [PunRPC]
+    void RPC_SetWeaponHitbox(int view_id)
+    {
+        PhotonView.Find(view_id).gameObject.GetComponent<MeshCollider>().enabled = true;
     }
 }
