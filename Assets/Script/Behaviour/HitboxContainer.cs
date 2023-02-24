@@ -49,6 +49,25 @@ public class HitboxContainer : MonoBehaviour
         Destroy(Weapon);
     }
 
+    [PunRPC]
+    void RPC_Damage(int view_id, int _Damage)
+    {
+        Animator otherAnim = PhotonView.Find(view_id).gameObject.GetComponent<Animator>();
+
+        otherAnim.SetBool("IsHit", true);
+        int Health = otherAnim.GetInteger("Health");
+
+        otherAnim.SetInteger("PrevHealth", otherAnim.GetInteger("Health"));
+        otherAnim.SetInteger("Health", Health - _Damage);
+    }
+
+    [PunRPC]
+    void RPC_WallBreak(int view_id, int Weapon_id)
+    {
+        GameObject Wall = PhotonView.Find(view_id).gameObject;
+        Destroy(Wall);
+        PhotonView.Find(Weapon_id).gameObject.GetComponent<HitboxContainer>().DestroyWeapon();
+    }
 
     //void OnCollisionEnter(Collision collision)
     //{
