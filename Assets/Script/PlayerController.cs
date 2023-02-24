@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 m_Movement;
 
     // Main camera and its components
-    private Camera          m_MainCamera;
+    public GameObject playerCamera;
     private CameraSettings  m_CameraSettings;
 
     public AudioClip movementSound;
@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
         transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 1);
-
 
         if (photonView.Owner.ActorNumber == 2)
         {
@@ -60,8 +59,12 @@ public class PlayerController : MonoBehaviour
 
         m_Animator = gameObject.GetComponentInChildren<Animator>();
 
-        m_MainCamera = Camera.main;
-        m_CameraSettings = m_MainCamera.GetComponent<CameraSettings>();
+        m_CameraSettings = playerCamera.GetComponent<CameraSettings>();
+
+        if (!photonView.IsMine)
+        {
+            playerCamera.SetActive(false);
+        }
 
         tintTimer = 1f;
     }
@@ -121,10 +124,10 @@ public class PlayerController : MonoBehaviour
         m_RigidBody?.MovePosition(m_RigidBody.position + m_CharacterDir * Time.fixedDeltaTime);
 
         // Move the camera and adjust its look/forward vector
-        m_MainCamera.transform.position = m_RigidBody.position + new Vector3(m_CameraSettings.xOffsetFromPlayer,
+        playerCamera.transform.position = m_RigidBody.position + new Vector3(m_CameraSettings.xOffsetFromPlayer,
                                                                              m_CameraSettings.yOffsetFromPlayer,
                                                                              m_CameraSettings.zOffsetFromPlayer);
-        m_MainCamera.transform.LookAt(m_RigidBody.position);
+        playerCamera.transform.LookAt(m_RigidBody.position);
 
         // Fixed issue of character sill moving
         this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
