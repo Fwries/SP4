@@ -59,14 +59,16 @@ public class RoomSpawner : MonoBehaviour
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.BottomRooms[rand].name, transform.position, Templates.BottomRooms[rand].transform.rotation);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                NewRoom.transform.SetParent(transform.parent);
                 GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.LeftRooms[rand].name, transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                NewRoom.transform.SetParent(transform.parent);
                 GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
             else if (DoorDirection == 3)
@@ -74,6 +76,7 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.TopRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.TopRooms[rand].name, transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                NewRoom.transform.SetParent(transform.parent);
                 GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
             else //if (DoorDirection == 4)
@@ -81,6 +84,7 @@ public class RoomSpawner : MonoBehaviour
                 rand = Random.Range(0, Templates.RightRooms.Length);
                 NewRoom = PhotonNetwork.Instantiate(Templates.RightRooms[rand].name, transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
+                NewRoom.transform.SetParent(transform.parent);
                 GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, NewRoom.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
 
