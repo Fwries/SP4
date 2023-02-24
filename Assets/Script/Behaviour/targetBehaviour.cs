@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Photon.Pun;
 
 public class targetBehaviour : StateMachineBehaviour
 {
@@ -10,8 +9,6 @@ public class targetBehaviour : StateMachineBehaviour
     Transform player;
     Transform myTransform;
     float timer;
-    private PhotonView photonView;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +18,6 @@ public class targetBehaviour : StateMachineBehaviour
         myTransform = animator.GetComponent<Transform>();
         agent.speed = animator.GetFloat("Speed");
         agent.isStopped = false;
-        photonView = myTransform.GetComponentInParent<PhotonView>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,45 +27,23 @@ public class targetBehaviour : StateMachineBehaviour
         {
             animator.SetBool("IsHit", true);
         }
+        agent.isStopped = !myTransform.parent.parent.GetComponent<RoomPrescence>().shouldTargetPlayer;
         timer += Time.deltaTime;
-
-        // Find the nearest player
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        GameObject nearestPlayer = null;
-        float nearestDistance = Mathf.Infinity;
-        foreach (GameObject player in players)
+        agent.SetDestination(player.position);
+        myTransform.LookAt(player.position);
+        if (timer > Random.Range(3f, 6f))
         {
-            float distance = (player.transform.position - myTransform.position).magnitude;
-            if (distance < nearestDistance)
-            {
-                nearestPlayer = player;
-                nearestDistance = distance;
-            }
+            animator.SetBool("isTargetting", false);
         }
 
-        if (nearestPlayer != null)
+        //Update the animation vars
+        animator.SetFloat("MoveX", (player.position - myTransform.position).normalized.x);
+        animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
+
+        //Check if should attack
+        if ((player.position - myTransform.position).magnitude * 2 < animator.GetFloat("Range"))
         {
-            myTransform.LookAt(nearestPlayer.transform.position);
-            if (timer > Random.Range(3f, 6f))
-            {
-                animator.SetBool("isTargetting", false);
-            }
-
-            //Update the animation vars
-            animator.SetFloat("MoveX", (nearestPlayer.transform.position - myTransform.position).normalized.x);
-            animator.SetFloat("distance", (nearestPlayer.transform.position - myTransform.position).magnitude * 2);
-
-            //Check if should attack
-            if ((nearestPlayer.transform.position - myTransform.position).magnitude * 2 < animator.GetFloat("Range"))
-            {
-                animator.SetBool("attack", true);
-            }
-
-            // Call the RPC function to set the navmesh agent's destination to the nearest player
-            if (photonView.IsMine)
-            {
-                photonView.RPC("SetDestination", RpcTarget.AllBuffered, nearestPlayer.transform.position);
-            }
+            animator.SetBool("attack", true);
         }
     }
 
@@ -90,10 +64,4 @@ public class targetBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-    [PunRPC]
-    public void SetDestination(Vector3 position)
-    {
-        agent.SetDestination(position);
-    }
-
 }
