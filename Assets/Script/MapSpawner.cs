@@ -13,12 +13,6 @@ public class MapSpawner : MonoBehaviour
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            //if (mapSpawned == false)
-            //{
-            //    Map = PhotonNetwork.Instantiate("startingRoom", transform.position, Quaternion.identity);
-            //    Map.transform.SetParent(transform);
-            //    mapSpawned = true;
-            //}
             if (mapSpawned == false)
             {
                 Map = PhotonNetwork.Instantiate("startingRoom", transform.position, Quaternion.identity);
@@ -30,7 +24,10 @@ public class MapSpawner : MonoBehaviour
     }
     public void RegenerateMap()
     {
-        PhotonNetwork.Destroy(Map);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(Map);
+        }
         mapSpawned = false;
     }
 
