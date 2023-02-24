@@ -197,14 +197,18 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void WeaponSwitch(ScWeapon _scWeapon)
     {
-        if (Weapon != null)
-        {
-            Destroy(Weapon);
-        }
-
         scWeapon = _scWeapon;
-        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
-        Weapon.GetComponent<MeshCollider>().enabled = false;
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (Weapon != null)
+            {
+                Destroy(Weapon);
+            }
+            Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
+            Weapon.transform.SetParent(transform);
+            Weapon.GetComponent<MeshCollider>().enabled = false;
+        }
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
         atkType = (int)scWeapon.AtkType;
