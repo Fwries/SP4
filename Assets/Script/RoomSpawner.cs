@@ -147,6 +147,10 @@ public class RoomSpawner : MonoBehaviour
                 Destroy(other.gameObject);
                 //Debug.Log("Secret room spawned");
             }
+            else
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }
