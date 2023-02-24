@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class HitboxContainer : MonoBehaviour
 {
@@ -28,8 +29,7 @@ public class HitboxContainer : MonoBehaviour
 
             if (playerHand.gameObject.GetComponent<WeaponBehaviour>().Weapon == null)
             {
-                playerHand.GetComponent<WeaponBehaviour>().WeaponSwitch(scWeapon);
-                Destroy(this.gameObject);
+                GetComponent<PhotonView>().RPC("RPC_PickupWeapon", RpcTarget.All, playerHand.gameObject.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
             }
         }
     }
@@ -38,6 +38,17 @@ public class HitboxContainer : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    [PunRPC]
+    void RPC_PickupWeapon(int Hand_id, int Weapon_id)
+    {
+        GameObject Hand = PhotonView.Find(Hand_id).gameObject;
+        GameObject Weapon = PhotonView.Find(Weapon_id).gameObject;
+
+        Hand.GetComponent<WeaponBehaviour>().WeaponSwitch(Weapon.GetComponent<HitboxContainer>().scWeapon);
+        Destroy(Weapon);
+    }
+
 
     //void OnCollisionEnter(Collision collision)
     //{
