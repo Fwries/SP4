@@ -28,46 +28,62 @@ public class RoomSpawner : MonoBehaviour
         Invoke("Spawn",0.1f);
     }
 
+    private void CheckMinMaxBound(float x, float y)
+    {
+        Vector2 minBound = Templates.GetMinBound();
+        Vector2 maxBound = Templates.GetMaxBound();
+
+        if (x < minBound.x)
+            Templates.SetMinBound(x);
+        else if (x > maxBound.x)
+            Templates.SetMaxBound(x);
+
+        if (y < minBound.y)
+            Templates.SetMinBound(float.NaN, y);
+        else if (y > maxBound.y)
+            Templates.SetMaxBound(float.NaN, y);
+    }
+
     void Spawn()
     {
         if (spawned == false)
         {
+            GameObject NewRoom;
+
             if (DoorDirection == 1)
             {
                 rand = Random.Range(0, Templates.BottomRooms.Length);
                 enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                GameObject NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
+                NewRoom = Instantiate(Templates.BottomRooms[rand], transform.position, Templates.BottomRooms[rand].transform.rotation);
                 NewRoom.transform.SetParent(this.transform.parent);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                Templates.AddMapScaleZ();
             }
             else if (DoorDirection == 2)
             {
                 rand = Random.Range(0, Templates.LeftRooms.Length);
                 enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                GameObject NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
+                NewRoom = Instantiate(Templates.LeftRooms[rand], transform.position, Templates.LeftRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-                Templates.AddMapScaleX();
             }
             else if (DoorDirection == 3)
             {
                 rand = Random.Range(0, Templates.TopRooms.Length);
                 enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                GameObject NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
+                NewRoom = Instantiate(Templates.TopRooms[rand], transform.position, Templates.TopRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-                Templates.AddMapScaleZ();
             }
-            else if (DoorDirection == 4)
+            else // if (DoorDirection == 4)
             {
                 rand = Random.Range(0, Templates.RightRooms.Length);
                 enemyRand = Random.Range(0, Templates.EnemySetsEasy.Length);
-                GameObject NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
+                NewRoom = Instantiate(Templates.RightRooms[rand], transform.position, Templates.RightRooms[rand].transform.rotation);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform.parent);
-                Templates.AddMapScaleX();
             }
+
+            CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
 
             spawned = true;
         }
@@ -82,10 +98,7 @@ public class RoomSpawner : MonoBehaviour
                 GameObject NewRoom = Instantiate(Templates.SecretRoom, transform.position, Quaternion.identity);
                 NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
                 NewRoom.transform.SetParent(this.transform);
-                if ((DoorDirection == 1) || (DoorDirection == 3))
-                    Templates.AddMapScaleZ();
-                else if ((DoorDirection == 2) || (DoorDirection == 4))
-                    Templates.AddMapScaleX();
+                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
                 Destroy(other.gameObject);
                 //Debug.Log("Secret room spawned");
             }
