@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec35960f43168a4ebfaefd9b49ba395, type: 3}
+  m_Name: Debug Sword
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 6005147113501008030, guid: 68e282d36732fe744bc625747008d753, type: 3}
+  WeaponIcon: {fileID: 21300000, guid: 779e819e216ec7d469fe73740095b8fd, type: 3}
+  Name: Debug Sword
+  Description: 'Damage: 100'
+  AtkType: 1
+  AtkSpeed: 1
+  AtkCooldown: 0.2
+  AtkReach: 1
+  AtkRange: 180
+  Mass: 1.5
+  OffsetX: 0
+  OffsetY: 0.732
+  shopPrice: 0
