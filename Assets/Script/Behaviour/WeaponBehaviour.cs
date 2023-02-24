@@ -198,29 +198,32 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void WeaponSwitch(ScWeapon _scWeapon)
     {
-        if (Weapon != null)
+        if (photonview.IsMine)
         {
-            Destroy(Weapon);
-        }
+            if (Weapon != null)
+            {
+                Destroy(Weapon);
+            }
 
-        scWeapon = _scWeapon;
-        Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
-        Weapon.transform.SetParent(transform);
-        Weapon.GetComponent<MeshCollider>().enabled = false;
+            scWeapon = _scWeapon;
+            Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
+            Weapon.transform.SetParent(transform);
+            Weapon.GetComponent<MeshCollider>().enabled = false;
 
-        hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
-        atkType = (int)scWeapon.AtkType;
+            hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
+            atkType = (int)scWeapon.AtkType;
 
-        if (atkType == 1) // Swing
-        {
-            EndSwing = scWeapon.AtkRange / 4;
-            StartSwing = EndSwing * -3;
+            if (atkType == 1) // Swing
+            {
+                EndSwing = scWeapon.AtkRange / 4;
+                StartSwing = EndSwing * -3;
+            }
+            else if (atkType == 3) // Crush
+            {
+                EndSwing = scWeapon.AtkRange / 4;
+                StartSwing = EndSwing * -3;
+            }
+            SoundManager.Instance.PlaySound(weaponEquip);
         }
-        else if (atkType == 3) // Crush
-        {
-            EndSwing = scWeapon.AtkRange / 4;
-            StartSwing = EndSwing * -3;
-        }
-        SoundManager.Instance.PlaySound(weaponEquip);
     }
 }
