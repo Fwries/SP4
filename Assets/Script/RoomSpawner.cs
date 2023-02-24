@@ -115,7 +115,7 @@ public class RoomSpawner : MonoBehaviour
     }
 
     [PunRPC]
-    void SetRoomChild(int childID,int parentID)
+    public void SetRoomChild(int childID,int parentID)
     {
         GameObject Parent = PhotonView.Find(parentID).gameObject;
         GameObject Child = PhotonView.Find(childID).gameObject;
