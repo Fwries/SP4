@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Dungeon Hurler/Weapon")]
+[Serializable]
 public class ScWeapon : ScriptableObject
 {
     public enum TypeEnum
