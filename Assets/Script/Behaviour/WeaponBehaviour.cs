@@ -176,11 +176,7 @@ public class WeaponBehaviour : MonoBehaviour
                     hitbox.active = true;
 
                 Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
-
-                Weapon = null;
-                scWeapon = null;
-                SoundManager.Instance.PlaySound(swordSwing);
-                transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                GetComponent<PhotonView>().RPC("RPC_FUCKWEAPON", RpcTarget.All, this.GetComponent<PhotonView>().ViewID, Weapon.GetComponent<PhotonView>().ViewID);
             }
         }
     }
@@ -211,7 +207,7 @@ public class WeaponBehaviour : MonoBehaviour
             Weapon.GetComponent<MeshCollider>().enabled = false;
             hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
 
-            GetComponent<PhotonView>().RPC("RPC_SetWeapon", RpcTarget.Others, Weapon.GetComponent<PhotonView>().ViewID, this.GetComponent<PhotonView>().ViewID);
+            GetComponent<PhotonView>().RPC("RPC_SetWeapon", RpcTarget.Others, this.GetComponent<PhotonView>().ViewID, Weapon.GetComponent<PhotonView>().ViewID);
         }
         atkType = (int)scWeapon.AtkType;
 
@@ -229,12 +225,25 @@ public class WeaponBehaviour : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_SetWeapon(int view_id, int ParentID)
+    void RPC_SetWeapon(int view_id, int Weapon_id)
     {
-        GameObject Parent = PhotonView.Find(ParentID).gameObject;
+        GameObject Parent = PhotonView.Find(view_id).gameObject;
         WeaponBehaviour ParentBehav = Parent.GetComponent<WeaponBehaviour>();
-        ParentBehav.Weapon = PhotonView.Find(view_id).gameObject;
+        ParentBehav.Weapon = PhotonView.Find(Weapon_id).gameObject;
         ParentBehav.Weapon.transform.SetParent(Parent.transform);
         ParentBehav.Weapon.GetComponent<MeshCollider>().enabled = false;
+    }
+
+    [PunRPC]
+    void RPC_FUCKWEAPON(int view_id, int Weapon_id)
+    {
+        GameObject ThisGameObject = PhotonView.Find(view_id).gameObject;
+        WeaponBehaviour WeaponBehav = ThisGameObject.GetComponent<WeaponBehaviour>();
+
+        WeaponBehav.Weapon.transform.SetParent(null);
+        WeaponBehav.Weapon = null;
+        WeaponBehav.scWeapon = null;
+        SoundManager.Instance.PlaySound(swordSwing);
+        ThisGameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
     }
 }
