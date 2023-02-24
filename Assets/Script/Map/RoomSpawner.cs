@@ -25,9 +25,9 @@ public class RoomSpawner : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-        //Destroy(gameObject, waitTime);
-        Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-            Debug.Log("SpawnRoom");
+            //Destroy(gameObject, waitTime);
+            Templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+            //Debug.Log("SpawnRoom");
             Invoke("Spawn", 0.1f);
         }
     }
