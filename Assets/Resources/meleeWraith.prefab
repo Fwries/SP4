@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3087622487112408481}
   - component: {fileID: 3087622487112408482}
   - component: {fileID: 1857425268715539767}
+  - component: {fileID: 9114631225084628430}
+  - component: {fileID: 2116579694748634825}
   m_Layer: 6
   m_Name: meleeWraith
   m_TagString: enemy
@@ -87,7 +89,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
+  bossBar: {fileID: 0}
   hurt: {fileID: 8300000, guid: 5c189b93fb7c8b34e8d77e7a2ec0ac2c, type: 3}
+--- !u!114 &9114631225084628430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087622487112408483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2116579694748634825}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2116579694748634825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087622487112408483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3087622488209223691
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +143,8 @@ GameObject:
   - component: {fileID: 3087622488209223688}
   - component: {fileID: 3087622488209223689}
   - component: {fileID: 127398613539536721}
+  - component: {fileID: 4595039765114344025}
+  - component: {fileID: 4684134944349816645}
   m_Layer: 6
   m_Name: GFX
   m_TagString: enemy
@@ -222,3 +266,83 @@ CapsuleCollider:
   m_Height: 26.25
   m_Direction: 1
   m_Center: {x: 0, y: 13.125, z: -0.0000038146973}
+--- !u!114 &4595039765114344025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087622488209223691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4684134944349816645}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4684134944349816645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087622488209223691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isTargetting
+  - Type: 4
+    SynchronizeType: 1
+    Name: attack
+  - Type: 1
+    SynchronizeType: 1
+    Name: MoveX
+  - Type: 1
+    SynchronizeType: 1
+    Name: MoveY
+  - Type: 1
+    SynchronizeType: 1
+    Name: distance
+  - Type: 1
+    SynchronizeType: 1
+    Name: Range
+  - Type: 1
+    SynchronizeType: 1
+    Name: Speed
+  - Type: 3
+    SynchronizeType: 1
+    Name: Damage
+  - Type: 3
+    SynchronizeType: 1
+    Name: Health
+  - Type: 1
+    SynchronizeType: 1
+    Name: AttackSpeed
+  - Type: 3
+    SynchronizeType: 1
+    Name: PrevHealth
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsHit
+  - Type: 3
+    SynchronizeType: 1
+    Name: CoinAmount
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0

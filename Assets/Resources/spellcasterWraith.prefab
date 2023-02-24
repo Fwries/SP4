@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7774802106695998912}
   - component: {fileID: 7774802106695998913}
   - component: {fileID: 2456300345027435585}
+  - component: {fileID: 1543162178594746447}
+  - component: {fileID: 1074786627163933677}
   m_Layer: 6
   m_Name: spellcasterWraith
   m_TagString: enemy
@@ -87,7 +89,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   damageText: {fileID: 6944405626516158583, guid: 9ff2929ee674ee04fb0bc428ed58635b, type: 3}
+  bossBar: {fileID: 0}
   hurt: {fileID: 8300000, guid: 5c189b93fb7c8b34e8d77e7a2ec0ac2c, type: 3}
+--- !u!114 &1543162178594746447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774802106695998914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1074786627163933677}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1074786627163933677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774802106695998914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7774802107461129088
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +143,8 @@ GameObject:
   - component: {fileID: 7774802107461129093}
   - component: {fileID: 7774802107461129094}
   - component: {fileID: 4100017707386539962}
+  - component: {fileID: 8579525384750737668}
+  - component: {fileID: 5652453292987358034}
   m_Layer: 6
   m_Name: GFX_spellcasterWraith
   m_TagString: enemy
@@ -222,3 +266,86 @@ CapsuleCollider:
   m_Height: 26.25
   m_Direction: 1
   m_Center: {x: 0, y: 10, z: 0}
+--- !u!114 &8579525384750737668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774802107461129088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5652453292987358034}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &5652453292987358034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774802107461129088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isTargetting
+  - Type: 4
+    SynchronizeType: 1
+    Name: attack
+  - Type: 1
+    SynchronizeType: 1
+    Name: MoveX
+  - Type: 1
+    SynchronizeType: 1
+    Name: MoveY
+  - Type: 1
+    SynchronizeType: 1
+    Name: distance
+  - Type: 1
+    SynchronizeType: 1
+    Name: Range
+  - Type: 1
+    SynchronizeType: 1
+    Name: Speed
+  - Type: 3
+    SynchronizeType: 1
+    Name: Damage
+  - Type: 3
+    SynchronizeType: 1
+    Name: Health
+  - Type: 1
+    SynchronizeType: 1
+    Name: AttackSpeed
+  - Type: 3
+    SynchronizeType: 1
+    Name: PrevHealth
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsHit
+  - Type: 3
+    SynchronizeType: 1
+    Name: CoinAmount
+  - Type: 1
+    SynchronizeType: 0
+    Name: ProjSpeed
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
