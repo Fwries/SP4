@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (photonView.Owner.ActorNumber == 2)
         {
             this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
-            this.transform.GetChild(0).GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
+            //this.transform.GetChild(0).GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
             transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 1);
         }
