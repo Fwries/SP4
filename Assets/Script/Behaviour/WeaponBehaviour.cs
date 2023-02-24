@@ -204,7 +204,8 @@ public class WeaponBehaviour : MonoBehaviour
         }
 
         scWeapon = _scWeapon;
-        Weapon = Instantiate(scWeapon.Prefab, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), transform);
+        Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
+        Weapon.transform.SetParent(transform);
         Weapon.GetComponent<MeshCollider>().enabled = false;
 
         hitBoxes = Weapon.GetComponent<HitboxContainer>().hitboxes;
