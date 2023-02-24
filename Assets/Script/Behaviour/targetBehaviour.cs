@@ -21,7 +21,7 @@ public class targetBehaviour : StateMachineBehaviour
         myTransform = animator.GetComponent<Transform>();
         agent.speed = animator.GetFloat("Speed");
         agent.isStopped = false;
-        photonView = animator.GetComponentInParent<PhotonView>();
+        photonView = myTransform.GetComponentInParent<PhotonView>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -68,7 +68,7 @@ public class targetBehaviour : StateMachineBehaviour
             // Call the RPC function to set the navmesh agent's destination to the nearest player
             if (photonView.IsMine)
             {
-                photonView.RPC("RPC_SetDestination", RpcTarget.AllBuffered, nearestPlayer.transform.position);
+                photonView.RPC("SetDestination", RpcTarget.AllBuffered, nearestPlayer.transform.position);
             }
         }
     }
@@ -91,7 +91,7 @@ public class targetBehaviour : StateMachineBehaviour
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
     [PunRPC]
-    public void RPC_SetDestination(Vector3 position)
+    public void SetDestination(Vector3 position)
     {
         agent.SetDestination(position);
     }
