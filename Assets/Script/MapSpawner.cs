@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
+using Photon.Pun;
 
 public class MapSpawner : MonoBehaviour
 {
@@ -9,10 +11,13 @@ public class MapSpawner : MonoBehaviour
     private bool mapSpawned = false;
     private void Update()
     {
-        if (mapSpawned == false)
+        if(PhotonNetwork.IsMasterClient)
         {
-            Map = Instantiate(startingRoom, this.transform.position, Quaternion.identity, this.transform);
-            mapSpawned = true;
+            if (mapSpawned == false)
+            {
+                Map = Instantiate(startingRoom, this.transform.position, Quaternion.identity, this.transform);
+                mapSpawned = true;
+            }
         }
     }
     public void RegenerateMap()

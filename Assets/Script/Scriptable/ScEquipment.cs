@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Dungeon Hurler/Equipment")]
+[Serializable]
 public class ScEquipment : ScriptableObject
 {
     public Sprite EquipmentIcon;
@@ -17,7 +19,7 @@ public class ScEquipment : ScriptableObject
     public int CritChanceAdd;
     public int LifeStealAdd;
     public int ResistDamageAdd;
-    [SerializeField]private int BaseStack;
+    [SerializeField] private int BaseStack;
     public int stack;
     private void OnEnable()
     {

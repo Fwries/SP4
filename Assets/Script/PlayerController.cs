@@ -25,16 +25,29 @@ public class PlayerController : MonoBehaviour
 
     private PhotonView photonView;
 
+    [SerializeField] private Sprite player2Sprite;
+    [SerializeField] private Sprite player3Sprite;
+
     float tintTimer;
 
     public Vector3 GetCharacterDir() { return m_CharacterDir; }
 
-    void Start()
+    void Awake()
     {
         photonView = GetComponent<PhotonView>();
+        transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 0);
+
         if (photonView.Owner.ActorNumber == 1)
         {
-            this.gameObject.transform.position = new Vector3(5.0f, 0.5f, 0.0f);
+            this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
+            transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 1);
+        }
+        else if(photonView.Owner.ActorNumber == 2)
+        {
+            this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
+            transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
+            transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 2);
         }
 
         m_PlayerStats = gameObject.GetComponent<PlayerStats>();
