@@ -168,8 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SPEED: 5
   movementSound: {fileID: 8300000, guid: f96fbdd46a1a52346ba11f18ab6de924, type: 3}
-  player2Sprite: {fileID: 21300000, guid: 81a08abd2b6d6844b8d49e6357ab1f71, type: 3}
-  player3Sprite: {fileID: 21300000, guid: ca9b8da1b5b8b084aaa7727ca788e54a, type: 3}
+  player2Sprite: {fileID: -1704136653, guid: 24888b728f2ee284ea89f206704b7687, type: 3}
+  player3Sprite: {fileID: 2093005959, guid: 9b31faa386c488d4bbd2a1bb9bcfbc13, type: 3}
 --- !u!114 &6587328085993458937
 MonoBehaviour:
   m_ObjectHideFlags: 0
