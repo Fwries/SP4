@@ -176,7 +176,7 @@ public class WeaponBehaviour : MonoBehaviour
                     hitbox.active = true;
 
                 Weapon.GetComponent<ThrowWeapon>().Throw(dir, angle, scWeapon, hitBoxes);
-                GetComponent<PhotonView>().RPC("RPC_FUCKWEAPON", RpcTarget.All, this.GetComponent<PhotonView>().ViewID, Weapon.GetComponent<PhotonView>().ViewID);
+                GetComponent<PhotonView>().RPC("RPC_ThrowWeapon", RpcTarget.All, this.GetComponent<PhotonView>().ViewID, Weapon.GetComponent<PhotonView>().ViewID);
             }
         }
     }
@@ -198,10 +198,10 @@ public class WeaponBehaviour : MonoBehaviour
 
         if (photonview.IsMine)
         {
-            if (Weapon != null)
-            {
-                Destroy(Weapon);
-            }
+            if (Weapon != null) { Destroy(Weapon); }
+            
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+
             Weapon = PhotonNetwork.Instantiate(scWeapon.Prefab.name, new Vector3(transform.position.x + scWeapon.OffsetX, transform.position.y + scWeapon.OffsetY, transform.position.z), new Quaternion(0, 0, 0, 0), 0);
             Weapon.transform.SetParent(transform);
             Weapon.GetComponent<MeshCollider>().enabled = false;
@@ -235,7 +235,7 @@ public class WeaponBehaviour : MonoBehaviour
     }
 
     [PunRPC]
-    void RPC_FUCKWEAPON(int view_id, int Weapon_id)
+    void RPC_ThrowWeapon(int view_id, int Weapon_id)
     {
         GameObject ThisGameObject = PhotonView.Find(view_id).gameObject;
         WeaponBehaviour WeaponBehav = ThisGameObject.GetComponent<WeaponBehaviour>();
