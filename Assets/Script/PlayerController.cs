@@ -37,14 +37,14 @@ public class PlayerController : MonoBehaviour
         photonView = GetComponent<PhotonView>();
  
 
-        if (photonView.Owner.ActorNumber == 2)
+        if (photonView.Owner.ActorNumber == 1)
         {
             this.gameObject.transform.position = new Vector3(5.0f, 0.0f, 0.0f);
             //this.transform.GetChild(0).GetComponent<Transform>().position = new Vector3(0f, 0f, 0f);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player2Sprite;
             transform.GetComponentInChildren<Animator>().SetInteger("actorNumber", 1);
         }
-        else if(photonView.Owner.ActorNumber == 3)
+        else if(photonView.Owner.ActorNumber == 2)
         {
             this.gameObject.transform.position = new Vector3(-5.0f, 0.0f, 0.0f);
             transform.GetComponentInChildren<SpriteRenderer>().sprite = player3Sprite;
