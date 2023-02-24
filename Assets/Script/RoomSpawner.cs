@@ -95,7 +95,6 @@ public class RoomSpawner : MonoBehaviour
         {
             if (other.CompareTag("SpawnPoint"))
             {
-<<<<<<< HEAD
                 if (other.GetComponent<RoomSpawner>().spawned == false && spawned == false)
                 {
                     GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
@@ -105,15 +104,6 @@ public class RoomSpawner : MonoBehaviour
                     Destroy(other.gameObject);
                     //Debug.Log("Secret room spawned");
                 }
-                spawned = true;
-=======
-                GameObject NewRoom = PhotonNetwork.Instantiate(Templates.SecretRoom.name, transform.position, Quaternion.identity);
-                NewRoom.GetComponent<NavMeshSurface>().BuildNavMesh();
-                NewRoom.transform.SetParent(transform);
-                CheckMinMaxBound(NewRoom.transform.position.z, NewRoom.transform.position.x);
-                Destroy(other.gameObject);
-                //Debug.Log("Secret room spawned");
->>>>>>> parent of 40b43d8 (Revert "trying again map")
             }
         }
     }
