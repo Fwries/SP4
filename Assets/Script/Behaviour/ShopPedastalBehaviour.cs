@@ -95,6 +95,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 {
                     if (player.GetComponentInChildren<WeaponBehaviour>().Weapon == null)
                     {
+                        player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
                         player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
                         pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
                         HasBought = true;
@@ -110,6 +111,7 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 int itemPrice = prefabToSpawn.GetComponent<HealthPotionBehaviour>().shopPrice;
                 if (playerCoins >= itemPrice)
                 {
+                    player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
                     player.GetComponent<PlayerStats>().RecoverHealth(5);
                     pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
                     HasBought = true;
