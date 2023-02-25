@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class attackBehaviour : StateMachineBehaviour
 {
@@ -10,6 +11,7 @@ public class attackBehaviour : StateMachineBehaviour
     float timer;
     Transform player;
     Transform myTransform;
+    private PhotonView photonView;
 
     [SerializeField] private AudioClip slamEffect;
 
@@ -22,6 +24,7 @@ public class attackBehaviour : StateMachineBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
+        photonView = animator.GetComponentInParent<PhotonView>();
         timer = 0;
     }
 
@@ -47,7 +50,10 @@ public class attackBehaviour : StateMachineBehaviour
                 Instantiate(slamParticles, player.position, Quaternion.identity);
                 SoundManager.Instance.PlaySound(slamEffect);
             }
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().TakeDamage(animator.GetInteger("Damage"));
+            if (player.GetComponent<PhotonView>().IsMine)
+            {
+                player.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, animator.GetInteger("Damage"));
+            }
             timer = 0;
         }
 

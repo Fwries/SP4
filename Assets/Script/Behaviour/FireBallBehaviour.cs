@@ -49,12 +49,16 @@ public class FireBallBehaviour : MonoBehaviour
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
 
         fireBallParticlesReal.GetComponent<ParticleSystem>().Stop();
-        PhotonNetwork.Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
             StartCoroutine(TintSpriteRed());
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            player.transform.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 

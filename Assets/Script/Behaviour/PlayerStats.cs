@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerStats : MonoBehaviour
     public GameObject dodgeText;
 
     private float Cooldown;
+    private PhotonView photonView;
 
     [SerializeField] private AudioClip playerHurt;
 
@@ -34,6 +36,10 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth = MaxHealth;
         HealthBar.SetMaxHealth(currentHealth);
+    }
+    private void Awake()
+    {
+        photonView = this.transform.GetComponent<PhotonView>();
     }
 
     void Update()
@@ -52,25 +58,6 @@ public class PlayerStats : MonoBehaviour
         {
             HealthBar.CheckDeath();
         }
-    }
-
-    public void TakeDamage(int damage)
-    {
-        if (Random.Range(0, 100) <= Dodge) 
-        {
-            var go = Instantiate(dodgeText, transform.position, Quaternion.identity, transform);
-            go.GetComponent<TextMesh>().color = Color.white;
-            go.GetComponent<TextMesh>().text = "DODGED";
-            return; 
-        }
-
-        damage -= ResistDamage;
-        if (damage < 0) { damage = 0; }
-
-        currentHealth -= damage;
-        MainCamera.GetComponent<ScreenShake>().Shake(damage);
-        SoundManager.Instance.PlaySound(playerHurt);
-        HealthBar.SetHealth(currentHealth);
     }
     public void IncreaseCoins(int n)
     {
@@ -100,6 +87,28 @@ public class PlayerStats : MonoBehaviour
         LifeSteal += scEquipment.LifeStealAdd;
         ResistDamage += scEquipment.ResistDamageAdd;
 
+        HealthBar.SetHealth(currentHealth);
+    }
+
+    [PunRPC]
+    public void TakeDamage(int damage)
+    {
+        if (!photonView.IsMine) return;
+
+        if (Random.Range(0, 100) <= Dodge)
+        {
+            var go = Instantiate(dodgeText, transform.position, Quaternion.identity, transform);
+            go.GetComponent<TextMesh>().color = Color.white;
+            go.GetComponent<TextMesh>().text = "DODGED";
+            return;
+        }
+
+        damage -= ResistDamage;
+        if (damage < 0) { damage = 0; }
+
+        currentHealth -= damage;
+        MainCamera.GetComponent<ScreenShake>().Shake(damage);
+        SoundManager.Instance.PlaySound(playerHurt);
         HealthBar.SetHealth(currentHealth);
     }
 }

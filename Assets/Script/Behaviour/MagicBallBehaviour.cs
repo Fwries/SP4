@@ -49,10 +49,12 @@ public class MagicBallBehaviour : MonoBehaviour
         {
             player = collision.gameObject;
             StartCoroutine(TintSpriteRed());
-
-            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
+            player.transform.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
         }
-        PhotonNetwork.Destroy(gameObject);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
     private IEnumerator TintSpriteRed()

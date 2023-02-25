@@ -54,6 +54,7 @@ MonoBehaviour:
   - RPC_SetDestination
   - RPC_ThrowWeapon
   - RPC_BakeRoom
+  - TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
