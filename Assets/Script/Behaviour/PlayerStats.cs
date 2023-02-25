@@ -27,7 +27,7 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] private AudioClip playerHurt;
 
-    private void Start()
+    private void Awake()
     {
         HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarBehaviour>();
         coinCounter = GameObject.Find("Coins").GetComponent<coinCounter>();
@@ -57,7 +57,10 @@ public class PlayerStats : MonoBehaviour
         else
         {
             DeathScreen.SetActive(false);
-            Debug.Log("Set active false");
+            if(DeathScreen.activeSelf == false)
+            {
+                Debug.Log("Set active false");
+            }
         }
     }
 
