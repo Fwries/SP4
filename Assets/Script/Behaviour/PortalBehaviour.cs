@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PortalBehaviour : MonoBehaviour
 {
@@ -13,17 +14,19 @@ public class PortalBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("Enter Portal");
-            Map.NewMap();
-            List<GameObject> playerList = new List<GameObject>();
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            int i = 1;
-            foreach (GameObject player in players)
+            if (other.tag == "Player")
             {
-                player.transform.position = new Vector3(i*10, 0, 0);
-                i++;
+                Debug.Log("Enter Portal");
+                Map.NewMap();
+                List<GameObject> playerList = new List<GameObject>();
+                int i = 1;
+                foreach (GameObject player in players)
+                {
+                    player.transform.position = new Vector3(0, 0, 0);
+                    i++;
+                }
             }
         }
     }
