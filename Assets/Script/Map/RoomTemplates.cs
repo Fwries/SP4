@@ -30,7 +30,7 @@ public class RoomTemplates : MonoBehaviour
 
     private bool spawnedBoss;
     private bool spawned;
-    private bool MapSpawned;
+    public bool MapSpawned;
 
     private int rand;
     private int enemyRand;

@@ -27,7 +27,7 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] private AudioClip playerHurt;
 
-    private void Awake()
+    private void Start()
     {
         HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarBehaviour>();
         coinCounter = GameObject.Find("Coins").GetComponent<coinCounter>();
@@ -50,7 +50,7 @@ public class PlayerStats : MonoBehaviour
 
             Cooldown = 0;
         }
-        if (GameObject.Find("LoadScreen").activeSelf == false)
+        if (GameObject.Find("RoomTemplates").GetComponent<RoomTemplates>().MapSpawned == true)
         {
             if (currentHealth <= 0)
             {
