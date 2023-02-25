@@ -17,6 +17,14 @@ public class PortalBehaviour : MonoBehaviour
         {
             Debug.Log("Enter Portal");
             Map.NewMap();
+            List<GameObject> playerList = new List<GameObject>();
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            int i = 1;
+            foreach (GameObject player in players)
+            {
+                player.transform.position = new Vector3(i*10, 0, 0);
+                i++;
+            }
         }
     }
 }
