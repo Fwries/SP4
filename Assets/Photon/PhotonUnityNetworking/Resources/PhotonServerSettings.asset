@@ -52,6 +52,7 @@ MonoBehaviour:
   - RPC_Damage
   - RPC_WallBreak
   - RPC_SetDestination
+  - RPC_ThrowWeapon
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
