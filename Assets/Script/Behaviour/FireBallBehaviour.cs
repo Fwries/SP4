@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class FireBallBehaviour : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class FireBallBehaviour : MonoBehaviour
     private Vector3 shootDir;
     private int damage;
     float projSpeed;
+    private PhotonView photonView;
 
     private void Awake()
     {
         fireBallParticlesReal = Instantiate(fireBallParticles, transform.position, Quaternion.identity);
         fireBallParticlesReal.GetComponent<Transform>().SetParent(this.transform);
+
+        photonView = this.transform.GetComponent<PhotonView>();
     }
 
     public void SetUp(Vector3 shootDirection, int Damage, float ProjSpeed)
@@ -36,7 +40,7 @@ public class FireBallBehaviour : MonoBehaviour
         if (transform.position.y < -0.1)
         {
             fireBallParticlesReal.GetComponent<ParticleSystem>().Stop();
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
@@ -45,7 +49,7 @@ public class FireBallBehaviour : MonoBehaviour
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
 
         fireBallParticlesReal.GetComponent<ParticleSystem>().Stop();
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;

@@ -19,6 +19,14 @@ public class spellcasterBehaviour : StateMachineBehaviour
         agent = animator.GetComponentInParent<NavMeshAgent>();
         agent.velocity = Vector3.zero;
         agent.isStopped = true;
+        List<GameObject> playerList = new List<GameObject>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            playerList.Add(player);
+        }
+        player = playerList[Random.Range(0, playerList.Count)].transform;
+
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
