@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
+    public GameObject DeathScreen;
+
     public void Retry()
     {
-        SceneManager.LoadScene("SampleScene");
+        DeathScreen.SetActive(false);
     }
     public void MainMenu()
     {
-        //SceneManager.LoadScene("RoomScene");
+        SceneManager.LoadScene("Lobby");
         Debug.Log("Going to room scene");
     }
     public void QuitApp()

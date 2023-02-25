@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     public HealthBarBehaviour HealthBar;
     public coinCounter coinCounter;
     public GameObject dodgeText;
+    public GameObject DeathScreen;
 
     private float Cooldown;
 
@@ -31,6 +31,7 @@ public class PlayerStats : MonoBehaviour
     {
         HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarBehaviour>();
         coinCounter = GameObject.Find("Coins").GetComponent<coinCounter>();
+        DeathScreen = GameObject.Find("DeathScreen");
         MainCamera = Camera.main;
 
         currentHealth = MaxHealth;
@@ -51,7 +52,11 @@ public class PlayerStats : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
-            SceneManager.LoadScene("DeathScene");
+            DeathScreen.SetActive(true);
+        }
+        else
+        {
+            DeathScreen.SetActive(false);
         }
     }
 
