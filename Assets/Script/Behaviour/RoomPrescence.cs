@@ -15,6 +15,8 @@ public class RoomPrescence : MonoBehaviour
     [SerializeField] private AudioClip wallSound;
     private bool playSound;
 
+    private bool NewRoom = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,11 +87,18 @@ public class RoomPrescence : MonoBehaviour
             playerIn = true;
             shouldTargetPlayer = true;
 
-            List<GameObject> playerList = new List<GameObject>();
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject player in players)
+            if (NewRoom)
             {
-                player.transform.position = other.transform.position;
+                NewRoom = false;
+
+                List<GameObject> playerList = new List<GameObject>();
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                int i = 1;
+                foreach (GameObject player in players)
+                {
+                    player.transform.position = new Vector3(other.transform.position.x + i, other.transform.position.y, other.transform.position.z);
+                    i++;
+                }
             }
         }
     }
