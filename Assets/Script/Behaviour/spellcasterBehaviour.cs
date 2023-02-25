@@ -36,7 +36,7 @@ public class spellcasterBehaviour : StateMachineBehaviour
         timer += Time.deltaTime;
         animator.SetFloat("distance", (player.position - myTransform.position).magnitude * 2);
 
-        if (timer > animator.GetFloat("AttackSpeed"))
+        if (timer > animator.GetFloat("AttackSpeed") && PhotonNetwork.IsMasterClient)
         {
             Vector3 offset = new Vector3(0f, -0.1f, -0.5f);
             Transform ballTransform = PhotonNetwork.Instantiate("MagicBall", myTransform.position - offset, Quaternion.identity).transform;
