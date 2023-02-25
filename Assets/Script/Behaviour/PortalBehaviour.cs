@@ -13,8 +13,9 @@ public class PortalBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.tag == "Player")
         {
+            Debug.Log("Enter Portal");
             Map.NewMap();
         }
     }
