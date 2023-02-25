@@ -93,17 +93,14 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 int itemPrice = prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice;
                 if (playerCoins >= itemPrice)
                 {
-                    if (player.GetComponentInChildren<WeaponBehaviour>().Weapon != null)
+                    if (player.GetComponentInChildren<WeaponBehaviour>().Weapon == null)
                     {
-                        GameObject weaponInHand = player.GetComponentInChildren<WeaponBehaviour>().Weapon;
-                        weaponInHand = Instantiate(weaponInHand, (player.transform.position - weaponOff), Quaternion.identity);
-                        weaponInHand.GetComponent<MeshCollider>().enabled = true;
+                        player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
+                        pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
+                        HasBought = true;
+                        halo.enabled = false;
+                        realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                     }
-                    player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
-                    pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
-                    HasBought = true;
-                    halo.enabled = false;
-                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
                 }
             }
             // Logic for consumable (just potion tbh)
