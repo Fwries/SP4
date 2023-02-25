@@ -50,16 +50,19 @@ public class PlayerStats : MonoBehaviour
 
             Cooldown = 0;
         }
-        if (currentHealth <= 0)
+        if (GameObject.Find("LoadScreen").activeSelf == false)
         {
-            DeathScreen.SetActive(true);
-        }
-        else
-        {
-            DeathScreen.SetActive(false);
-            if(DeathScreen.activeSelf == false)
+            if (currentHealth <= 0)
             {
-                Debug.Log("Set active false");
+                DeathScreen.SetActive(true);
+            }
+            else
+            {
+                DeathScreen.SetActive(false);
+                if (DeathScreen.activeSelf == false)
+                {
+                    Debug.Log("Set active false");
+                }
             }
         }
     }
