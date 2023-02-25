@@ -45,7 +45,6 @@ public class MagicBallBehaviour : MonoBehaviour
         Instantiate(explosionParticles, transform.position, Quaternion.identity);
 
         projParticlesReal.GetComponent<ParticleSystem>().Stop();
-        PhotonNetwork.Destroy(gameObject);
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
@@ -53,6 +52,7 @@ public class MagicBallBehaviour : MonoBehaviour
 
             collision.gameObject.GetComponent<PlayerStats>().TakeDamage(damage);
         }
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private IEnumerator TintSpriteRed()
