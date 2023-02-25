@@ -22,6 +22,7 @@ public class PortalBehaviour : MonoBehaviour
                 Map.NewMap();
                 List<GameObject> playerList = new List<GameObject>();
                 int i = 1;
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
                 foreach (GameObject player in players)
                 {
                     player.transform.position = new Vector3(0, 0, 0);

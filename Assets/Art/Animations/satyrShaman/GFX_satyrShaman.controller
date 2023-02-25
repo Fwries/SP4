@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamParticles: {fileID: 0}
+  slamEffect: {fileID: 0}
 --- !u!114 &-7350933441305261904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -748,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPos: {fileID: 11432032806215808, guid: 3dba8818dfbcc6f42ba8719686145d5c, type: 3}
+  portal: {fileID: 0}
 --- !u!1101 &5892639950585206166
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
