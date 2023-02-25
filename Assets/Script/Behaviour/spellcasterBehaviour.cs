@@ -26,9 +26,6 @@ public class spellcasterBehaviour : StateMachineBehaviour
             playerList.Add(player);
         }
         player = playerList[Random.Range(0, playerList.Count)].transform;
-
-
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         myTransform = animator.GetComponent<Transform>();
         timer = 0;
     }
