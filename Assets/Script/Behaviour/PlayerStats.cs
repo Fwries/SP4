@@ -57,6 +57,7 @@ public class PlayerStats : MonoBehaviour
         else
         {
             DeathScreen.SetActive(false);
+            Debug.Log("Set active false");
         }
     }
 
