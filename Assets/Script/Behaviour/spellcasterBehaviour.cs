@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class spellcasterBehaviour : StateMachineBehaviour
 {
@@ -33,7 +34,7 @@ public class spellcasterBehaviour : StateMachineBehaviour
         if (timer > animator.GetFloat("AttackSpeed"))
         {
             Vector3 offset = new Vector3(0f, -0.1f, -0.5f);
-            Transform ballTransform = Instantiate(magicBall, myTransform.position - offset, Quaternion.identity);
+            Transform ballTransform = PhotonNetwork.Instantiate("MagicBall", myTransform.position - offset, Quaternion.identity).transform;
             Vector3 shootdir = (player.position - (myTransform.position - offset));
             shootdir.y = 0f;
             shootdir.Normalize();
