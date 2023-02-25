@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 25270103}
+  deathScreen: {fileID: 456003238}
 --- !u!1 &39587233
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,8 +264,8 @@ RectTransform:
   - {fileID: 2108283704}
   - {fileID: 1144093321}
   - {fileID: 1981969273}
-  - {fileID: 467775437}
   - {fileID: 456003239}
+  - {fileID: 467775437}
   m_Father: {fileID: 1569290074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -880,7 +881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &456003239
 RectTransform:
   m_ObjectHideFlags: 0
@@ -899,7 +900,7 @@ RectTransform:
   - {fileID: 1696587661}
   - {fileID: 1651826220}
   m_Father: {fileID: 39587234}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1125,7 +1126,7 @@ RectTransform:
   - {fileID: 43485806}
   - {fileID: 183727229}
   m_Father: {fileID: 39587234}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4954,6 +4955,7 @@ MonoBehaviour:
   Map: {fileID: 1837219011}
   LoadScreen: {fileID: 467775436}
   bossSprite: {fileID: 21300000, guid: 1718388c90f8e4a4086db1a400866b7e, type: 3}
+  MapSpawned: 0
 --- !u!4 &1983827192
 Transform:
   m_ObjectHideFlags: 0

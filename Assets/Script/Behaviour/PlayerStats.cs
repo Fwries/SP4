@@ -21,7 +21,6 @@ public class PlayerStats : MonoBehaviour
     public HealthBarBehaviour HealthBar;
     public coinCounter coinCounter;
     public GameObject dodgeText;
-    public GameObject DeathScreen;
 
     private float Cooldown;
 
@@ -31,7 +30,6 @@ public class PlayerStats : MonoBehaviour
     {
         HealthBar = GameObject.Find("HealthBar").GetComponent<HealthBarBehaviour>();
         coinCounter = GameObject.Find("Coins").GetComponent<coinCounter>();
-        DeathScreen = GameObject.Find("DeathScreen");
         MainCamera = Camera.main;
 
         currentHealth = MaxHealth;
@@ -50,20 +48,9 @@ public class PlayerStats : MonoBehaviour
 
             Cooldown = 0;
         }
-        if (GameObject.Find("RoomTemplates").GetComponent<RoomTemplates>().MapSpawned == true)
+        if (currentHealth <= 0)
         {
-            if (currentHealth <= 0)
-            {
-                DeathScreen.SetActive(true);
-            }
-            else
-            {
-                DeathScreen.SetActive(false);
-                if (DeathScreen.activeSelf == false)
-                {
-                    Debug.Log("Set active false");
-                }
-            }
+            HealthBar.CheckDeath();
         }
     }
 
