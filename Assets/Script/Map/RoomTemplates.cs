@@ -118,11 +118,11 @@ public class RoomTemplates : MonoBehaviour
             {
                 NewMap();
             }
-            if (Rooms.Count >= 10)
+            if (Rooms.Count >= 10 && spawned == true)
             {
                 MapSpawned = true;
             }
-            if (MapSpawned == true && waitTime <= 0)
+            if (MapSpawned == true)
             {
                 photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
             }
