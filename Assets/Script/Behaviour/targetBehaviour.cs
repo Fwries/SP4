@@ -14,7 +14,13 @@ public class targetBehaviour : StateMachineBehaviour
     {
         timer = 0;
         agent = animator.GetComponentInParent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        List<GameObject> playerList = new List<GameObject>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in players)
+        {
+            playerList.Add(player);
+        }
+        player = playerList[Random.Range(0, playerList.Count)].transform;
         myTransform = animator.GetComponent<Transform>();
         agent.speed = animator.GetFloat("Speed");
         agent.isStopped = false;
