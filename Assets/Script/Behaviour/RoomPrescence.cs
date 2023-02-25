@@ -84,6 +84,13 @@ public class RoomPrescence : MonoBehaviour
         {
             playerIn = true;
             shouldTargetPlayer = true;
+
+            List<GameObject> playerList = new List<GameObject>();
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
+            {
+                player.transform.position = other.transform.position;
+            }
         }
     }
     public void OnTriggerExit(Collider other)
