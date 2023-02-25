@@ -93,11 +93,13 @@ public class RoomPrescence : MonoBehaviour
 
                 List<GameObject> playerList = new List<GameObject>();
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                int i = 1;
+
                 foreach (GameObject player in players)
                 {
-                    player.transform.position = new Vector3(other.transform.position.x + i, other.transform.position.y, other.transform.position.z);
-                    i++;
+                    if (player != other.gameObject)
+                    {
+                        player.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                    }
                 }
             }
         }
