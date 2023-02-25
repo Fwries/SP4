@@ -112,6 +112,8 @@ GameObject:
   - component: {fileID: 4543613848356704183}
   - component: {fileID: 364864834100322823}
   - component: {fileID: 7923628548049066465}
+  - component: {fileID: 8300198138891163820}
+  - component: {fileID: 877123014046115593}
   m_Layer: 0
   m_Name: MagicBall
   m_TagString: Untagged
@@ -214,7 +216,6 @@ MonoBehaviour:
   projParticles1: {fileID: 6839455235961694759, guid: 2d538c241d9a11142a61f5bcf6716fcd, type: 3}
   projParticlesReal: {fileID: 0}
   player: {fileID: 0}
-  playerHurt: {fileID: 8300000, guid: 80bc6d2070f244d4cb71849c58931282, type: 3}
 --- !u!54 &7923628548049066465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,3 +232,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8300198138891163820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543613848356704176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 877123014046115593}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &877123014046115593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543613848356704176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1

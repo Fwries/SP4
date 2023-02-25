@@ -112,6 +112,8 @@ GameObject:
   - component: {fileID: 4543613848356704183}
   - component: {fileID: 7923628548049066465}
   - component: {fileID: 4006371283866522203}
+  - component: {fileID: 9197213644519943086}
+  - component: {fileID: 7242780074116581578}
   m_Layer: 0
   m_Name: FireBall
   m_TagString: Untagged
@@ -228,4 +230,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticles: {fileID: 77758339210535855, guid: cbab3b138e2f86c459f0d3f61b8b3e47, type: 3}
   fireBallParticles: {fileID: 6839455235961694759, guid: 8b9228dbd61b05d49be6fad84017f630, type: 3}
+  fireBallParticlesReal: {fileID: 0}
   player: {fileID: 0}
+--- !u!114 &9197213644519943086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543613848356704176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7242780074116581578}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7242780074116581578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543613848356704176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
