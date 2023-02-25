@@ -53,6 +53,7 @@ MonoBehaviour:
   - RPC_WallBreak
   - RPC_SetDestination
   - RPC_ThrowWeapon
+  - RPC_BakeRoom
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
