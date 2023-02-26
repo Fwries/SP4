@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Photon.Pun;
 
 public class RoomPrescence : MonoBehaviour
 {
+    private Color m_ACTIVE_COLOR = new Color(0.5f, 0.5f, 0.5f);
+
     public bool shouldTargetPlayer;
     public bool playerIn;
     public bool playerInIn;
@@ -27,6 +30,13 @@ public class RoomPrescence : MonoBehaviour
         bufferTime = 4.7f;
         enemyCount = GetComponentsInChildren<Transform>().Count(GetComponentInChildren => GetComponentInChildren.CompareTag("enemy")) / 2;
         playSound = false;
+    }
+
+    private void SetRoomActiveOnMinimap()
+    {
+        Transform minimapObjects = transform.parent.Find("MinimapObjects");
+        minimapObjects.Find("MinimapObject").GetComponent<SpriteRenderer>().color = m_ACTIVE_COLOR;
+        minimapObjects.Find("RoomType").GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void Update()
@@ -54,6 +64,8 @@ public class RoomPrescence : MonoBehaviour
                 }
             }
             SoundManager.Instance.PlaySound(wallSound);
+
+            SetRoomActiveOnMinimap();
         }
 
         //Logic to check if room is cleared
@@ -78,7 +90,6 @@ public class RoomPrescence : MonoBehaviour
         }
 
     }
-
 
     public void OnTriggerEnter(Collider other)
     {

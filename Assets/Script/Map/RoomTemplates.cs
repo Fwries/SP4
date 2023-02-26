@@ -23,6 +23,8 @@ public class RoomTemplates : MonoBehaviour
     public GameObject LoadScreen;
 
     public Sprite bossSprite;
+
+    public GameObject minimapCanvas;
     
     private const float m_ROOM_SIZE = 17.0f;
     private Vector2 m_MinBound;
@@ -94,10 +96,6 @@ public class RoomTemplates : MonoBehaviour
                             GetComponent<PhotonView>().RPC("SetRoomChild", RpcTarget.Others, enemy.GetComponent<PhotonView>().ViewID, Rooms[i].GetComponent<PhotonView>().ViewID);
                         }
                     }
-
-                    if (i == Rooms.Count - 1)
-                        GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapCameraAdjuster>()
-                                                                         .AdjustMinimapCamera(m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
                 }
                 spawned = true;
             }
@@ -125,6 +123,9 @@ public class RoomTemplates : MonoBehaviour
             if (MapSpawned == true)
             {
                 photonView.RPC("LoadScreenCheck", RpcTarget.AllBuffered, MapSpawned);
+
+                photonView.RPC("AdjustMinimapCamera", RpcTarget.AllBuffered, m_MinBound, m_MaxBound, m_ROOM_SIZE / 2.0f);
+                photonView.RPC("SetMinimapCanvasActive", RpcTarget.AllBuffered);
             }
             else
             {
@@ -158,5 +159,18 @@ public class RoomTemplates : MonoBehaviour
         GameObject Parent = PhotonView.Find(parentID).gameObject;
         GameObject Child = PhotonView.Find(childID).gameObject;
         Child.transform.SetParent(Parent.transform);
+    }
+
+    [PunRPC]
+    public void AdjustMinimapCamera(Vector2 minBound, Vector2 maxBound, float HALF_ROOM_SIZE)
+    {
+        GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<MinimapManager>()
+                                                         .AdjustMinimapCamera(minBound, maxBound, HALF_ROOM_SIZE);
+    }
+
+    [PunRPC]
+    public void SetMinimapCanvasActive()
+    {
+        minimapCanvas.SetActive(true);
     }
 }
