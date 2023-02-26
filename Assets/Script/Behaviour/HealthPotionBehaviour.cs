@@ -29,9 +29,14 @@ public class HealthPotionBehaviour : MonoBehaviour
         }
     }
 
-    public void broughtFromShop(GameObject player)
+    public void BroughtFromShop()
     {
         SoundManager.Instance.PlaySound(glug);
-        PhotonNetwork.Destroy(gameObject);
+    }
+
+    public void DestroyObject()
+    {
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(gameObject);
     }
 }

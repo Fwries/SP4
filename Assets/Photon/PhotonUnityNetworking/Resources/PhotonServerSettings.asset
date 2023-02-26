@@ -59,6 +59,10 @@ MonoBehaviour:
   - DestroyObject
   - SetMinimapCanvasActive
   - UpdateChest
+  - InitRealPriceDisplay
+  - InitPedastalItem
+  - SetPrefabToSpawn
+  - ItemBought
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

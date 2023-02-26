@@ -3,12 +3,17 @@ using Photon.Pun;
 
 public class coinBehaviour : MonoBehaviour
 {
-
+    private PhotonView m_PhotonView;
     private int coinAmount;
     [SerializeField] private AudioClip collected;
     public void SetUp(int amount)
     {
         coinAmount = amount;
+    }
+
+    void Awake()
+    {
+        m_PhotonView = GetComponent<PhotonView>();
     }
 
     void Update()
@@ -18,6 +23,9 @@ public class coinBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!m_PhotonView.IsMine)
+            return;
+
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerStats>().IncreaseCoins(coinAmount);

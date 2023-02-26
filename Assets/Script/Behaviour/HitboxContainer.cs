@@ -36,7 +36,8 @@ public class HitboxContainer : MonoBehaviour
 
     public void DestroyWeapon()
     {
-        Destroy(this.gameObject);
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(gameObject);
     }
 
     [PunRPC]

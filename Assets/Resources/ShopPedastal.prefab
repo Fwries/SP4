@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4477786948045677306}
   - component: {fileID: 8149272622524459583}
   - component: {fileID: 2988982472770051034}
+  - component: {fileID: 3421818794718474302}
   m_Layer: 0
   m_Name: ShopPedastal
   m_TagString: Untagged
@@ -117,6 +118,7 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 0}
   halo: {fileID: 2988982472770051034}
   priceDisplay: {fileID: 6944405626516158583, guid: 3fa814ed09b409c46994b68cb7fe8951, type: 3}
+  realPriceDisplay: {fileID: 0}
 --- !u!136 &4477786948045677306
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -183,3 +185,25 @@ Halo:
     serializedVersion: 2
     rgba: 4284064941
   m_Size: 1.01
+--- !u!114 &3421818794718474302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2429266725627929912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

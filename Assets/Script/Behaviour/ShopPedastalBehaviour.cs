@@ -1,9 +1,12 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopPedastalBehaviour : MonoBehaviour
 {
+    private PhotonView m_PhotonView;
+
     private Vector3 equipOff = new Vector3(0f, 1.6f, 0f);
     private Vector3 weaponOff = new Vector3(-1f, 0f, 0f);
     private Vector3 textOff = new Vector3(0f, 2.7f, 0f);
@@ -20,26 +23,38 @@ public class ShopPedastalBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_PhotonView = GetComponent<PhotonView>();
+
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         prefabToSpawn = transform.GetComponent<RarietyList>().GetRandomGameObject();
         if (prefabToSpawn != null)
         {
-           pedastalItem = Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
-           pedastalItem.transform.SetParent(this.transform);
+            pedastalItem = PhotonNetwork.Instantiate(prefabToSpawn.name, transform.position + equipOff, Quaternion.identity);
+            m_PhotonView.RPC("InitPedastalItem", RpcTarget.AllBuffered,
+                             pedastalItem.GetComponent<PhotonView>().ViewID, m_PhotonView.ViewID);
         }
         if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
         {
-            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            realPriceDisplay.GetComponent<TextMesh>().text = (pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice.ToString());
+            realPriceDisplay = PhotonNetwork.Instantiate(priceDisplay.name, transform.position + textOff, Quaternion.identity);
+            m_PhotonView.RPC("InitRealPriceDisplay", RpcTarget.AllBuffered,
+                             realPriceDisplay.GetComponent<PhotonView>().ViewID, m_PhotonView.ViewID,
+                             pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice.ToString());
         }
         else if (prefabToSpawn.CompareTag("equipment"))
         {
-            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            realPriceDisplay.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice.ToString());
+            realPriceDisplay = PhotonNetwork.Instantiate(priceDisplay.name, transform.position + textOff, Quaternion.identity);
+            m_PhotonView.RPC("InitRealPriceDisplay", RpcTarget.AllBuffered,
+                             realPriceDisplay.GetComponent<PhotonView>().ViewID, m_PhotonView.ViewID,
+                             prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice.ToString());
         }
         else
         {
-            realPriceDisplay = Instantiate(priceDisplay, transform.position + textOff, Quaternion.identity, transform);
-            realPriceDisplay.GetComponent<TextMesh>().text = (prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice.ToString());
+            realPriceDisplay = PhotonNetwork.Instantiate(priceDisplay.name, transform.position + textOff, Quaternion.identity);
+            m_PhotonView.RPC("InitRealPriceDisplay", RpcTarget.AllBuffered,
+                             realPriceDisplay.GetComponent<PhotonView>().ViewID, m_PhotonView.ViewID,
+                             prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice.ToString());
         }
     }
 
@@ -69,38 +84,33 @@ public class ShopPedastalBehaviour : MonoBehaviour
                 pedastalItem.transform.Rotate(0, Time.deltaTime * 100, 0);
             }
         }
-
+             
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasBought == false && pedastalItem != null)
         {
             // Logic for equipment
-            if (prefabToSpawn.CompareTag("equipment"))
+            if (pedastalItem.CompareTag("equipment"))
             {
                 int playerCoins = player.GetComponent<PlayerStats>().Coin;
-                int itemPrice = prefabToSpawn.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice;
+                int itemPrice = pedastalItem.GetComponent<EquipmentBehaviour>().scEquipment.shopPrice;
                 if (playerCoins >= itemPrice)
                 {
                     player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
-                    pedastalItem.GetComponent<EquipmentBehaviour>().broughtFromShop(player);
-                    HasBought = true;
-                    halo.enabled = false;
-                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                    pedastalItem.GetComponent<EquipmentBehaviour>().BroughtFromShop(player);
+                    m_PhotonView.RPC("ItemBought", RpcTarget.AllBuffered, "EquipmentBehaviour");
                 }
             }
             // Logic for weapon
             else if (pedastalItem.GetComponent<ThrowWeapon>() != null)
             {
                 int playerCoins = player.GetComponent<PlayerStats>().Coin;
-                int itemPrice = prefabToSpawn.GetComponent<HitboxContainer>().scWeapon.shopPrice;
+                int itemPrice = pedastalItem.GetComponent<HitboxContainer>().scWeapon.shopPrice;
                 if (playerCoins >= itemPrice)
                 {
                     if (player.GetComponentInChildren<WeaponBehaviour>().Weapon == null)
                     {
                         player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
                         player.GetComponentInChildren<WeaponBehaviour>().WeaponSwitch(pedastalItem.GetComponent<HitboxContainer>().scWeapon);
-                        pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
-                        HasBought = true;
-                        halo.enabled = false;
-                        realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                        m_PhotonView.RPC("ItemBought", RpcTarget.AllBuffered, "WeaponBehaviour");
                     }
                 }
             }
@@ -108,17 +118,53 @@ public class ShopPedastalBehaviour : MonoBehaviour
             else if (pedastalItem.GetComponent<HealthPotionBehaviour>() != null)
             {
                 int playerCoins = player.GetComponent<PlayerStats>().Coin;
-                int itemPrice = prefabToSpawn.GetComponent<HealthPotionBehaviour>().shopPrice;
+                int itemPrice = pedastalItem.GetComponent<HealthPotionBehaviour>().shopPrice;
                 if (playerCoins >= itemPrice)
                 {
                     player.GetComponent<PlayerStats>().IncreaseCoins(-itemPrice);
                     player.GetComponent<PlayerStats>().RecoverHealth(5);
-                    pedastalItem.GetComponent<HealthPotionBehaviour>().broughtFromShop(player);
-                    HasBought = true;
-                    halo.enabled = false;
-                    realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+                    pedastalItem.GetComponent<HealthPotionBehaviour>().BroughtFromShop();
+                    m_PhotonView.RPC("ItemBought", RpcTarget.AllBuffered, "HealthPotionBehaviour");
                 }
             }
         }
+    }
+
+    [PunRPC]
+    public void ItemBought(string itemType)
+    {
+        HasBought = true;
+        halo.enabled = false;
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (itemType == "EquipmentBehaviour")
+                pedastalItem.GetComponent<EquipmentBehaviour>().DestroyObject();
+            else if (itemType == "WeaponBehaviour")
+                pedastalItem.GetComponent<HitboxContainer>().DestroyWeapon();
+            else
+                pedastalItem.GetComponent<HealthPotionBehaviour>().DestroyObject();
+
+            realPriceDisplay.GetComponent<PriceDisplayBehaviour>().destroyThis();
+        }
+    }
+
+    [PunRPC]
+    public void InitPedastalItem(int pedastalItemID, int shopPedastalID)
+    {
+        GameObject pedastalItem = PhotonView.Find(pedastalItemID).gameObject;
+        GameObject shopPedastal = PhotonView.Find(shopPedastalID).gameObject;
+        pedastalItem.transform.SetParent(shopPedastal.transform);
+        this.pedastalItem = pedastalItem;
+    }
+
+    [PunRPC]
+    public void InitRealPriceDisplay(int realPriceDisplayID, int shopPedastalID, string text)
+    {
+        GameObject realPriceDisplay = PhotonView.Find(realPriceDisplayID).gameObject;
+        GameObject shopPedastal = PhotonView.Find(shopPedastalID).gameObject;
+        realPriceDisplay.transform.SetParent(shopPedastal.transform);
+        realPriceDisplay.GetComponent<TextMesh>().text = text;
+        this.realPriceDisplay = realPriceDisplay;
     }
 }

@@ -31,12 +31,17 @@ public class EquipmentBehaviour : MonoBehaviour
         }
     }
 
-    public void broughtFromShop(GameObject player)
+    public void BroughtFromShop(GameObject player)
     {
         player.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
         Inventory.instance.AddItem(scEquipment);
         SoundManager.Instance.PlaySound(equipped);
-        PhotonNetwork.Destroy(gameObject);
+    }
+
+    public void DestroyObject()
+    {
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.Destroy(gameObject);
     }
 
 }
