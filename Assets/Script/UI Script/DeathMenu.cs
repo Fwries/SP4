@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class DeathMenu : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class DeathMenu : MonoBehaviour
     }
     public void MainMenu()
     {
-        SceneManager.LoadScene("Lobby");
+        //PhotonNetwork.LeaveRoom();
+        //PhotonNetwork.LeaveLobby();
+        PhotonNetwork.LoadLevel(0);
         Debug.Log("Going to room scene");
     }
     public void QuitApp()
     {
-        //Application.Quit();
+        Application.Quit();
         Debug.Log("Quit App");
     }
 }
