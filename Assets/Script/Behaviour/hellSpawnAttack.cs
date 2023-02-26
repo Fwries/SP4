@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
 public class hellSpawnAttack : StateMachineBehaviour
 {
@@ -59,7 +60,7 @@ public class hellSpawnAttack : StateMachineBehaviour
 
                 for (int i = 0; i < numProjectiles; i++)
                 {
-                    Transform projectile = Instantiate(fireBall);
+                    Transform projectile = PhotonNetwork.Instantiate("FireBall", myTransform.position, Quaternion.identity).transform;
                     float angle = i * angleStep;
                     Vector3 offset = Quaternion.Euler(0.0f, angle, 0.0f) * Vector3.forward * spacing;
                     Vector3 projectilePosition = spawnPosition + offset;
@@ -80,7 +81,7 @@ public class hellSpawnAttack : StateMachineBehaviour
                 {
                     SoundManager.Instance.PlaySound(attackSound);
                     var offset = new Vector3(0f, -0.1f, -0.5f);
-                    var proj = GameObject.Instantiate(fireBall, myTransform.position - offset, myTransform.rotation);
+                    var proj = PhotonNetwork.Instantiate("FireBall", myTransform.position - offset, myTransform.rotation);
                     Vector3 shootdir = (player.position - (myTransform.position - offset));
                     shootdir.y = 0f;
                     shootdir.Normalize();
