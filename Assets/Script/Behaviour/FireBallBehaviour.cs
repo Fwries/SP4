@@ -56,10 +56,8 @@ public class FireBallBehaviour : MonoBehaviour
             player.transform.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.All, damage);
         }
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
+        PhotonNetwork.Destroy(gameObject);
+        
     }
 
     private IEnumerator TintSpriteRed()
