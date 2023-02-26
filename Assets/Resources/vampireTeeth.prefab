@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2052033326391327401}
   - component: {fileID: 9174283998809113628}
   - component: {fileID: 3154717002320714513}
+  - component: {fileID: -5412425978475016605}
   m_Layer: 0
   m_Name: vampireTeeth
   m_TagString: equipment
@@ -511,3 +512,25 @@ MonoBehaviour:
   scEquipment: {fileID: 11400000, guid: bfda24e3169ac6e488bc85d6406e88c5, type: 2}
   isShopItem: 0
   equipped: {fileID: 8300000, guid: 3296034404bf5194c90327827c131d51, type: 3}
+--- !u!114 &-5412425978475016605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538942117439789948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

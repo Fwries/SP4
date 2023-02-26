@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7650668021314898869}
   - component: {fileID: 4367421189969775804}
   - component: {fileID: 4572954622951363705}
+  - component: {fileID: 447500487385494317}
   m_Layer: 0
   m_Name: SquareChest_Bottom
   m_TagString: Untagged
@@ -185,6 +186,28 @@ Halo:
     serializedVersion: 2
     rgba: 4282490009
   m_Size: 0.96
+--- !u!114 &447500487385494317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006695971777584361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1932183300127407388
 PrefabInstance:
   m_ObjectHideFlags: 0

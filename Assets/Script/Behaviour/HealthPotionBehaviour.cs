@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,13 +25,13 @@ public class HealthPotionBehaviour : MonoBehaviour
         {
             other.GetComponent<PlayerStats>().RecoverHealth(5);
             SoundManager.Instance.PlaySound(glug);
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
     public void broughtFromShop(GameObject player)
     {
         SoundManager.Instance.PlaySound(glug);
-        DestroyImmediate(this.gameObject, true);
+        PhotonNetwork.Destroy(gameObject);
     }
 }

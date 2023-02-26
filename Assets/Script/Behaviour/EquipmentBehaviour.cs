@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class EquipmentBehaviour : MonoBehaviour
                 other.gameObject.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
                 Inventory.instance.AddItem(scEquipment);
                 SoundManager.Instance.PlaySound(equipped);
-                Destroy(this.gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }
@@ -35,7 +36,7 @@ public class EquipmentBehaviour : MonoBehaviour
         player.GetComponent<PlayerStats>().EquipmentEquip(scEquipment);
         Inventory.instance.AddItem(scEquipment);
         SoundManager.Instance.PlaySound(equipped);
-        DestroyImmediate(this.gameObject, true);
+        PhotonNetwork.Destroy(gameObject);
     }
 
 }

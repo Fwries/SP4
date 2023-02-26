@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3634236703086983279}
   - component: {fileID: 7465772423926886040}
   - component: {fileID: 1310913507443373437}
+  - component: {fileID: 7073058664042432959}
   m_Layer: 0
   m_Name: healingPendant
   m_TagString: equipment
@@ -512,3 +513,25 @@ CapsuleCollider:
   m_Height: 0.32
   m_Direction: 1
   m_Center: {x: -0.004999995, y: -0.010000005, z: 0}
+--- !u!114 &7073058664042432959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985776013163633082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

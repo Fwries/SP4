@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class dieBehaviour : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > 1f)
         {
-            Transform coin = Instantiate(coinPos, myTransform.position + coinOff, Quaternion.identity);
+            GameObject coin = PhotonNetwork.Instantiate(coinPos.name, myTransform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, animator.GetInteger("CoinAmount")));
 
             RoomPrescence roomPrescence = animator.GetComponentInParent<RoomPrescence>();

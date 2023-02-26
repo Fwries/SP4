@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class coinBehaviour : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class coinBehaviour : MonoBehaviour
         {
             other.GetComponent<PlayerStats>().IncreaseCoins(coinAmount);
             SoundManager.Instance.PlaySound(collected);
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ChestBehviour : MonoBehaviour
 {
@@ -35,25 +36,30 @@ public class ChestBehviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && player != null && HasOpen == false)
         {
-            Transform chestTop = transform.GetChild(0);
-            chestTop.rotation = Quaternion.Euler(45f, 0f, 0f);
             // Coins spawning (guaranteed)
-            Transform coin = Instantiate(coinPos, transform.position + coinOff, Quaternion.identity);
+            GameObject coin = PhotonNetwork.Instantiate(coinPos.name, transform.position + coinOff, Quaternion.identity);
             coin.GetComponent<coinBehaviour>().SetUp(Random.Range(1, 10));
 
             // Weapon spawning (chance)
 
             // Equipment spawning (percentage chance done in rarityList script)
-            prefabToSpawn =transform.GetComponent<RarietyList>().GetRandomGameObject();
+            prefabToSpawn = transform.GetComponent<RarietyList>().GetRandomGameObject();
             if (prefabToSpawn != null)
-            {
-                Instantiate(prefabToSpawn, transform.position + equipOff, Quaternion.identity);
-            }
+                PhotonNetwork.Instantiate(prefabToSpawn.name, transform.position + equipOff, Quaternion.identity);
 
-            //Remove glow
-            halo.enabled = false;
-
-            HasOpen = true;
+            GetComponent<PhotonView>().RPC("UpdateChest", RpcTarget.AllBuffered);
         }
+    }
+
+    [PunRPC]
+    public void UpdateChest()
+    {
+        Transform chestTop = transform.GetChild(0);
+        chestTop.rotation = Quaternion.Euler(45f, 0f, 0f);
+
+        //Remove glow
+        halo.enabled = false;
+
+        HasOpen = true;
     }
 }
