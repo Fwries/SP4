@@ -28,7 +28,7 @@ public class coinBehaviour : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().IncreaseCoins(coinAmount);
+            other.GetComponent<PhotonView>().RPC("IncreaseCoins", RpcTarget.All, coinAmount);
             SoundManager.Instance.PlaySound(collected);
             PhotonNetwork.Destroy(gameObject);
         }

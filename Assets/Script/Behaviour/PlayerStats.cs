@@ -59,11 +59,6 @@ public class PlayerStats : MonoBehaviour
             HealthBar.CheckDeath();
         }
     }
-    public void IncreaseCoins(int n)
-    {
-        Coin += n;
-        coinCounter.SetCoins(Coin);
-    }
     public void RecoverHealth(int amount)
     {
         currentHealth += amount;
@@ -110,5 +105,15 @@ public class PlayerStats : MonoBehaviour
         MainCamera.GetComponent<ScreenShake>().Shake(damage);
         SoundManager.Instance.PlaySound(playerHurt);
         HealthBar.SetHealth(currentHealth);
+    }
+
+    [PunRPC]
+    public void IncreaseCoins(int n)
+    {
+        if (photonView.IsMine)
+        {
+            Coin += n;
+            coinCounter.SetCoins(Coin);
+        }
     }
 }
